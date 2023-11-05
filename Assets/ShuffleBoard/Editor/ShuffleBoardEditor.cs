@@ -11,33 +11,36 @@ namespace SB.Editors
     [CustomEditor(typeof(SBBoardScriptableObject))]
     public class ShuffleBoardEditor : Editor
     {
-        GameObject[,] spawned_objects;
+        BoardStruct board_data;
+        ArrayFlattener<SBCubeScriptableObject> cubeFlattener = new ArrayFlattener<SBCubeScriptableObject>();
+        ArrayFlattener<GameObject> gbFlattener = new ArrayFlattener<GameObject>();
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
             DrawDefaultInspector();
 
             SBBoardScriptableObject gridComponent = (SBBoardScriptableObject)target;
-            ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
 
             int rows = gridComponent.rows;
             int cols = gridComponent.cols;
 
-            SBCubeScriptableObject[,] grid = flattener.Unflatten(gridComponent.boardGrid, rows, cols);
-
-            EditorGUILayout.LabelField("2D Array Generator");
-
-            if (grid == null)
+            if (gridComponent.boardGrid == null || gridComponent.modifierGrid == null)
             {
                 Debug.Log("MakingGrid");
-                grid = new SBCubeScriptableObject[rows, cols];
+                gridComponent.boardGrid = new SBCubeScriptableObject[rows* cols];
+                gridComponent.modifierGrid = new GameObject[rows * cols];
             }
-            else if (grid.GetLength(0) != rows || grid.GetLength(1) != cols)
+            else if (gridComponent.boardGrid.Length != rows * cols || gridComponent.modifierGrid.Length != rows * cols)
             {
                 Debug.Log("RemakingGrid");
-                grid = new SBCubeScriptableObject[rows, cols];
+                gridComponent.boardGrid = new SBCubeScriptableObject[rows * cols];
+                gridComponent.modifierGrid = new GameObject[rows * cols];
             }
 
+            SBCubeScriptableObject[,] grid = cubeFlattener.Unflatten(gridComponent.boardGrid, rows, cols);
+            GameObject[,] modifierGrid = gbFlattener.Unflatten(gridComponent.modifierGrid, rows, cols);
+
+            EditorGUILayout.LabelField("Room Blocks");
             for (int i = 0; i < rows; i++)
             {
                 EditorGUILayout.BeginHorizontal();
@@ -52,7 +55,23 @@ namespace SB.Editors
                 EditorGUILayout.EndHorizontal();
             }
 
-            gridComponent.boardGrid = flattener.Flatten(grid);
+            EditorGUILayout.LabelField("Modifier Blocks");
+            for (int i = 0; i < rows; i++)
+            {
+                EditorGUILayout.BeginHorizontal();
+
+                for (int j = 0; j < cols; j++)
+                {
+                    EditorGUILayout.BeginVertical();
+                    modifierGrid[i, j] = (GameObject)EditorGUILayout.ObjectField(modifierGrid[i, j], typeof(GameObject), false);
+                    EditorGUILayout.EndVertical();
+                }
+
+                EditorGUILayout.EndHorizontal();
+            }
+
+            gridComponent.boardGrid = cubeFlattener.Flatten(grid);
+            gridComponent.modifierGrid = gbFlattener.Flatten(modifierGrid);
 
             EditorApplication.playModeStateChanged += (state) =>
             {
@@ -64,11 +83,12 @@ namespace SB.Editors
             if (GUILayout.Button("Spawn Preview"))
             {
                 ClearSpawnedObjects();
-                (spawned_objects, _) = gridComponent.Spawn(Vector3.zero, 2f);
+                board_data = gridComponent.Spawn(Vector3.zero, 2f);
             }
             if (GUILayout.Button("Save"))
             {
-                gridComponent.boardGrid = flattener.Flatten(grid);
+                gridComponent.boardGrid = cubeFlattener.Flatten(grid);
+                gridComponent.modifierGrid = gbFlattener.Flatten(modifierGrid);
                 SaveChanges(gridComponent);
             }
         }
@@ -95,18 +115,24 @@ namespace SB.Editors
 
         private void ClearSpawnedObjects()
         {
-            if(spawned_objects == null)
+            if(board_data.map_objects == null)
             {
                 return;
             }
-            int rows = spawned_objects.GetLength(0);
-            int cols = spawned_objects.GetLength(1);
+            int rows = board_data.map_objects.GetLength(0);
+            int cols = board_data.map_objects.GetLength(1);
 
             for (int row = 0; row < rows; row++)
             {
                 for (int col = 0; col < cols; col++)
                 {
-                    GameObject target = spawned_objects[row, col];
+                    GameObject target = board_data.map_objects[row, col];
+                    if (target == null)
+                    {
+                        continue;
+                    }
+                    DestroyImmediate(target);
+                    target = board_data.modifier_objects[row, col];
                     if (target == null)
                     {
                         continue;

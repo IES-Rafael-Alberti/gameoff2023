@@ -8,25 +8,24 @@ namespace SB.Runtime
     using Utilities.Arrays;
     using Utilities.Enum;
     using SB.ScriptableObjects;
-    using static UnityEngine.Rendering.DebugUI.Table;
-    using Unity.VisualScripting;
 
     public class SBShuffleBoardScript : MonoBehaviour
     {
         public float gridSpacing;
 
-        private List<Vector2Int> emptyPositions;
+        private BoardStruct board_data;
 
         private int rows;
         private int cols;
 
         public SBBoardScriptableObject initialBoardData;
-        private GameObject[,] board;
 
         private ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
 
         public ShuffleControls controls;
-        private bool movementEnabled = true;
+        [HideInInspector]
+        public int moving_elements = 0;
+        public ModifierBase movement_source;
         public float swapPeriod;
 
         private void Awake()
@@ -58,11 +57,11 @@ namespace SB.Runtime
             DestroyBoard();
             rows = initialBoardData.rows;
             cols = initialBoardData.cols;
-            (board, emptyPositions) = initialBoardData.Spawn(gameObject.transform.position, gridSpacing);
+            board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this);
         }
         public void DestroyBoard()
         {
-            if (board == null)
+            if (board_data.map_objects == null)
             {
                 return;
             }
@@ -71,22 +70,41 @@ namespace SB.Runtime
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    if (board[i, j] == null)
+                    if (board_data.map_objects[i, j] == null)
                     {
                         continue;
                     }
-                    Destroy(board[i, j]);
+                    Destroy(board_data.map_objects[i, j]);
                 }
             }
-            emptyPositions = null;
+            board_data.empty_positions = null;
         }
 
+        public bool MovementAllowed(ModifierBase source)
+        {
+            if (moving_elements > 0)
+            {
+                if (movement_source == null) return false;
+                if (movement_source != source) return true;
+            }
+            return true;
+        }
+        public void MovementStarted(ModifierBase source)
+        {
+            moving_elements++;
+            movement_source = source;
+        }
+        public void MovementStopped()
+        {
+            moving_elements--;
+        }
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
-            if (!movementEnabled)
+            if (!MovementAllowed(null))
             {
                 return;
             }
+            MovementStarted(null);
             Vector2 input = context.ReadValue<Vector2>();
 
             if (input.x > 0.3)
@@ -112,7 +130,6 @@ namespace SB.Runtime
         }
         IEnumerator SwapBlocks(DirectionEnum direction)
         {
-            movementEnabled = false;
             Vector2Int shift = Vector2Int.zero;
             switch (direction)
             {
@@ -135,7 +152,7 @@ namespace SB.Runtime
             List<Vector2Int> targetMovements = new List<Vector2Int>();
             List<Vector3> startingPositions = new List<Vector3>();
             List<Vector3> finishedPositions = new List<Vector3>();
-            foreach (Vector2Int emptyPosition in emptyPositions)
+            foreach (Vector2Int emptyPosition in board_data.empty_positions)
             {
                 //Check if movement is possible here.
                 Vector2Int targetIndex = emptyPosition + shift;
@@ -159,7 +176,7 @@ namespace SB.Runtime
 
             if (targetMovements.Count == 0)
             {
-                movementEnabled = true;
+                MovementStopped();
                 yield break;
             }
 
@@ -175,7 +192,7 @@ namespace SB.Runtime
                 for (int i = 0; i < targetMovements.Count; i++)
                 {
                     Vector2Int indexes = targetMovements[i];
-                    GameObject block = board[indexes.x, indexes.y];
+                    GameObject block = board_data.map_objects[indexes.x, indexes.y];
                     block.transform.position = startingPositions[i] * (1f - percentDone) + finishedPositions[i] * percentDone;
                 }
                 yield return null;
@@ -186,13 +203,37 @@ namespace SB.Runtime
             {
                 Vector2Int targetIndex = targetMovements[i];
                 Vector2Int sourceIndex = sourceMovements[i];
-                GameObject sourceBlock = board[sourceIndex.x, sourceIndex.y];
-                board[sourceIndex.x, sourceIndex.y] = board[targetIndex.x, targetIndex.y];
-                board[targetIndex.x, targetIndex.y] = sourceBlock;
-                emptyPositions.Remove(sourceIndex);
-                emptyPositions.Add(targetIndex);
+                GameObject sourceBlock = board_data.map_objects[sourceIndex.x, sourceIndex.y];
+                GameObject targetBlock = board_data.map_objects[targetIndex.x, targetIndex.y];
+                //Swaps modifier targets.
+                GameObject modifier_source_block = board_data.modifier_objects[sourceIndex.x, sourceIndex.y];
+                if (modifier_source_block != null)
+                {
+                    ModifierBase modifier_source = modifier_source_block.GetComponent<ModifierBase>();
+                    if (modifier_source != null)
+                    {
+                        modifier_source.BlockExits(sourceBlock);
+                        modifier_source.BlockEnters(targetBlock);
+                    }
+                }
+                GameObject modifier_target_block = board_data.modifier_objects[targetIndex.x, targetIndex.y];
+                if ( modifier_target_block != null)
+                {
+                    ModifierBase modifier_target = modifier_target_block.GetComponent<ModifierBase>();
+                    if (modifier_target != null)
+                    {
+                        modifier_target.BlockExits(targetBlock);
+                        modifier_target.BlockEnters(sourceBlock);
+                    }
+                }
+
+                //Swaps blocks.
+                board_data.map_objects[sourceIndex.x, sourceIndex.y] = targetBlock;
+                board_data.map_objects[targetIndex.x, targetIndex.y] = sourceBlock;
+                board_data.empty_positions.Remove(sourceIndex);
+                board_data.empty_positions.Add(targetIndex);
             }
-            movementEnabled = true;
+            MovementStopped();
             yield break;
         }
     }
