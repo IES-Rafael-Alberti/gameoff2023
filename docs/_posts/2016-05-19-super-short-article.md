@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Some articles are just so short that we have to make the footer stick"
+title: "Scales: Coming soon"
 categories: misc
 ---
 
