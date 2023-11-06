@@ -4,4 +4,4 @@ title: "Some articles are just so short that we have to make the footer stick"
 categories: misc
 ---
 
-Scales: Muy Pronto
+Scales: Coming soon
