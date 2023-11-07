@@ -5,7 +5,7 @@ layout: post
 ![KiwiPresentation](/docs/assets/images/hikiwi.jpg)
 <img src="/docs/assets/images/hikiwi.jpg" alt="Hi Kiwi">
 
-![KiwiPresentation]({{ "/docs/assets/images/hikiwi.jpg" | https://ies-rafael-alberti.github.io/gameoff2023 }})
+![KiwiPresentation]({{ "/docs/assets/images/hikiwi.jpg" | absolute_url }})
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
