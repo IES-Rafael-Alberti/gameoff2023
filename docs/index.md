@@ -7,3 +7,4 @@
 #
 layout: home
 ---
+![Kiwi saying hello](https://ies-rafael-alberti.github.io/gameoff2023/assets/images/hikiwi.jpg)
