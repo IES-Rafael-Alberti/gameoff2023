@@ -1,14 +1,12 @@
-title: Your awesome title
+title: Kiwi Scales
 author:
-  name: GitHub User
-  email: your-email@domain.com
+  name: Babusha Studio
+  email: babushastudio@gmail.com
 
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  Write an awesome description for your new site here. You can edit this line
-  in _config.yml. It will appear in your document head meta (for Google search
-  results) and in your feed.xml site description.
+  Scales is a 3D dungeon crawler and platformer where the player has to interact in three scales: Normal and small and even smaller.
 
 # Build settings
 
