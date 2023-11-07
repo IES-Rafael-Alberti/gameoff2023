@@ -3,6 +3,7 @@ author:
   name: Babusha Studio
   email: babushastudio@gmail.com
 
+# baseurl: ""
 url: "https://ies-rafael-alberti.github.io/gameoff2023"
 
 # The `>` after `description:` means to ignore line-breaks until next key.
