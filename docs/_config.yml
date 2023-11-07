@@ -3,6 +3,8 @@ author:
   name: Babusha Studio
   email: babushastudio@gmail.com
 
+url: "https://ies-rafael-alberti.github.io/gameoff2023/"
+
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
