@@ -1,4 +1,4 @@
-title: Kiwi Scales
+title: Project Kiwi
 author:
   name: Babusha Studio
   email: babushastudio@gmail.com
@@ -8,7 +8,7 @@ url: "https://ies-rafael-alberti.github.io/gameoff2023/"
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  Scales is a 3D dungeon crawler and platformer where the player has to interact in three scales: Normal and small and even smaller.
+  Project Kiwi is a 3D dungeon crawler and platformer where the player has to interact in three scales: Normal and small and even smaller.
 
 # Build settings
 
