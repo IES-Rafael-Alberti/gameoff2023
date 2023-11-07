@@ -12,7 +12,9 @@ description: >
 
 # Build settings
 
-theme: minima
+remote_theme: minima
+
+skin: dark
 
 plugins:
   - jekyll-feed
