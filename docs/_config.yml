@@ -12,7 +12,7 @@ description: >
 
 # Build settings
 
-remote_theme: minima
+theme: minima
 
 skin: dark
 
