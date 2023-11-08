@@ -4,7 +4,7 @@ bio:                'Treasure Hunter'
 description:        "Project Kiwi is a 3D puzzle-platformer & dungeon-crawler by Babusha Studio."
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/kiwipw.jpg'
+logo:               'assets/img/kiwimin.png'
 background:         'assets/img/hikiwi.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
