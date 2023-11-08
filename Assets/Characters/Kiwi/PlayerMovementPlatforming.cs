@@ -7,10 +7,15 @@ public class PlayerMovementPlatforming : MonoBehaviour
 {
     private PlatformingControls input = null;
     private Vector3 moveVector = Vector3.zero;
+    private Rigidbody rb = null;
+    public float moveSpeed = 10f;
+    public float jumpForce = 5f;
+    public GroundChecking groundCheck;
 
     private void Awake()
     {
         input = new PlatformingControls();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -18,11 +23,12 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Enable();
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCancelled;
+        input.Player.Jump.performed += OnJumpPerformed;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Debug.Log(moveVector);
+        rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
     }
 
     private void OnDisable()
@@ -40,5 +46,18 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private void OnMovementCancelled(InputAction.CallbackContext value)
     {
         moveVector = Vector3.zero;
+    }
+
+        private void OnJumpPerformed(InputAction.CallbackContext value)
+    {
+        if(isGrounded())
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
+
+    bool isGrounded()
+    {
+        return groundCheck.GroundCheck();
     }
 }
