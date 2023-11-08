@@ -1,14 +1,14 @@
 # Site
-title:              Moon
-bio:                'Minimal, one column jekyll theme.'
-description:        "Moon is a minimal, one column jekyll theme for your blog."
+title:              Project Kiwi
+bio:                'Treasure Hunter'
+description:        "Project Kiwi is a 3D puzzle-platformer & dungeon-crawler by Babusha Studio."
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/logo.png'
+logo:               'assets/img/kiwipw.jpg'
 background:         'assets/img/placeholder-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
-url:                https://taylantatli.github.io/Moon
+url:                https://ies-rafael-alberti.github.io/gameoff2023/
 
 # Jekyll
 permalink:          /:title/
