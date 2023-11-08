@@ -5,7 +5,7 @@ description:        "Project Kiwi is a 3D puzzle-platformer & dungeon-crawler by
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/kiwipw.jpg'
-background:         'assets/img/placeholder-big.jpg'
+background:         'assets/img/hikiwi.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
 url:                https://ies-rafael-alberti.github.io/gameoff2023/
@@ -41,7 +41,7 @@ sass:
 twitter:            babushastudio
 itchio:             babushas
 # facebook:           username
-github-url:         https://github.com/IES-Rafael-Alberti/gameoff2023
+github-url:         IES-Rafael-Alberti/gameoff2023
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
 #linkedin:          username
 #xing:              username
