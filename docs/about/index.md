@@ -1,37 +1,13 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, moon]
-date: 2016-03-21
+title: About the Game
+tags: [about, Kiwi]
+date: 2023-11-09
 comments: false
 ---
-    
-<center><a href="http://taylantatli.github.io/Moon"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
-
-## Features
-* Minimal, you can focus on your content
-* Responsive
-* Disqus integration
-* Syntax highlighting
-* Optional post image
-* Social icons
-* Page for sharing projects
-* Optional background image
-* Simple navigation menu
-* MathJax support
 
 ## Preview
+Kiwi Project is a 3D dungeon crawler and platformer where the player has to interact in three scales: Normal and small and even smaller. The big picture lets you slide and rotate several tile pieces (which are rooms made in a modular design) to create paths and unlock mechanisms to get access to your precious treasure. But to unlock the chest itself, you'll have to traverse the tiles in the small view: Kiwi crosses the threshold to the chest's sides and while being small he can explore the rooms themselves. There is one more layer of smallness, that allows Kiwi to enter vases and other items inside the rooms, which he can do to gain access to keys and other utilities. 
 
-{% capture images %}
-    https://cloud.githubusercontent.com/assets/754514/14509720/61c61058-01d6-11e6-93ab-0918515ecd56.png
-    https://cloud.githubusercontent.com/assets/754514/14509716/61ac6c8e-01d6-11e6-879f-8308883de790.png
-{% endcapture %}
-{% include gallery images=images caption="Screenshots of Moon Theme" cols=2 %}
+![Kiwi in a the Temple Ruings](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/hikiwi.jpg)
 
-See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.
-
-## Getting Started
-
-To learn how to install and use this theme check out the [Setup Guide](http://taylantatli.me/Moon/moon-theme/) for more information.
-      
-[Install Moon](https://github.com/TaylanTatli/Moon){: .btn}
