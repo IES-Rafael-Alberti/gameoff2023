@@ -11,6 +11,9 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public float moveSpeed = 10f;
     public float jumpForce = 5f;
     public GroundChecking groundCheck;
+    private Vector3 kiwiDirection;
+
+    private bool doubleJump;
 
     private void Awake()
     {
@@ -26,9 +29,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Jump.performed += OnJumpPerformed;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
+        Vector3 moveDirection = new Vector3(moveVector.x, 0.0f, moveVector.z) * -1f;
+        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
     }
 
     private void OnDisable()
@@ -38,6 +43,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Movement.canceled -= OnMovementCancelled;
     }
 
+    //XZ Axis movement.
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         moveVector = value.ReadValue<Vector3>();
@@ -48,11 +54,21 @@ public class PlayerMovementPlatforming : MonoBehaviour
         moveVector = Vector3.zero;
     }
 
-        private void OnJumpPerformed(InputAction.CallbackContext value)
+    //Jumping.
+    private void OnJumpPerformed(InputAction.CallbackContext value)
     {
-        if(isGrounded())
+        if (isGrounded())
+        {
+            doubleJump = false;
+        }
+
+        // Checks if we are on the ground or we have doubleJump.
+        if (isGrounded() || doubleJump)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            // We disable doubleJump.
+            doubleJump = !doubleJump;
         }
     }
 

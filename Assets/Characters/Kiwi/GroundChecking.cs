@@ -11,7 +11,6 @@ public class GroundChecking : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             collisionCount++;
-            Debug.Log(collisionCount);
         }
     }
 
@@ -20,7 +19,6 @@ public class GroundChecking : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             collisionCount--;
-            Debug.Log(collisionCount);
         }
     }
 
