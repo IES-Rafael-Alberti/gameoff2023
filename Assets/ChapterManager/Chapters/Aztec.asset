@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae9da04bcdbc0245aef2a944166d7e9, type: 3}
+  m_Name: Aztec
+  m_EditorClassIdentifier: 
+  ChapterName: Aztec
+  ChapterBoard: {fileID: 11400000, guid: abb5def2f2fcde34aae716b637d75494, type: 2}
