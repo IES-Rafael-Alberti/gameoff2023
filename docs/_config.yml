@@ -1,6 +1,6 @@
 # Site
 title:              Project Kiwi
-bio:                'Treasure Hunter Extraordinaire'
+bio:                'by Cryptid Grove Studio'
 description:        "Project Kiwi is a 3D puzzle-platformer & dungeon-crawler by Babusha Studio."
 reading_time:       true
 words_per_minute:   200
@@ -37,9 +37,9 @@ sass:
   #ad-client:
   #ad-slot:
 #bing-verify:
-email:              babushastudio@gmail.com
-twitter:            babushastudio
-itchio:             babushas
+email:              CryptidGroveStudio@gmail.com
+twitter:            cryptidgrove
+itchio:             CryptidGrove
 # facebook:           username
 github-url:         IES-Rafael-Alberti/gameoff2023
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
