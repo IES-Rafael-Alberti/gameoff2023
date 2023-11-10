@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Rubus_TestingScene.unity
+    guid: 96db8dfa44b873641b8bcc343318b513
+  - enabled: 1
     path: Assets/Scenes/LogoScene.unity
     guid: 531928641921a284ea8883126ee24fe4
   - enabled: 1
