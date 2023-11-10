@@ -3,7 +3,7 @@ layout: post
 title: "Project Kiwi coming soon"
 date: 2003-11-08
 excerpt: "We are very excited to introduce Kiwi, main character of our next project. Our challenge is to develop this game in one month for submitting it to GitHub's Game Off 2023."
-tags: [sample post, readability, test]
+tags: [platformer, gameoff2023, announcement]
 comments: true
 ---
 
@@ -19,4 +19,4 @@ Kiwi is a small green and yellow parakeet with a red beak and a love for treasur
 
 ## Current State
 
-During our first week of work, our artist has dessigned this lovely main character (isn't he?) and has made the main animations for platforming movement. Our programmer has defined the big picture gameplay mechanic (slide puzzles).
+During our first week of work, our team started with a brainstorming meeting. Since we are a small team the idea came out from our main artist and director suddenly artist has dessigned this lovely main character (isn't he?) and has made the main animations for platforming movement. Our programmer has defined the big picture gameplay mechanic (slide puzzles).
