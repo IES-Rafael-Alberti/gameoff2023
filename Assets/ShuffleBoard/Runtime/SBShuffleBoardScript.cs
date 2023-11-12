@@ -8,6 +8,7 @@ namespace SB.Runtime
     using Utilities.Arrays;
     using Utilities.Enum;
     using SB.ScriptableObjects;
+    using Utilities.GridPostions;
 
     public class SBShuffleBoardScript : MonoBehaviour
     {
@@ -27,22 +28,36 @@ namespace SB.Runtime
         public int moving_elements = 0;
         public ModifierBase movement_source;
         public float swapPeriod;
+        public float zOffset = 6;
+
+        public Camera boardCamera;
 
         private void Awake()
         {
             controls = new ShuffleControls();
-        }
-
-        private void OnEnable()
-        {
             CreateBoard();
+            boardCamera = gameObject.transform.parent.GetComponent<Camera>();
+            TurnOff();
+        }
+        
+        public void TurnOn()
+        {
+            StartCoroutine(TurnOnProcess());
+            boardCamera.enabled = true;
             controls.Enable();
             controls.BoardControls.Move.performed += OnMovementPerformed;
         }
-
-        private void OnDisable()
+        IEnumerator TurnOnProcess()
         {
-            DestroyBoard();
+            yield return new WaitForSeconds(0.2f);
+            MovementClear();
+            yield break;
+        }
+
+            public void TurnOff()
+        {
+            MovementStarted(null);
+            boardCamera.enabled = false;
             controls.Disable();
             controls.BoardControls.Move.performed -= OnMovementPerformed;
         }
@@ -57,7 +72,7 @@ namespace SB.Runtime
             DestroyBoard();
             rows = initialBoardData.rows;
             cols = initialBoardData.cols;
-            board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this);
+            board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
         }
         public void DestroyBoard()
         {
@@ -97,6 +112,15 @@ namespace SB.Runtime
         public void MovementStopped()
         {
             moving_elements--;
+            if (moving_elements <= 0)
+            {
+                MovementClear();
+            }
+        }
+        public void MovementClear()
+        {
+            moving_elements = 0;
+            movement_source = null;
         }
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
@@ -162,16 +186,20 @@ namespace SB.Runtime
                 }
                 sourceMovements.Add(emptyPosition);
                 targetMovements.Add(targetIndex);
-                startingPositions.Add(new Vector3(
-                        (targetIndex.y - (cols - 1) / 2f) * gridSpacing + transform.position.x,
-                        (targetIndex.x - (rows - 1) / 2f) * -gridSpacing + transform.position.y,
-                        transform.position.z
-                        ));
-                finishedPositions.Add(new Vector3(
-                        (emptyPosition.y - (cols - 1) / 2f) * gridSpacing + transform.position.x,
-                        (emptyPosition.x - (rows - 1) / 2f) * -gridSpacing + transform.position.y,
-                        transform.position.z
-                        ));
+                startingPositions.Add(
+                    GridPositions.CalculatePosition(
+                        targetIndex, 
+                        new Vector2Int(rows, cols),
+                        gridSpacing,
+                        transform.position,
+                        zOffset));
+                finishedPositions.Add(
+                    GridPositions.CalculatePosition(
+                        emptyPosition,
+                        new Vector2Int(rows, cols),
+                        gridSpacing,
+                        transform.position,
+                        zOffset)); 
             }
 
             if (targetMovements.Count == 0)

@@ -7,6 +7,7 @@ namespace SB.ScriptableObjects
 {
     using SB.Runtime;
     using Utilities.Arrays;
+    using Utilities.GridPostions;
 
     public struct BoardStruct
     {
@@ -31,7 +32,7 @@ namespace SB.ScriptableObjects
         [HideInInspector]
         [SerializeField] public SBCubeScriptableObject[] boardGrid;
         [SerializeField] public GameObject[] modifierGrid;
-        public BoardStruct Spawn(Vector3 grid_center, float grid_spacing, SBShuffleBoardScript controller = null)
+        public BoardStruct Spawn(Vector3 grid_center, float grid_spacing, SBShuffleBoardScript controller = null, float zOffset = 0)
         {
             ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
             SBCubeScriptableObject[,] grid = flattener.Unflatten(boardGrid, rows, cols);
@@ -41,10 +42,10 @@ namespace SB.ScriptableObjects
 
             for (int row = 0; row < rows; row++)
             {
-                float y = (row - (rows - 1) / 2f) * -grid_spacing + grid_center.y;
+                float y = GridPositions.CalculateY(row, rows, grid_spacing, grid_center);
                 for (int col = 0; col < cols; col++)
                 {
-                    float x = (col - (cols - 1) / 2f) * grid_spacing + grid_center.x;
+                    float x = GridPositions.CalculateX(col, cols, grid_spacing, grid_center);
                     SBCubeScriptableObject source = grid[row, col];
                     if (source != null)
                     {
@@ -57,21 +58,27 @@ namespace SB.ScriptableObjects
                         GameObject sourceObject = source.map;
                         if (sourceObject != null)
                         {
-                            board_data.map_objects[row, col] = Instantiate(sourceObject, new Vector3(x, y, grid_center.z), Quaternion.identity);
+                            if (source.start)
+                            {
+                                GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
+                                Instantiate(kiwi, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
+                            }
+                            board_data.map_objects[row, col] = Instantiate(sourceObject, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
                             CubeScript cScript = board_data.map_objects[row, col].AddComponent<CubeScript>();
                             cScript.rotation = source.rotation;
                             cScript.masked = source.masked;
                             cScript.locked = source.locked;
+                            cScript.source_board = controller;
                         }
                     }
 
                     //CreateModifier
                     GameObject sourceModifier = gbGrid[row, col];
-                    if(sourceModifier == null)
+                    if (sourceModifier == null)
                     {
                         continue;
                     }
-                    GameObject modifier_object = Instantiate(sourceModifier, new Vector3(x, y, grid_center.z + 1), Quaternion.identity);
+                    GameObject modifier_object = Instantiate(sourceModifier, new Vector3(x, y, grid_center.z + zOffset + 5), Quaternion.identity);
                     ModifierBase mb_script = modifier_object.GetComponent<ModifierBase>();
                     mb_script.BlockEnters(board_data.map_objects[row, col]);
                     mb_script.board_controller = controller;

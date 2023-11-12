@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed2ea14511075fd499f2e4f8b2a53bd4, type: 3}
-  m_Name: Example
+  m_Name: Start
   m_EditorClassIdentifier: 
-  map: {fileID: 3795141189371430672, guid: 46de72a080b1dbb4eb79a5660dfc66b9, type: 3}
-  start: 0
+  map: {fileID: 4722076119496446320, guid: 2d44a8a610432304baac8fc12f30494c, type: 3}
+  start: 1
   rotation: 0
   masked: 0
   locked: 0

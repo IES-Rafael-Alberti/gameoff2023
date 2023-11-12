@@ -17,13 +17,11 @@ public class ModifierBase : MonoBehaviour
 
     public virtual void BlockEnters(GameObject block)
     {
-        Debug.Log(block);
         targets.Add(block);
     }
 
     public virtual void BlockExits(GameObject block)
     {
-        Debug.Log(block);
         targets.Remove(block);
     }
 }

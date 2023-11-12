@@ -47,16 +47,14 @@ public class RotationModifierScript : ModifierBase
         CubeScript target_data = target.GetComponent<CubeScript>();
         if (board_controller.MovementAllowed(this)) 
         {
-
-            RotationEnum new_rotation_enum;
             if (clockwise)
             {
                 (_, target_data.rotation) = RotateEnum.RotateClockwise(target_data.rotation);
-                StartCoroutine(RotateBlock(target, 90));
+                StartCoroutine(RotateBlock(target, -90));
                 return;
             }
             (_, target_data.rotation) = RotateEnum.RotateCounterclockwise(target_data.rotation);
-            StartCoroutine(RotateBlock(target, -90));
+            StartCoroutine(RotateBlock(target, 90));
             return;
         }
     }
