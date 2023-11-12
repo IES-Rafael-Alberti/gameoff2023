@@ -3,7 +3,7 @@ using SB.ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.WSA;
+//using UnityEngine.WSA;
 
 public class ModifierBase : MonoBehaviour
 {

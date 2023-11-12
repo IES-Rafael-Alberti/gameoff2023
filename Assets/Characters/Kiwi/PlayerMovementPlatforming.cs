@@ -14,6 +14,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private Vector3 kiwiDirection;
 
     private bool doubleJump;
+    public float gravity;
 
     private void Awake()
     {
@@ -34,7 +35,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
         Vector3 moveDirection = new Vector3(moveVector.x, 0.0f, moveVector.z) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
-    }
+        rb.AddForce(Vector3.down * gravity * rb.mass);
+}
 
     private void OnDisable()
     {

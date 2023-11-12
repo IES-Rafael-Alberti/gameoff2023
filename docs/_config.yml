@@ -1,11 +1,11 @@
 # Site
 title:              Project Kiwi
-bio:                'Treasure Hunter Extraordinaire'
+bio:                'by Cryptid Grove Studio'
 description:        "Project Kiwi is a 3D puzzle-platformer & dungeon-crawler by Babusha Studio."
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/kiwimin.png'
-background:         'assets/img/hikiwi.jpg'
+background:         'assets/img/KiwiTeaser.png'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
 url:                https://ies-rafael-alberti.github.io/gameoff2023/
@@ -37,9 +37,9 @@ sass:
   #ad-client:
   #ad-slot:
 #bing-verify:
-#email:
-twitter:            babushastudio
-itchio:             babushas
+email:              CryptidGroveStudio@gmail.com
+twitter:            cryptidgrove
+itchio:             cryptidgrovestudio
 # facebook:           username
 github-url:         IES-Rafael-Alberti/gameoff2023
 #stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
