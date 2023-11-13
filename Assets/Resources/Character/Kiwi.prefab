@@ -78,6 +78,7 @@ GameObject:
   - component: {fileID: 9191121773009071005}
   - component: {fileID: 3440500523092551947}
   - component: {fileID: 6631503816817082632}
+  - component: {fileID: 2754165106965557237}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -203,6 +204,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &2754165106965557237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8002033964670192983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bd8e3d90838974db0386061b296fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4472359552986786844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -404,9 +417,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24482fb85c27343a2f8e64e9f64a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   jumpForce: 5
   groundCheck: {fileID: 3518263697669327225}
+  groundSpeed: 10
+  gravity: 0
+  glideSpeed: 60
+  freeFall: 0
+  glideDropSpeed: 5
+  releaseDropSpeed: 25
+  gliding: 0
 --- !u!4 &4151116180249594871 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0b42c5dcbe12a174a8652fee6faab6f1,

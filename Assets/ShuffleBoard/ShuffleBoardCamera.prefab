@@ -243,8 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90a465bcb465b4409cb67b47b5b5f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSpacing: 55
   initialBoardData: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c, type: 2}
-  moving_elements: 0
-  movement_source: {fileID: 0}
+  gridSpacing: 55
   swapPeriod: 0.15
+  zOffset: 25
+  boardCamera: {fileID: 5906652986055615365}

@@ -10,42 +10,50 @@ namespace SB.Runtime
     using SB.ScriptableObjects;
     using Utilities.GridPostions;
 
+    enum BoardState
+    {
+        Off,
+        Drop,
+        On
+    }
     public class SBShuffleBoardScript : MonoBehaviour
     {
-        public float gridSpacing;
+        private ShuffleControls controls;
 
+        public SBBoardScriptableObject initialBoardData;
         private BoardStruct board_data;
-
+        public float gridSpacing;
         private int rows;
         private int cols;
 
-        public SBBoardScriptableObject initialBoardData;
-
-        private ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
-
-        public ShuffleControls controls;
-        [HideInInspector]
-        public int moving_elements = 0;
-        public ModifierBase movement_source;
         public float swapPeriod;
-        public float zOffset = 6;
+        public float zOffset = 25;
+        public float kiwiOffset = 3.8f;
 
         public Camera boardCamera;
+
+        private BoardState boardState = BoardState.Off;
+        private int moving_elements = 0;
+        private ModifierBase movement_source;
+
+        private ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
 
         private void Awake()
         {
             controls = new ShuffleControls();
             CreateBoard();
             boardCamera = gameObject.transform.parent.GetComponent<Camera>();
-            TurnOff();
+            TurnOff(false);
         }
         
         public void TurnOn()
         {
-            StartCoroutine(TurnOnProcess());
-            boardCamera.enabled = true;
             controls.Enable();
+            boardState = BoardState.On;
+            boardCamera.enabled = true;
             controls.BoardControls.Move.performed += OnMovementPerformed;
+            controls.BoardControls.Exit.performed += Exit;
+            StartCoroutine(TurnOnProcess());
         }
         IEnumerator TurnOnProcess()
         {
@@ -54,12 +62,28 @@ namespace SB.Runtime
             yield break;
         }
 
-            public void TurnOff()
+        public void Exit(InputAction.CallbackContext context)
         {
+            TurnOff(true);
+        }
+
+        public void TurnOff(bool dropKiwi)
+        {
+            controls.Disable();
+            boardState = BoardState.Off;
             MovementStarted(null);
             boardCamera.enabled = false;
-            controls.Disable();
             controls.BoardControls.Move.performed -= OnMovementPerformed;
+            if (dropKiwi)
+            {
+                boardState = BoardState.Drop;
+                GameObject kiwi = Instantiate(
+                    Resources.Load<GameObject>("Character/kiwi"), 
+                    transform.position + Vector3.forward*kiwiOffset + Vector3.up * gridSpacing * (cols+1)/2f, 
+                    Quaternion.identity);
+                PlayerMovementPlatforming pmpScript = kiwi.GetComponent<PlayerMovementPlatforming>();
+                pmpScript.DropKiwi();
+            }
         }
 
         private void OnDestroy()
@@ -124,6 +148,8 @@ namespace SB.Runtime
         }
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
+            Debug.Log(moving_elements);
+            Debug.Log(movement_source);
             if (!MovementAllowed(null))
             {
                 return;

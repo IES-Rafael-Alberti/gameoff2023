@@ -95,6 +95,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EgyptianFloorRoomBase (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fc37cfb89f6b3f841955564acdb5129c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

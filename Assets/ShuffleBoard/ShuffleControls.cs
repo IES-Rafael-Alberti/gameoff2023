@@ -53,6 +53,15 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e405e45-b407-4781-8b67-84cfd512d70c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -81,7 +90,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""76c0c7b2-f92f-4c7b-95e1-518b7600efe7"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -92,7 +101,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""56675abf-fbe7-44f5-b64e-1a5f8651690c"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -103,7 +112,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""74983feb-e8de-4074-8e60-52c60513bfc4"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -114,7 +123,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""23076b39-3337-41d0-aad7-99b52d0a20d5"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -165,6 +174,28 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                     ""action"": ""CounterClockwiseRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb145b86-1843-4cd2-93e0-604454b7ad04"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d93dd375-69cc-4b48-8522-d79d374e4f37"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +207,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         m_BoardControls_Move = m_BoardControls.FindAction("Move", throwIfNotFound: true);
         m_BoardControls_ClockwiseRotate = m_BoardControls.FindAction("ClockwiseRotate", throwIfNotFound: true);
         m_BoardControls_CounterClockwiseRotate = m_BoardControls.FindAction("CounterClockwiseRotate", throwIfNotFound: true);
+        m_BoardControls_Exit = m_BoardControls.FindAction("Exit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,6 +272,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_BoardControls_Move;
     private readonly InputAction m_BoardControls_ClockwiseRotate;
     private readonly InputAction m_BoardControls_CounterClockwiseRotate;
+    private readonly InputAction m_BoardControls_Exit;
     public struct BoardControlsActions
     {
         private @ShuffleControls m_Wrapper;
@@ -247,6 +280,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_BoardControls_Move;
         public InputAction @ClockwiseRotate => m_Wrapper.m_BoardControls_ClockwiseRotate;
         public InputAction @CounterClockwiseRotate => m_Wrapper.m_BoardControls_CounterClockwiseRotate;
+        public InputAction @Exit => m_Wrapper.m_BoardControls_Exit;
         public InputActionMap Get() { return m_Wrapper.m_BoardControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -265,6 +299,9 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
             @CounterClockwiseRotate.started += instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.performed += instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.canceled += instance.OnCounterClockwiseRotate;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
         }
 
         private void UnregisterCallbacks(IBoardControlsActions instance)
@@ -278,6 +315,9 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
             @CounterClockwiseRotate.started -= instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.performed -= instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.canceled -= instance.OnCounterClockwiseRotate;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
         }
 
         public void RemoveCallbacks(IBoardControlsActions instance)
@@ -300,5 +340,6 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnClockwiseRotate(InputAction.CallbackContext context);
         void OnCounterClockwiseRotate(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
     }
 }
