@@ -28,9 +28,14 @@ namespace SB.Runtime
         public ModifierBase movement_source;
         public float swapPeriod;
 
-        private void Awake()
+        private void Start()
         {
             controls = new ShuffleControls();
+        }
+
+        IEnumerator WaitChapter()
+        {
+            yield return new WaitForSeconds(0.1f);
         }
 
         private void OnEnable()
@@ -55,9 +60,17 @@ namespace SB.Runtime
         public void CreateBoard()
         {
             DestroyBoard();
-            rows = initialBoardData.rows;
-            cols = initialBoardData.cols;
-            board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this);
+            // I can use this component inside/outside chapter system
+            InitBoard(ChapterManager.Instance.GetChapterBoard());
+            //if (ChapterManager.Instance != null) InitBoard(ChapterManager.Instance.GetChapterBoard());
+            //else InitBoard(initialBoardData);
+        }
+
+        void InitBoard(SBBoardScriptableObject data)
+        {
+            rows = data.rows;
+            cols = data.cols;
+            board_data = data.Spawn(gameObject.transform.position, gridSpacing, this);
         }
         public void DestroyBoard()
         {

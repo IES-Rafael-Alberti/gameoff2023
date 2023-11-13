@@ -12,6 +12,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public float jumpForce = 5f;
     public GroundChecking groundCheck;
     private Vector3 kiwiDirection;
+    private bool _holding = false;
 
     private bool doubleJump;
     public float gravity;
@@ -28,6 +29,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCancelled;
         input.Player.Jump.performed += OnJumpPerformed;
+        input.Player.Jump.canceled += OnJumpCancelled;
     }
 
     private void FixedUpdate()
@@ -35,7 +37,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
         Vector3 moveDirection = new Vector3(moveVector.x, 0.0f, moveVector.z) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
-        rb.AddForce(Vector3.down * gravity * rb.mass);
+        rb.AddForce(Vector3.down * (_holding? gravity-19:gravity)* rb.mass);
 }
 
     private void OnDisable()
@@ -59,6 +61,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
     //Jumping.
     private void OnJumpPerformed(InputAction.CallbackContext value)
     {
+        Debug.Log("Init Hold");
+        _holding = true;
         if (isGrounded())
         {
             doubleJump = false;
@@ -72,6 +76,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
             // We disable doubleJump.
             doubleJump = !doubleJump;
         }
+    }
+    private void OnJumpCancelled(InputAction.CallbackContext value)
+    {
+        Debug.Log("End Hold");
+        _holding = false;
     }
 
     bool isGrounded()
