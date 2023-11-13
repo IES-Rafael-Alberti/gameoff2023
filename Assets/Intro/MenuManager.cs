@@ -1,6 +1,8 @@
+using SB.ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
@@ -8,14 +10,23 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] GameObject cinematic;
     [SerializeField] GameObject mainMenu;
+    public GameObject highlightnedPlaceholder;
+
+    public static MenuManager Instance;
 
     private VideoPlayer _player;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         _player = cinematic.GetComponent<VideoPlayer>();
         _player.loopPointReached += DisableCinematic;
+        highlightnedPlaceholder.SetActive(false);
     }
 
     // Update is called once per frame
