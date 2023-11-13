@@ -47,6 +47,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     private void FixedUpdate()
     {
+        rb.angularVelocity = Vector3.zero;
+        rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y, 0);
 
         if (gliding)
         {
