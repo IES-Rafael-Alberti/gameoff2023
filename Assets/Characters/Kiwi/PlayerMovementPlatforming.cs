@@ -20,6 +20,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     private float moveSpeed;
 
+    private Animator _animator;
+
     //SliderDropVariables (DON'T TOUCH THESE PLZ RUBUS)
     [Header("Glider Variables")]
     public float glideSpeed = 80f;
@@ -67,7 +69,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
         Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
-        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass);
+        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en método.
     }
 
     private void OnDisable()
