@@ -1,3 +1,15 @@
+---
+layout: post
+title: "First Devlog"
+date: 2003-11-08
+excerpt: "Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
+After the first brainstrorming session, where we discused our ideas for our project for Game Off 2023 (being "Scales" the theme for the jam), we came with the idea of a recursive dungeon crawler / platformer 
+where the main character (MC from now on) shifts its size to become small and smaller. Our artist had an idea of a bird-like cute treasure hunter on his mind and the next day he showed us his first sketch. 
+We have to say that we falled in love with Kiwi, the treasure hunter parakeet, and we got down to work!"
+tags: [devlog, gameoff2023, gameart, gamedesign]
+comments: true
+---
+
 Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
 After the first brainstrorming session, where we discused our ideas for our project for Game Off 2023 (being "Scales" the theme for the jam), we came with the idea of a recursive dungeon crawler / platformer 
 where the main character (MC from now on) shifts its size to become small and smaller. Our artist had an idea of a bird-like cute treasure hunter on his mind and the next day he showed us his first sketch. 
@@ -5,7 +17,7 @@ We have to say that we falled in love with Kiwi, the treasure hunter parakeet, a
 
 ## Tools
 
-For our dev we are using Unity for designing and programming the game and Blender for modelling characters. On the production size, we use GitHub projects for asigning tasks and GitHub pages for advertising matters. 
+For the dev we are using Unity for designing and programming the game and Blender for modelling characters. On the production size, we use GitHub projects for asigning tasks. GitHub pages give us this place to share our advances with you.  
 Our communication tools are Discord and Telegram.
 
 ## First steps
@@ -24,5 +36,5 @@ Our artist and Kiwi have a hard task ahead (but don't worry, they have been bles
 
 ## Last words
 
-And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience.
+And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience. On the production side, we are preparing our social networks. We hope you like the logo that our artist has created. 
 More on our second devlog. Stay tune!
