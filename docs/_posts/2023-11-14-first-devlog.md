@@ -31,7 +31,8 @@ that can make him small. Then he will have to beat a series of dungeons that wil
 While he is small, he will traverse the level to complete it in a platforming section. Every dungeon has a different theme and atmosphere, being the first one an Ancient Egyptian dungeon, and has different traps and interactible objects.
 Our artist and Kiwi have a hard task ahead (but don't worry, they have been blessed by Horus :D)
 
-[Kiwi's moving and running animations](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_animations.mp4)
+<video src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_animations.mp4" alt="Kiwi's moving and running animations" controls="controls" style="max-width: 720px;">
+</video>
 
 ## Last words
 
