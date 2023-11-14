@@ -7,6 +7,7 @@ comments: true
 ---
 
 ![Sample for Project Kiwi Room](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample.png) 
+
 Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
 After the first brainstrorming session, where we discused our ideas for our project for Game Off 2023 (being "Scales" the theme for the jam), we came with the idea of a recursive dungeon crawler / platformer 
 where the main character (MC from now on) shifts its size to become small and smaller. Our artist had an idea of a bird-like cute treasure hunter on his mind and the next day he showed us his first sketch. 
@@ -37,6 +38,8 @@ Our artist and Kiwi have a hard task ahead (but don't worry, they have been bles
 
 And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience. On the production side, we are preparing our social networks. We hope you like the logo that our artist has created.
 
-<div style="text-align: center;"><img src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png" alt="Cryptid Grove Studio Logo" height="20%" width="20%"></img></div>
+<a href="url"><img src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png" align="center" height="20%" width="20%" ></a>
+
+<img src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png" alt="Cryptid Grove Studio Logo" height="20%" width="20%">
 
 More on our second devlog. Stay tune!
