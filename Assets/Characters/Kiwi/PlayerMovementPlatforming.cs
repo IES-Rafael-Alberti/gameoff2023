@@ -41,6 +41,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input = new PlatformingControls();
         rb = GetComponent<Rigidbody>();
         moveSpeed = groundSpeed;
+        _animator = gameObject.GetComponent<Animator>()
     }
 
     private void OnEnable()
