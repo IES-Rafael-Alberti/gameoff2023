@@ -41,7 +41,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input = new PlatformingControls();
         rb = GetComponent<Rigidbody>();
         moveSpeed = groundSpeed;
-        _animator = gameObject.GetComponent<Animator>()
+        _animator = gameObject.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -70,7 +70,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
         Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
-        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en método.
+        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en mï¿½todo.
     }
 
     private void OnDisable()

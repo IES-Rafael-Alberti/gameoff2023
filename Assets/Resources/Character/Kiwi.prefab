@@ -232,12 +232,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b42c5dcbe12a174a8652fee6faab6f1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.89
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b42c5dcbe12a174a8652fee6faab6f1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b42c5dcbe12a174a8652fee6faab6f1,
         type: 3}
@@ -363,7 +363,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3661543598187811149}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -417,10 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24482fb85c27343a2f8e64e9f64a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 5
+  jumpForce: 65
   groundCheck: {fileID: 3518263697669327225}
   groundSpeed: 10
-  gravity: 0
+  gravity: 20
+  _isHolding: 0
   glideSpeed: 60
   freeFall: 0
   glideDropSpeed: 5

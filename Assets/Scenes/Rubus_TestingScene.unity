@@ -1600,26 +1600,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 882428379333606146, guid: 2676085e9c9d0b649bf6354d0e403e2a,
-        type: 3}
-      propertyPath: gravity
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 882428379333606146, guid: 2676085e9c9d0b649bf6354d0e403e2a,
-        type: 3}
-      propertyPath: jumpForce
-      value: 65
-      objectReference: {fileID: 0}
-    - target: {fileID: 882428379333606146, guid: 2676085e9c9d0b649bf6354d0e403e2a,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333706584576114556, guid: 2676085e9c9d0b649bf6354d0e403e2a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3661543598187811149, guid: 2676085e9c9d0b649bf6354d0e403e2a,
         type: 3}
       propertyPath: m_Name
@@ -1674,16 +1654,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6167600691511100574, guid: 2676085e9c9d0b649bf6354d0e403e2a,
-        type: 3}
-      propertyPath: m_Mass
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845733955253686737, guid: 2676085e9c9d0b649bf6354d0e403e2a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
