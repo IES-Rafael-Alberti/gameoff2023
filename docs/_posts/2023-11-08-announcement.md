@@ -11,7 +11,7 @@ comments: true
 
 After a long journey, treasure hunter Kiwi arrives at the final destination of his adventure,carrying only his poncho and loads of cuteness. Kiwi traverses through the ominous temple ruins when he steps on a trap, a giant boulder falls from the ceiling and threatens to crush him! But luckily he manages to get inside the treasure room in time, not so luckily he gets trapped there in the process. In the center of the room he finds a stone table, with a cube-shaped treasure chest with some intricate designs on one sides. While looking around, he spots a small balcony carved into the squares that cover the sides of the chest, and he finds himself shrunk and standing on the chest's balcony! The intricate square tiles on the chest turn out to be a continuation of the dungeon, a final test stands between him and his treasure.
 
-![Kiwi in the Temple Ruins](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/hikiwi.jpg)
+![Kiwi in the Temple Ruins](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_teaser_lowres.jpg)
 
 
 ## Coming soon to the Game Off
