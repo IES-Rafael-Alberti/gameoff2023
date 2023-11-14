@@ -43,11 +43,14 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    public void NewGame() { 
-        Debug.Log("NewGame"); 
-        SceneManager.LoadScene(2); 
+    public void NewGame() 
+    {
+        SceneManager.LoadScene(gameScene); 
     }
 
-    public void ExitGame() { Application.Quit(); }
+    public void ExitGame() 
+    { 
+        Application.Quit(); 
+    }
 
 }
