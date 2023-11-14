@@ -2,10 +2,6 @@
 layout: post
 title: "First Devlog"
 date: 2023-11-14
-excerpt: "Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
-After the first brainstrorming session, where we discused our ideas for our project for Game Off 2023 (being "Scales" the theme for the jam), we came with the idea of a recursive dungeon crawler / platformer 
-where the main character (MC from now on) shifts its size to become small and smaller. Our artist had an idea of a bird-like cute treasure hunter on his mind and the next day he showed us his first sketch. 
-We have to say that we falled in love with Kiwi, the treasure hunter parakeet, and we got down to work!"
 tags: [devlog, gameoff2023, gameart, gamedesign]
 comments: true
 ---
@@ -17,10 +13,11 @@ We have to say that we falled in love with Kiwi, the treasure hunter parakeet, a
 
 ## Tools
 
-For the dev we are using Unity for designing and programming the game and Blender for modelling characters. On the production size, we use GitHub projects for asigning tasks. GitHub pages give us this place to share our advances with you.  
-Our communication tools are Discord and Telegram.
+For the dev we are using Unity for designing and programming the game and Blender for modelling characters. On the production size, we use GitHub projects for asigning tasks. GitHub pages give us this place to share our advances with you. Our communication tools are Discord and Telegram.
 
 ## First steps
+
+![Kiwi in the Temple Ruins](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/hikiwi.jpg)
 
 On our first week of development, our programmers have prepared the platforming mechanics for the jump and movement using the test model that the artist did. 
 The artist himself modelled the character and prepared his animations using Blender. Then our team implemented the animations on Unity and made the necessary adjustments. 
