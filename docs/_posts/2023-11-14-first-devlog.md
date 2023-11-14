@@ -17,21 +17,26 @@ For the dev we are using Unity for designing and programming the game and Blende
 
 ## First steps
 
-![Kiwi in the Temple Ruins](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/hikiwi.jpg)
-
 On our first week of development, our programmers have prepared the platforming mechanics for the jump and movement using the test model that the artist did. 
 The artist himself modelled the character and prepared his animations using Blender. Then our team implemented the animations on Unity and made the necessary adjustments. 
 This is because in our firsts tests we noticed that Kiwi ran and jumped a little too slow (he felt like an astronaut in low gravity). 
 Our programmers are also creating the size shifting mechanics with some test scenes.
 
+![Sample for Project Kiwi Room](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample.png)
+
 ## Art & design
 
 As we said, Kiwi was designed by our artist and now he is pushing hard for our MC's world. As we said in our first post, Kiwi will arrive to an ancient ruin where he will find a treaasure and a magical artifact
-that can make him small. Then he will have to beat a series of dungeons that will unlock the treasure seals. While he is big, he can modify the structure of the level itself in a slide-puzzle. 
+that can make him small. Then he will have to beat a series of dungeons that will unlock the treasure seals. While he is big, he can modify the order of the rooms in the level itself via a slide-puzzle. 
 While he is small, he will traverse the level to complete it in a platforming section. Every dungeon has a different theme and atmosphere, being the first one an Ancient Egyptian dungeon, and has different traps and interactible objects.
 Our artist and Kiwi have a hard task ahead (but don't worry, they have been blessed by Horus :D)
 
+![Kiwi's moving and running animations](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample.png)
+
 ## Last words
 
-And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience. On the production side, we are preparing our social networks. We hope you like the logo that our artist has created. 
+And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience. On the production side, we are preparing our social networks. We hope you like the logo that our artist has created.
+
+![Kiwi's moving and running animations](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png))
+
 More on our second devlog. Stay tune!
