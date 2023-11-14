@@ -12,10 +12,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public float jumpForce = 5f;
     public GroundChecking groundCheck;
     private Vector3 kiwiDirection;
-    public float groundSpeed = 10f;
+    public float groundSpeed = 15f;
 
     private bool doubleJump;
     public float gravity;
+    public bool _isHolding;
 
     private float moveSpeed;
 
@@ -30,6 +31,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private float glideVelocityX;
     [HideInInspector]
     public bool gliding = false;
+
 
 
     private void Awake()
@@ -63,9 +65,9 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private void NormalUpdate()
     {
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
-        Vector3 moveDirection = new Vector3(moveVector.x, 0.0f, moveVector.z) * -1f;
+        Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
-        rb.AddForce(Vector3.down * gravity * rb.mass);
+        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass);
     }
 
     private void OnDisable()
@@ -88,6 +90,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     //Jumping.
     private void OnJumpPerformed(InputAction.CallbackContext value)
     {
+        _isHolding = true;
         if (isGrounded())
         {
             doubleJump = false;
@@ -96,11 +99,17 @@ public class PlayerMovementPlatforming : MonoBehaviour
         // Checks if we are on the ground or we have doubleJump.
         if (isGrounded() || doubleJump)
         {
+            rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
             // We disable doubleJump.
             doubleJump = !doubleJump;
         }
+    }
+
+    private void OnJumpCancelled(InputAction.CallbackContext value)
+    {
+        _isHolding = false;
     }
 
     bool isGrounded()
@@ -113,12 +122,14 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Movement.performed += OnMovementPerformed;
         input.Player.Movement.canceled += OnMovementCancelled;
         input.Player.Jump.performed += OnJumpPerformed;
+        input.Player.Jump.canceled += OnJumpCancelled;
     }
     private void DisableNormalControls()
     {
         input.Player.Movement.performed -= OnMovementPerformed;
         input.Player.Movement.canceled -= OnMovementCancelled;
         input.Player.Jump.performed -= OnJumpPerformed;
+        input.Player.Jump.canceled -= OnJumpCancelled;
     }
 
     #region Glide
