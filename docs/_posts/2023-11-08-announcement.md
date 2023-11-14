@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Project Kiwi coming soon"
-date: 2003-11-08
+date: 2023-11-08
 excerpt: "We are very excited to introduce Kiwi, main character of our next project. Our challenge is to develop this game in one month for submitting it to GitHub's Game Off 2023."
 tags: [platformer, gameoff2023, announcement, dungeoncrawler]
 comments: true
