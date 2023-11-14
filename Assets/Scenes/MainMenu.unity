@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 220667993}
   - component: {fileID: 220667992}
   - component: {fileID: 220667994}
+  - component: {fileID: 220667995}
   m_Layer: 0
   m_Name: New Game
   m_TagString: Untagged
@@ -302,6 +303,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &220667995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220667990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5e4e3aae4f9dd4cb4dd0c4385fdb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493478240
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +892,7 @@ MonoBehaviour:
   cinematic: {fileID: 767067097}
   mainMenu: {fileID: 1971471204}
   highlightnedPlaceholder: {fileID: 835928441}
-  gameScene: 0
+  gameScene: 3
 --- !u!4 &1300349478
 Transform:
   m_ObjectHideFlags: 0
@@ -907,6 +920,7 @@ GameObject:
   - component: {fileID: 1350264859}
   - component: {fileID: 1350264858}
   - component: {fileID: 1350264860}
+  - component: {fileID: 1350264861}
   m_Layer: 0
   m_Name: Exit Game
   m_TagString: Untagged
@@ -1074,6 +1088,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1350264861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350264856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5e4e3aae4f9dd4cb4dd0c4385fdb12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1971471204
 GameObject:
   m_ObjectHideFlags: 0
