@@ -31,12 +31,13 @@ that can make him small. Then he will have to beat a series of dungeons that wil
 While he is small, he will traverse the level to complete it in a platforming section. Every dungeon has a different theme and atmosphere, being the first one an Ancient Egyptian dungeon, and has different traps and interactible objects.
 Our artist and Kiwi have a hard task ahead (but don't worry, they have been blessed by Horus :D)
 
-![Kiwi's moving and running animations](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample.png)
+![Kiwi's moving and running animations](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_animations.mp4)
 
 ## Last words
 
 And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience. On the production side, we are preparing our social networks. We hope you like the logo that our artist has created.
 
-![Kiwi's moving and running animations](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png))
+<img src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png" width="20%" height="20%">
+[comment]: <> ![Cryptid Grove Studio logo](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png)
 
 More on our second devlog. Stay tune!
