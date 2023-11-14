@@ -42,7 +42,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""id"": ""50bb9720-06c6-4a89-865a-ffaeb70cad8d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press,Hold(duration=0.2,pressPoint=0.1)"",
+                    ""interactions"": ""Press,Hold(duration=0.4,pressPoint=0.3)"",
                     ""initialStateCheck"": false
                 },
                 {

@@ -70,7 +70,19 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
         Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
-        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en m�todo.
+        rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en metodo.
+
+        if(_isHolding && !isGrounded())
+        {
+            _animator.SetBool("isFloating", true);
+        }
+        else
+        {_animator.SetBool("isFloating", false);}
+
+        if(moveVector == Vector3.zero)
+        {
+            _animator.SetBool("isRunning", false);
+        }
     }
 
     private void OnDisable()
@@ -82,6 +94,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     //XZ Axis movement.
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
+        _animator.SetBool("isRunning", true);
         moveVector = value.ReadValue<Vector3>();
     }
 
@@ -102,6 +115,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         // Checks if we are on the ground or we have doubleJump.
         if (isGrounded() || doubleJump)
         {
+            _animator.SetBool("isJumping", true);
             rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
@@ -112,6 +126,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
     {
+        _animator.SetBool("isJumping", false);
         _isHolding = false;
     }
 
