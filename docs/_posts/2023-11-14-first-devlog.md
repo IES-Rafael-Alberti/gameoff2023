@@ -6,7 +6,8 @@ tags: [devlog, gameoff2023, gameart, gamedesign]
 comments: true
 ---
 
-![Sample for Project Kiwi Room](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample.png) Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
+![Sample for Project Kiwi Room](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample.png) 
+Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
 After the first brainstrorming session, where we discused our ideas for our project for Game Off 2023 (being "Scales" the theme for the jam), we came with the idea of a recursive dungeon crawler / platformer 
 where the main character (MC from now on) shifts its size to become small and smaller. Our artist had an idea of a bird-like cute treasure hunter on his mind and the next day he showed us his first sketch. 
 We have to say that we falled in love with Kiwi, the treasure hunter parakeet, and we got down to work!
