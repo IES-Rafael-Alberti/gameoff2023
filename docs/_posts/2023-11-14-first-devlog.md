@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "First Devlog"
-date: 2003-11-08
+date: 2023-11-14
 excerpt: "Hi there! We are pleased to share our first devlog where we will talk about the current state of our game project. 
 After the first brainstrorming session, where we discused our ideas for our project for Game Off 2023 (being "Scales" the theme for the jam), we came with the idea of a recursive dungeon crawler / platformer 
 where the main character (MC from now on) shifts its size to become small and smaller. Our artist had an idea of a bird-like cute treasure hunter on his mind and the next day he showed us his first sketch. 
