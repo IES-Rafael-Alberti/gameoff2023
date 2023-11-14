@@ -38,6 +38,5 @@ Our artist and Kiwi have a hard task ahead (but don't worry, they have been bles
 And what's for the second week? We can tell you that our programmers are working on the transition between the slider and platforming sections. By the way, they are preparing the main menu and the flow of the player experience. On the production side, we are preparing our social networks. We hope you like the logo that our artist has created.
 
 <img src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png" width="20%" height="20%">
-[comment]: <> ![Cryptid Grove Studio logo](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/cryptidgrove_logo.png)
 
 More on our second devlog. Stay tune!
