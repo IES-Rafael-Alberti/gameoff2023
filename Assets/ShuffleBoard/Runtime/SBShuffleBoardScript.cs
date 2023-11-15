@@ -28,7 +28,7 @@ namespace SB.Runtime
         public ModifierBase movement_source;
         public float swapPeriod;
 
-        private void Start()
+        private void Awake()
         {
             controls = new ShuffleControls();
         }
@@ -57,13 +57,11 @@ namespace SB.Runtime
             DestroyBoard();
         }
 
-        public void CreateBoard()
-        {
+        public void CreateBoard() {
             DestroyBoard();
             // I can use this component inside/outside chapter system
-            InitBoard(ChapterManager.Instance.GetChapterBoard());
-            //if (ChapterManager.Instance != null) InitBoard(ChapterManager.Instance.GetChapterBoard());
-            //else InitBoard(initialBoardData);
+            //InitBoard(ChapterManager.Instance.GetChapterBoard());
+            InitBoard(ChapterManager.Instance != null ? ChapterManager.Instance.GetChapterBoard() : initialBoardData);
         }
 
         void InitBoard(SBBoardScriptableObject data)

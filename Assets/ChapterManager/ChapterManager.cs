@@ -1,20 +1,21 @@
 using SB.ScriptableObjects;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChapterManager : MonoBehaviour
 {
-
+    // this attributes are static
+    public static ChapterManager Instance;
+    public static EventManager Events;
+    
     [SerializeField] List<CMChapterSO> chapters = new List<CMChapterSO>();
-    private static int _currentChapter;
-    private static int _chapterCount;
-    private static int _menuScene;
     [SerializeField] GameObject boardPrefab;
     [SerializeField] int menuScene;
 
-    public static ChapterManager Instance;
+    private int _currentChapter;
 
     private void Awake()
     {
@@ -26,12 +27,14 @@ public class ChapterManager : MonoBehaviour
         }
         // This part only once in game lifetime
         _currentChapter = 0;
-        _chapterCount = chapters.Count;
-        _menuScene = menuScene;
+        Events = new EventManager();
         Instance = this;
+        // Subscribe to next chapter event
+        Events.NextChapter.AddListener(OnNextChapter);
+        Events.NextChapter.AddListener(EventTest);
         Instantiate(boardPrefab);
-        /*Método de Inicialización*/
-        DontDestroyOnLoad(this);
+        // init method
+        DontDestroyOnLoad(this); 
     }
 
         
@@ -54,18 +57,25 @@ public class ChapterManager : MonoBehaviour
         return chapters[_currentChapter].ChapterBoard;
     }
 
-    // TODO: remove static
-    public static void NextChapter()
+    public void OnNextChapter()
     {
         _currentChapter++;
         Debug.Log("Chapter: " + _currentChapter);
-        if(_currentChapter>=_chapterCount)
+        if(_currentChapter>=chapters.Count)
         {
             _currentChapter = 0;
-            SceneManager.LoadScene(_menuScene);
+            SceneManager.LoadScene(menuScene);
         } else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    private void EventTest() {
+        Debug.Log("Event received");
+    }
+    
+    public static void InvokeNextChapter() {
+        Events.InvokeNextChapter();
     }
 }

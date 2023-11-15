@@ -25,6 +25,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainMenu.SetActive(ChapterManager.Instance != null);
+        cinematic.SetActive(ChapterManager.Instance == null);
         _player = cinematic.GetComponent<VideoPlayer>();
         _player.loopPointReached += DisableCinematic;
         highlightnedPlaceholder.SetActive(false);
