@@ -51,7 +51,7 @@ instagram:          cryptidgrovestudio
 #medium:            '@username'
 #pinterest:         username
 #foursquare:        username
-#steam:              username
+#steam:             username
 #dribbble:          username
 #youtube:           username
 #youtube-channel:   channel
@@ -63,6 +63,8 @@ instagram:          cryptidgrovestudio
 #xmpp:              username@server.com
 #hackernews:        username
 bluesky:            cryptidgrovestudio.bsky.social
+discord:            channels/1166621054685425694
+
 
 # Gems
 gems:
