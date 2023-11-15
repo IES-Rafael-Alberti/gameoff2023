@@ -26,14 +26,14 @@
                     {% if site.xing %}<li>
                         <a href="http://www.xing.com/profile/{{ site.xing }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-xing-square"></i> Xing</a>
                     </li>{% endif %}
-                    {% if site.instagram %}<li>
-                        <a href="http://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
-                    </li>{% endif %}
                     {% if site.tumblr %}<li>
                         <a href="http://{{ site.tumblr }}.tumblr.com" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-tumblr-square"></i> Tumblr</a>
                     </li>{% endif %}
                     {% if site.itchio %}<li>                     
                         <a href="http://{{ site.itchio }}.itch.io" target="_blank" rel="noopener noreferrer"><i class="fab fa-itch-io"></i> Itch.io</a>
+                    </li>{% endif %}
+                    {% if site.instagram %}<li>
+                        <a href="http://instagram.com/{{ site.instagram }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-instagram"></i> Instagram</a>
                     </li>{% endif %}
                     {% if site.github-url %}<li>
                         <a href="http://github.com/{{ site.github-url }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-github"></i> Github</a>
@@ -82,6 +82,12 @@
                     </li>{% endif %}
                     {% if site.hackernews %}<li>
                         <a href="https://news.ycombinator.com/user?id={{ site.hackernews }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-hacker-news"></i> Hacker News</a>
+                    </li>{% endif %}
+                    {% if site.bluesky %}<li>
+                        <a href="http://bsky.app/profile/{{ site.bluesky }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-square"></i> Blue Sky</a>
+                    </li>{% endif %}
+                    {% if site.discord %}<li>
+                        <a href="https://discord.com/{{ site.discord }}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i> Discord</a>
                     </li>{% endif %}
 					{% if site.email %}<li>
                         <a href="mailto:{{ site.email }}" target="_blank" rel="noopener noreferrer"><i class="fa fa-fw fa-envelope-square"></i> Email</a>
