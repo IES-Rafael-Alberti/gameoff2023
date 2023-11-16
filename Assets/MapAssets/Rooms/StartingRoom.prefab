@@ -126,6 +126,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1729341001965865119}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1963204036509087182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 36d787e7cbfa25f49901d6a27faf79bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1729341001965865119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3317137098863104606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5046550670015931711, guid: 36d787e7cbfa25f49901d6a27faf79bf,
@@ -190,6 +196,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1185962962541408116}
     m_Modifications:
+    - target: {fileID: 813707182028310567, guid: bae192abe882e1b4e96cd8b7c6e759dc,
+        type: 3}
+      propertyPath: parentCube
+      value: 
+      objectReference: {fileID: 1963204036509087182}
     - target: {fileID: 1921246171107834911, guid: bae192abe882e1b4e96cd8b7c6e759dc,
         type: 3}
       propertyPath: m_Name
