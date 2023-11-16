@@ -25,6 +25,8 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainMenu.SetActive(ChapterManager.Instance != null);
+        cinematic.SetActive(ChapterManager.Instance == null);
         _player = cinematic.GetComponent<VideoPlayer>();
         _player.loopPointReached += DisableCinematic;
         highlightnedPlaceholder.SetActive(false);
@@ -33,7 +35,7 @@ public class MenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-                 
+
     }
 
     void DisableCinematic(VideoPlayer vp)
@@ -43,14 +45,15 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    public void NewGame() 
+    public void NewGame()
     {
-        SceneManager.LoadScene(gameScene); 
+        SceneManager.LoadScene(gameScene);
     }
 
-    public void ExitGame() 
-    { 
-        Application.Quit(); 
+    public void ExitGame()
+    {
+        Application.Quit();
     }
+
 
 }
