@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 3
-  gameScene: 1
+  gameScene: 2
 --- !u!4 &191887211
 Transform:
   m_ObjectHideFlags: 0

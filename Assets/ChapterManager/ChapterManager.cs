@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.Video;
 
 public class ChapterManager : MonoBehaviour
 {
@@ -14,7 +16,10 @@ public class ChapterManager : MonoBehaviour
 
     [SerializeField] List<CMChapterSO> chapters = new List<CMChapterSO>();
     [SerializeField] GameObject boardPrefab;
-    [SerializeField] int menuScene;
+    [SerializeField] int endingScene;
+    
+    //[SerializeField] GameObject cinematic;
+    /*private VideoPlayer _player;*/
 
     private int _currentChapter;
 
@@ -60,8 +65,11 @@ public class ChapterManager : MonoBehaviour
         Debug.Log("Chapter: " + _currentChapter);
         if(_currentChapter >= chapters.Count)
         {
+            //cinematic.SetActive(_currentChapter >= chapters.Count);
+            //_player = cinematic.GetComponent<VideoPlayer>(); //Ending should be played here?
+            //_player.loopPointReached += DisableCinematic;
             _currentChapter = 0;
-            SceneManager.LoadScene(menuScene);
+            SceneManager.LoadScene(endingScene); 
         } else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -77,5 +85,10 @@ public class ChapterManager : MonoBehaviour
     {
         Events.InvokeNextChapter();
     }
+
+    /*void DisableCinematic(VideoPlayer vp)
+    {
+        cinematic.SetActive(false);
+    }*/
 
 }
