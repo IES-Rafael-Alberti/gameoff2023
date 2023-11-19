@@ -15,4 +15,9 @@ public class EventManager
         NextChapter?.Invoke();
     }
 
+    /*public void InvokeGameOver()
+    {
+        GameOver?.Invoke();
+    }*/
+
 }

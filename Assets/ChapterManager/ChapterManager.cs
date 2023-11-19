@@ -17,9 +17,7 @@ public class ChapterManager : MonoBehaviour
     [SerializeField] List<CMChapterSO> chapters = new List<CMChapterSO>();
     [SerializeField] GameObject boardPrefab;
     [SerializeField] int endingScene;
-    
-    //[SerializeField] GameObject cinematic;
-    /*private VideoPlayer _player;*/
+    [SerializeField] int gameOverScene;
 
     private int _currentChapter;
 
@@ -38,6 +36,8 @@ public class ChapterManager : MonoBehaviour
         // Subscribe to next chapter event
         Events.NextChapter.AddListener(OnNextChapter);
         Events.NextChapter.AddListener(EventTest);
+        // Subscribe to game over event?
+        
         // Init Method
         DontDestroyOnLoad(this);
     }
@@ -65,16 +65,19 @@ public class ChapterManager : MonoBehaviour
         Debug.Log("Chapter: " + _currentChapter);
         if(_currentChapter >= chapters.Count)
         {
-            //cinematic.SetActive(_currentChapter >= chapters.Count);
-            //_player = cinematic.GetComponent<VideoPlayer>(); //Ending should be played here?
-            //_player.loopPointReached += DisableCinematic;
             _currentChapter = 0;
             SceneManager.LoadScene(endingScene); 
         } else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //restarts the Treasure Room scene, not the current chapter
         }
     }
+
+    public int GetCurrentChapter()
+    {
+        return _currentChapter;
+    }
+
 
     private void EventTest()
     {
@@ -86,9 +89,11 @@ public class ChapterManager : MonoBehaviour
         Events.InvokeNextChapter();
     }
 
-    /*void DisableCinematic(VideoPlayer vp)
+
+    public void GameOver()
     {
-        cinematic.SetActive(false);
-    }*/
+        GetCurrentChapter();
+        SceneManager.LoadScene(gameOverScene);
+    }
 
 }

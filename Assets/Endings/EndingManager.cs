@@ -15,7 +15,6 @@ public class EndingController : MonoBehaviour
     [SerializeField] int menuScene;
     private VideoPlayer _player;
 
-    //public static MenuManager Instance;
 
     // Start is called before the first frame update
     void Start()
