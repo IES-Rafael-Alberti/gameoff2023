@@ -21,13 +21,16 @@ namespace SB.Runtime
         private ShuffleControls controls;
 
         public SBBoardScriptableObject initialBoardData;
-        private BoardStruct board_data;
+        public BoardStruct board_data;
         public float gridSpacing;
         private int rows;
         private int cols;
 
         public GameObject doorPrefab;
         private List<GameObject> doors = new List<GameObject>();
+
+        public GameObject transitionPrefab;
+        private List<GameObject> transitions = new List<GameObject>();
 
         public float swapPeriod;
         public float zOffset = 25;
@@ -68,7 +71,10 @@ namespace SB.Runtime
 
         public void Exit(InputAction.CallbackContext context)
         {
-            TurnOff(true);
+            if (MovementAllowed(null))
+            {
+                TurnOff(true);
+            }
         }
 
         public void TurnOff(bool dropKiwi)
@@ -86,6 +92,7 @@ namespace SB.Runtime
                     Resources.Load<GameObject>("Character/kiwi"), 
                     transform.position + Vector3.forward*kiwiOffset + Vector3.up * gridSpacing * (cols+1)/2f, 
                     Quaternion.identity);
+                CameraTrackingScript.targetPlayer = kiwi;
                 PlayerMovementPlatforming pmpScript = kiwi.GetComponent<PlayerMovementPlatforming>();
                 pmpScript.DropKiwi();
             }
@@ -297,6 +304,8 @@ namespace SB.Runtime
                 //Swaps blocks.
                 board_data.map_objects[sourceIndex.x, sourceIndex.y] = targetBlock;
                 board_data.map_objects[targetIndex.x, targetIndex.y] = sourceBlock;
+                board_data.map_objects[sourceIndex.x, sourceIndex.y].GetComponent<CubeScript>().position = sourceIndex;
+                board_data.map_objects[targetIndex.x, targetIndex.y].GetComponent<CubeScript>().position = targetIndex;
                 board_data.empty_positions.Remove(sourceIndex);
                 board_data.empty_positions.Add(targetIndex);
             }
@@ -319,13 +328,15 @@ namespace SB.Runtime
                     {
                         GameObject block2 = board_data.map_objects[row, col+1];
                         CubeScript block2CS = block2.GetComponent<CubeScript>();
-                        if (block1CS.doorOnRight && !block2CS.doorOnLeft)
+                        if (block1CS.doorOnRight)
                         {
-                            CreateDoorRight(block1);
+                            if(!block2CS.doorOnLeft)CreateDoorRight(block1);
+                            else CreateTransitionRight(block1);
                         }
-                        if (!block1CS.doorOnRight && block2CS.doorOnLeft)
+                        if (block2CS.doorOnLeft)
                         {
-                            CreateDoorLeft(block2);
+                            if(!block1CS.doorOnRight)CreateDoorLeft(block2);
+                            else CreateTransitionLeft(block2);
                         }
                     }
                     else if (block1CS.doorOnRight) CreateDoorRight(block1);
@@ -334,13 +345,15 @@ namespace SB.Runtime
                     {
                         GameObject block2 = board_data.map_objects[row + 1, col];
                         CubeScript block2CS = block2.GetComponent<CubeScript>();
-                        if (block1CS.doorOnBottom && !block2CS.doorOnTop)
+                        if (block1CS.doorOnBottom)
                         {
-                            CreateDoorBottom(block1);
+                            if (!block2CS.doorOnTop) CreateDoorBottom(block1);
+                            else CreateTransitionBottom(block1);
                         }
-                        if (!block1CS.doorOnBottom && block2CS.doorOnTop)
+                        if (block2CS.doorOnTop)
                         {
-                            CreateDoorTop(block2);
+                            if(!block1CS.doorOnBottom)CreateDoorTop(block2);
+                            else CreateTransitionTop(block2);
                         }
                     }
                     else if(block1CS.doorOnBottom) CreateDoorBottom(block1);
@@ -350,7 +363,55 @@ namespace SB.Runtime
             }
         }
 
-        public void CreateDoorTop(GameObject targetBlock)
+        private void CreateTransitionBottom(GameObject targetBlock)
+        {
+            GameObject transition = Instantiate(
+                transitionPrefab,
+                targetBlock.transform.position + Vector3.down * 26f,
+                Quaternion.Euler(0, 0, -90)
+                );
+            transitions.Add(transition);
+            transition.GetComponent<RoomTransitionScript>().direction = "Down";
+            transition.transform.parent = targetBlock.transform;
+        }
+
+        private void CreateTransitionTop(GameObject targetBlock)
+        {
+            GameObject transition = Instantiate(
+                transitionPrefab,
+                targetBlock.transform.position + Vector3.up * 26f,
+                Quaternion.Euler(0, 0, 90)
+                );
+            transitions.Add(transition);
+            transition.GetComponent<RoomTransitionScript>().direction = "Up";
+            transition.transform.parent = targetBlock.transform;
+        }
+
+        private void CreateTransitionLeft(GameObject targetBlock)
+        {
+            GameObject transition = Instantiate(
+                transitionPrefab,
+                targetBlock.transform.position + Vector3.left * 26f,
+                Quaternion.Euler(0, 0, -180)
+                );
+            transitions.Add(transition);
+            transition.GetComponent<RoomTransitionScript>().direction = "Left";
+            transition.transform.parent = targetBlock.transform;
+        }
+
+        private void CreateTransitionRight(GameObject targetBlock)
+        {
+            GameObject transition = Instantiate(
+                transitionPrefab,
+                targetBlock.transform.position + Vector3.right * 26f,
+                Quaternion.Euler(0, 0, 0)
+                );
+            transitions.Add(transition);
+            transition.GetComponent<RoomTransitionScript>().direction = "Right";
+            transition.transform.parent = targetBlock.transform;
+        }
+
+        private void CreateDoorTop(GameObject targetBlock)
         {
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
@@ -359,7 +420,7 @@ namespace SB.Runtime
                 Quaternion.Euler(0, 0, 90)
                 ));
         }
-        public void CreateDoorBottom(GameObject targetBlock)
+        private void CreateDoorBottom(GameObject targetBlock)
         {
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
@@ -368,7 +429,7 @@ namespace SB.Runtime
                 Quaternion.Euler(0, 0, -90)
                 ));
         }
-        public void CreateDoorRight(GameObject targetBlock)
+        private void CreateDoorRight(GameObject targetBlock)
         {
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
@@ -377,10 +438,9 @@ namespace SB.Runtime
                 Quaternion.Euler(0, 0, 0)
                 ));
         }
-        public void CreateDoorLeft(GameObject targetBlock)
+        private void CreateDoorLeft(GameObject targetBlock)
         {
             if (targetBlock.GetComponent<CubeScript>().empty) return;
-            Debug.Log(doorPrefab);
             doors.Add(Instantiate(
                 doorPrefab,
                 targetBlock.transform.position + Vector3.left * 17.73f,
@@ -388,13 +448,18 @@ namespace SB.Runtime
                 ));
         }
 
-        public void DestoryDoors()
+        private void DestoryDoors()
         {
             foreach (GameObject door in doors)
             {
                 Destroy(door);
             }
             doors = new List<GameObject>();
+            foreach (GameObject transition in transitions)
+            {
+                Destroy(transition);
+            }
+            transitions = new List<GameObject>();
         }
         #endregion
 

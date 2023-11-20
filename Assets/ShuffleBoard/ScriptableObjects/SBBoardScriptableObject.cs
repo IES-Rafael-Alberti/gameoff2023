@@ -56,11 +56,6 @@ namespace SB.ScriptableObjects
                         }
                         //CreateBlocks
                         GameObject sourceObject = source.map;
-                        if (source.start)
-                        {
-                            GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
-                            Instantiate(kiwi, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
-                        }
                         board_data.map_objects[row, col] = Instantiate(sourceObject, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
                         CubeScript cScript = board_data.map_objects[row, col].AddComponent<CubeScript>();
                         cScript.rotation = source.rotation;
@@ -70,7 +65,15 @@ namespace SB.ScriptableObjects
                         cScript.doorOnRight = source.doorOnRight;
                         cScript.doorOnTop = source.doorOnTop;
                         cScript.doorOnBottom = source.doorOnBottom;
+                        cScript.position = new Vector2Int(row, col);
                         cScript.source_board = controller;
+                        if (source.start)
+                        {
+                            GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
+                            GameObject player = Instantiate(kiwi, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
+                            CameraTrackingScript.targetPlayer = player;
+                            CameraTrackingScript.targetRoom = board_data.map_objects[row, col];
+                        }
                     }
 
                     //CreateModifier

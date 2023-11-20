@@ -16,4 +16,6 @@ public class CubeScript : MonoBehaviour
     public bool doorOnRight;
     public bool doorOnTop;
     public bool doorOnBottom;
+
+    public Vector2Int position;
 }
