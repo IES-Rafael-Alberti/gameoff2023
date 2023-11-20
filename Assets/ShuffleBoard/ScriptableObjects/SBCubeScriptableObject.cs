@@ -17,5 +17,11 @@ namespace SB.ScriptableObjects
         [SerializeField] public bool masked;
         [SerializeField] public bool locked;
         [SerializeField] public bool empty;
+
+
+        [SerializeField] public bool doorOnLeft;
+        [SerializeField] public bool doorOnRight;
+        [SerializeField] public bool doorOnTop;
+        [SerializeField] public bool doorOnBottom;
     }
 }

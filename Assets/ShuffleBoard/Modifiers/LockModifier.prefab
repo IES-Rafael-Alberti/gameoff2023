@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6525782043005778532}
   - component: {fileID: 8383313759909182291}
   - component: {fileID: 8587567714018805645}
-  - component: {fileID: 6969395840553451140}
+  - component: {fileID: 7681816747062161302}
   m_Layer: 5
-  m_Name: RotationModifier
+  m_Name: LockModifier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2acf9f2440ab81f4193aa42560118dcb, type: 2}
+  - {fileID: 2100000, guid: 795794ff9df0de14f9a7a66bfd5654d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6969395840553451140
+--- !u!114 &7681816747062161302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,11 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3154418113265419973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bae78ea5206e62640973a62536799178, type: 3}
+  m_Script: {fileID: 11500000, guid: 38e5e7c8e5d4a984f86aa2c06e7100b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
   position: {x: 0, y: 0}
   board_controller: {fileID: 0}
-  sink_period: 0.05
-  rotation_period: 0.1

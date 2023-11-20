@@ -51,10 +51,12 @@ public class RotationModifierScript : ModifierBase
             {
                 (_, target_data.rotation) = RotateEnum.RotateClockwise(target_data.rotation);
                 StartCoroutine(RotateBlock(target, -90));
+                RotateDoorLabels(true);
                 return;
             }
             (_, target_data.rotation) = RotateEnum.RotateCounterclockwise(target_data.rotation);
             StartCoroutine(RotateBlock(target, 90));
+            RotateDoorLabels(false);
             return;
         }
     }
@@ -102,5 +104,27 @@ public class RotationModifierScript : ModifierBase
 
         board_controller.MovementStopped();
         yield break;
+    }
+
+    private void RotateDoorLabels(bool clockwise)
+    {
+        CubeScript cubeInfo = targets[0].GetComponent<CubeScript>();
+        bool oldLeft = cubeInfo.doorOnLeft;
+        bool oldRight = cubeInfo.doorOnRight;
+        bool oldTop = cubeInfo.doorOnTop;
+        bool oldBottom = cubeInfo.doorOnBottom;
+        if (clockwise)
+        {
+            cubeInfo.doorOnLeft = oldBottom;
+            cubeInfo.doorOnRight = oldTop;
+            cubeInfo.doorOnTop = oldLeft;
+            cubeInfo.doorOnBottom = oldRight;
+            return;
+        }
+        cubeInfo.doorOnLeft = oldTop;
+        cubeInfo.doorOnRight = oldBottom;
+        cubeInfo.doorOnTop = oldRight;
+        cubeInfo.doorOnBottom = oldLeft;
+
     }
 }

@@ -56,20 +56,21 @@ namespace SB.ScriptableObjects
                         }
                         //CreateBlocks
                         GameObject sourceObject = source.map;
-                        if (sourceObject != null)
+                        if (source.start)
                         {
-                            if (source.start)
-                            {
-                                GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
-                                Instantiate(kiwi, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
-                            }
-                            board_data.map_objects[row, col] = Instantiate(sourceObject, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
-                            CubeScript cScript = board_data.map_objects[row, col].AddComponent<CubeScript>();
-                            cScript.rotation = source.rotation;
-                            cScript.masked = source.masked;
-                            cScript.locked = source.locked;
-                            cScript.source_board = controller;
+                            GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
+                            Instantiate(kiwi, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
                         }
+                        board_data.map_objects[row, col] = Instantiate(sourceObject, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
+                        CubeScript cScript = board_data.map_objects[row, col].AddComponent<CubeScript>();
+                        cScript.rotation = source.rotation;
+                        cScript.masked = source.masked;
+                        cScript.locked = source.locked;
+                        cScript.doorOnLeft = source.doorOnLeft;
+                        cScript.doorOnRight = source.doorOnRight;
+                        cScript.doorOnTop = source.doorOnTop;
+                        cScript.doorOnBottom = source.doorOnBottom;
+                        cScript.source_board = controller;
                     }
 
                     //CreateModifier

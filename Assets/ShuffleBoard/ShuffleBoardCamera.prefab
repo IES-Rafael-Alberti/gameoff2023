@@ -245,6 +245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialBoardData: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c, type: 2}
   gridSpacing: 55
-  swapPeriod: 0.15
+  doorPrefab: {fileID: 1313281916175577887, guid: 4bf5fe0280579a54e8ca724351698bb5,
+    type: 3}
+  swapPeriod: 0.3
   zOffset: 25
+  kiwiOffset: 7
   boardCamera: {fileID: 5906652986055615365}

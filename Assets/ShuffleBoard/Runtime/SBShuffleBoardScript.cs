@@ -26,6 +26,9 @@ namespace SB.Runtime
         private int rows;
         private int cols;
 
+        public GameObject doorPrefab;
+        private List<GameObject> doors = new List<GameObject>();
+
         public float swapPeriod;
         public float zOffset = 25;
         public float kiwiOffset = 3.8f;
@@ -54,6 +57,7 @@ namespace SB.Runtime
             controls.BoardControls.Move.performed += OnMovementPerformed;
             controls.BoardControls.Exit.performed += Exit;
             StartCoroutine(TurnOnProcess());
+            DestoryDoors();
         }
         IEnumerator TurnOnProcess()
         {
@@ -74,6 +78,7 @@ namespace SB.Runtime
             MovementStarted(null);
             boardCamera.enabled = false;
             controls.BoardControls.Move.performed -= OnMovementPerformed;
+            CreateDoors();
             if (dropKiwi)
             {
                 boardState = BoardState.Drop;
@@ -97,6 +102,7 @@ namespace SB.Runtime
             rows = initialBoardData.rows;
             cols = initialBoardData.cols;
             board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
+            CreateDoors();
         }
         public void DestroyBoard()
         {
@@ -117,6 +123,7 @@ namespace SB.Runtime
                 }
             }
             board_data.empty_positions = null;
+            DestoryDoors();
         }
 
         public bool MovementAllowed(ModifierBase source)
@@ -146,10 +153,10 @@ namespace SB.Runtime
             moving_elements = 0;
             movement_source = null;
         }
+
+        #region Shuffling
         private void OnMovementPerformed(InputAction.CallbackContext context)
         {
-            Debug.Log(moving_elements);
-            Debug.Log(movement_source);
             if (!MovementAllowed(null))
             {
                 return;
@@ -159,22 +166,22 @@ namespace SB.Runtime
 
             if (input.x > 0.3)
             {
-                StartCoroutine(SwapBlocks(DirectionEnum.Right));
+                StartCoroutine(SwapBlocks(DirectionEnum.Left));
                 return;
             }
             if (input.x < -0.3)
             {
-                StartCoroutine(SwapBlocks(DirectionEnum.Left));
+                StartCoroutine(SwapBlocks(DirectionEnum.Right));
                 return;
             }
             if (input.y > 0.3)
             {
-                StartCoroutine(SwapBlocks(DirectionEnum.Up));
+                StartCoroutine(SwapBlocks(DirectionEnum.Down));
                 return;
             }
             if (input.y < -0.3)
             {
-                StartCoroutine(SwapBlocks(DirectionEnum.Down));
+                StartCoroutine(SwapBlocks(DirectionEnum.Up));
                 return;
             }
         }
@@ -207,6 +214,12 @@ namespace SB.Runtime
                 //Check if movement is possible here.
                 Vector2Int targetIndex = emptyPosition + shift;
                 if (targetIndex.x < 0 || targetIndex.y < 0 || targetIndex.x>=rows || targetIndex.y >= cols)
+                {
+                    continue;
+                }
+                GameObject targetBlock = board_data.map_objects[targetIndex.x, targetIndex.y];
+                CubeScript targetCS = targetBlock.GetComponent<CubeScript>();
+                if (targetCS.locked || targetCS.empty)
                 {
                     continue;
                 }
@@ -290,6 +303,101 @@ namespace SB.Runtime
             MovementStopped();
             yield break;
         }
+        #endregion
+
+        #region Walls
+        public void CreateDoors()
+        {
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    GameObject block1 = board_data.map_objects[row, col];
+                    CubeScript block1CS = block1.GetComponent<CubeScript>();
+                    //rightcheck
+                    if (col < cols - 1)
+                    {
+                        GameObject block2 = board_data.map_objects[row, col+1];
+                        CubeScript block2CS = block2.GetComponent<CubeScript>();
+                        if (block1CS.doorOnRight && !block2CS.doorOnLeft)
+                        {
+                            CreateDoorRight(block1);
+                        }
+                        if (!block1CS.doorOnRight && block2CS.doorOnLeft)
+                        {
+                            CreateDoorLeft(block2);
+                        }
+                    }
+                    else if (block1CS.doorOnRight) CreateDoorRight(block1);
+                    //downcheck
+                    if (row < rows - 1)
+                    {
+                        GameObject block2 = board_data.map_objects[row + 1, col];
+                        CubeScript block2CS = block2.GetComponent<CubeScript>();
+                        if (block1CS.doorOnBottom && !block2CS.doorOnTop)
+                        {
+                            CreateDoorBottom(block1);
+                        }
+                        if (!block1CS.doorOnBottom && block2CS.doorOnTop)
+                        {
+                            CreateDoorTop(block2);
+                        }
+                    }
+                    else if(block1CS.doorOnBottom) CreateDoorBottom(block1);
+                    if (row == 0 && block1CS.doorOnTop) CreateDoorTop(block1);
+                    if (col == 0 && block1CS.doorOnLeft) CreateDoorLeft(block1);
+                }
+            }
+        }
+
+        public void CreateDoorTop(GameObject targetBlock)
+        {
+            if (targetBlock.GetComponent<CubeScript>().empty) return;
+            doors.Add(Instantiate(
+                doorPrefab,
+                targetBlock.transform.position + Vector3.up * 17.73f,
+                Quaternion.Euler(0, 0, 90)
+                ));
+        }
+        public void CreateDoorBottom(GameObject targetBlock)
+        {
+            if (targetBlock.GetComponent<CubeScript>().empty) return;
+            doors.Add(Instantiate(
+                doorPrefab,
+                targetBlock.transform.position + Vector3.down * 17.73f,
+                Quaternion.Euler(0, 0, -90)
+                ));
+        }
+        public void CreateDoorRight(GameObject targetBlock)
+        {
+            if (targetBlock.GetComponent<CubeScript>().empty) return;
+            doors.Add(Instantiate(
+                doorPrefab,
+                targetBlock.transform.position + Vector3.right * 17.73f,
+                Quaternion.Euler(0, 0, 0)
+                ));
+        }
+        public void CreateDoorLeft(GameObject targetBlock)
+        {
+            if (targetBlock.GetComponent<CubeScript>().empty) return;
+            Debug.Log(doorPrefab);
+            doors.Add(Instantiate(
+                doorPrefab,
+                targetBlock.transform.position + Vector3.left * 17.73f,
+                Quaternion.Euler(0, 0, -180)
+                ));
+        }
+
+        public void DestoryDoors()
+        {
+            foreach (GameObject door in doors)
+            {
+                Destroy(door);
+            }
+            doors = new List<GameObject>();
+        }
+        #endregion
+
     }
 
 }

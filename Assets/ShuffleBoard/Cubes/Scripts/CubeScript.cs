@@ -10,4 +10,10 @@ public class CubeScript : MonoBehaviour
     public bool masked;
     public bool locked;
     public SBShuffleBoardScript source_board;
+    public bool empty;
+
+    public bool doorOnLeft;
+    public bool doorOnRight;
+    public bool doorOnTop;
+    public bool doorOnBottom;
 }
