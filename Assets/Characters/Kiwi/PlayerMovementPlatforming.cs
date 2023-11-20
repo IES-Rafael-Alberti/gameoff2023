@@ -11,6 +11,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private Rigidbody rb = null;
     public float jumpForce = 5f;
     public GroundChecking groundCheck;
+    public Rigidbody WallScan;
     private Vector3 kiwiDirection;
     public float groundSpeed = 15f;
 
@@ -67,7 +68,14 @@ public class PlayerMovementPlatforming : MonoBehaviour
     //This is your old update function Rubus.
     private void NormalUpdate()
     {
-        rb.velocity = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
+        Vector3 move = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
+        rb.velocity = move;
+
+        Vector3 movewSweep = new Vector3(moveVector.x * moveSpeed, 2f, moveVector.z * moveSpeed);
+        float distanceEstimate = movewSweep.magnitude * Time.fixedDeltaTime;
+        RaycastHit hit;
+        if (WallScan.SweepTest(movewSweep, out hit, distanceEstimate)) rb.velocity = new Vector3(0, rb.velocity.y, 0);
+
         Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
         rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en metodo.
