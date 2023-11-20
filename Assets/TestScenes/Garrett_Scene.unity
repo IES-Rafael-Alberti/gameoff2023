@@ -428,9 +428,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: swapPeriod
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: initialBoardData
       value: 
-      objectReference: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c,
+      objectReference: {fileID: 11400000, guid: 8322035990277d5478f6240e1c67c29f,
         type: 2}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2ea14511075fd499f2e4f8b2a53bd4, type: 3}
   m_Name: RightBorderCube
   m_EditorClassIdentifier: 
-  map: {fileID: 1785125044039087360, guid: 383316a48bfdc91438b78b51ee2b9ef4, type: 3}
+  map: {fileID: 7772910431909990057, guid: 3bb3e487e6b1179489cd791d4d75c535, type: 3}
   start: 0
   rotation: 0
   masked: 0

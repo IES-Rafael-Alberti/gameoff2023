@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2ea14511075fd499f2e4f8b2a53bd4, type: 3}
   m_Name: BlockedCube
   m_EditorClassIdentifier: 
-  map: {fileID: 2944312388773341485, guid: 8f6897c837e5c50439f8bd0902ca520d, type: 3}
+  map: {fileID: 213396107830242890, guid: f04d8d236566004488653a94b5a6ea39, type: 3}
   start: 0
   rotation: 0
   masked: 0

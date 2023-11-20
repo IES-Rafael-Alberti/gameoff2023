@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2ea14511075fd499f2e4f8b2a53bd4, type: 3}
   m_Name: StartingCenterCube
   m_EditorClassIdentifier: 
-  map: {fileID: 3110016418867597145, guid: 6d58aa4d57a109f47b0f200f207ccfe4, type: 3}
+  map: {fileID: 7674455010709230349, guid: 14f57cb3cc68fd841b8bab0c38c7d1c3, type: 3}
   start: 1
   rotation: 0
   masked: 0

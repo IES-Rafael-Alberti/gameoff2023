@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2ea14511075fd499f2e4f8b2a53bd4, type: 3}
   m_Name: UpperBorderCube
   m_EditorClassIdentifier: 
-  map: {fileID: 4624472706580428808, guid: 935864e772507b94a84b52bc379806b2, type: 3}
+  map: {fileID: 916008013256078091, guid: 697424378f4e4f34f884bec2a47f4cef, type: 3}
   start: 0
   rotation: 0
   masked: 0
