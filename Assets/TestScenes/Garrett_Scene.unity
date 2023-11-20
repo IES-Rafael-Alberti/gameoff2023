@@ -428,6 +428,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: initialBoardData
+      value: 
+      objectReference: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c,
+        type: 2}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: transitionPrefab
       value: 
       objectReference: {fileID: 7344174784634297418, guid: 7b63042b40c38f54393b7965d2087a6d,

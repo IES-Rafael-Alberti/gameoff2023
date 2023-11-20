@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b62d1f54dc052e44dba83db53438578d, type: 3}
-  m_Name: ExampleBoard
+  m_Name: EgyptianBoard
   m_EditorClassIdentifier: 
   rows: 2
   cols: 3

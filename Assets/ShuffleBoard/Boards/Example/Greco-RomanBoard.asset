@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b62d1f54dc052e44dba83db53438578d, type: 3}
+  m_Name: Greco-RomanBoard
+  m_EditorClassIdentifier: 
+  rows: 4
+  cols: 3
+  boardGrid:
+  - {fileID: 11400000, guid: 4c9ca02ed9ded2e429e2885ee6b7bd93, type: 2}
+  - {fileID: 11400000, guid: f5d1fae916aed174db62d3073ff3c981, type: 2}
+  - {fileID: 11400000, guid: 82a7068005dc7004e9c14ab5a297b54d, type: 2}
+  - {fileID: 11400000, guid: 13c373307d9888e48a292cf579ddea51, type: 2}
+  - {fileID: 11400000, guid: a3f1d6732848b604ab834aaa2feaa1b5, type: 2}
+  - {fileID: 11400000, guid: 5b8f0fd36b4333f44a91216824662a82, type: 2}
+  - {fileID: 11400000, guid: e199a1c1b2480784ba6e158377806ee6, type: 2}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
+  - {fileID: 11400000, guid: e199a1c1b2480784ba6e158377806ee6, type: 2}
+  - {fileID: 11400000, guid: cc03f5335e4c53f4d9886896fa1d341a, type: 2}
+  - {fileID: 11400000, guid: cc03f5335e4c53f4d9886896fa1d341a, type: 2}
+  - {fileID: 11400000, guid: cc03f5335e4c53f4d9886896fa1d341a, type: 2}
+  modifierGrid:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}
+  - {fileID: 3154418113265419973, guid: 3b8d978b43d6fdc4a8c3830b3ba65c48, type: 3}
+  - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}
+  - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}
+  - {fileID: 0}
+  - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
