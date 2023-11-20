@@ -6,23 +6,30 @@ tags: [devlog, gameoff2023, gameart, gamedesign]
 comments: true
 ---
 
-![Sample for Project Kiwi Room](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_sample_small.png) 
+![Kiwi pursued by a hazard](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwivsspin.PNG) 
 Hello again! Ready for our second devlog? Here we go!
 We finished the first sprint with a testing session, where we found some issues. For example, the jump physics were a little to slow, so during this week we fixed them.
 We kept up the hard work to have a complete version of the first level at the end of the week.
 
 ## Code
 
+<video src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/board_test.mp4" alt="Slider preliminary test" controls="controls" style="max-width: 720px;">
+</video>
+
 On the programming side, we are working on these fronts:
-- **Slider Puzzle:** While Kiwi is big, he can change the order of the rooms in a slider puzzle. Our main programmer implemented this mechanic by creating a test grid where cubes and spheres could be placed. So we have a prefab grid to design these "board levels". They also have scriptable objects attached to them to assign modular rooms to the grid via Unity Interface.
-- **Platforming mechanics:** We are fighting with the platforming mechanics so that it gets the more polished at possible. This involves game physics as Kiwi's jump and fall velocity, gliding, wall sticking and gameplay mechanics as enemy animations and routines.
+- **Slider Puzzle:** While Kiwi is big, he can change the order of the rooms in a slider puzzle. Our main programmer implemented this mechanic by creating a test grid where cubes and spheres could be placed. So we have a prefab grid to design these "board levels". They also have scriptable objects attached to them to assign modular rooms to the grid via Unity Interface. The modular rooms that you see in the capture below are placed in the slide puzzle in our game current version.
+
+![Egyptian modular room assets](https://ies-rafael-alberti.github.io/gameoff2023/assets/img/egyptian_assets.jpg) 
+
+- **Platforming mechanics:** We are fighting with the platforming mechanics so that they get the more polished at possible. This involves game physics as Kiwi's jump and fall velocity, gliding, wall sticking and gameplay mechanics as enemy animations and routines.
+
 - **Menu/Game Story:** We are preparing the "game story" of our game, the flow of the player experience we designed the previous week. So we are programming this concept on Unity by creating and connecting all the scenes that our game will have: intro, main menu, game room, pase menu, game over and ending. For this matter, we are implementing an event manager, that will tell the game how to load the sucession of levels, and when there is a game over or a game ending. 
 
 ## Art
 
-Our artist finished the job with the first (egyptian style) level: models, textures, assets and designs for the modular rooms are finished. He also created the hazards that Kiwi will face. Have a look at it. A dreadful spinning top, isn't it?
+Our artist finished the job with the first (egyptian style) level: models, textures, assets and designs for the modular rooms are finished. He also created the hazards that Kiwi will face. Have a look at one of them. A dreadful spinning top, isn't it?
 
-<video src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/kiwi_animations.mp4" alt="Kiwi's moving and running animations" controls="controls" style="max-width: 720px;">
+<video src="https://ies-rafael-alberti.github.io/gameoff2023/assets/img/RoboMummy.mp4" alt="Modeling a hazard: Chainsaw Spinning Top" controls="controls" style="max-width: 720px;">
 </video>
 
 ## Design & Issues
