@@ -44,6 +44,13 @@ namespace SB.Runtime
             CreateBoard();
             boardCamera = gameObject.transform.parent.GetComponent<Camera>();
             TurnOff(false);
+            //StartCoroutine(AutoNextChapter());
+        }
+        IEnumerator AutoNextChapter()
+        {
+            yield return new WaitForSeconds(15f);
+            ChapterManager.Events.InvokeNextChapter();
+            yield break;
         }
         
         public void TurnOn()
@@ -94,9 +101,14 @@ namespace SB.Runtime
         public void CreateBoard()
         {
             DestroyBoard();
-            rows = initialBoardData.rows;
-            cols = initialBoardData.cols;
-            board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
+            InitBoard(ChapterManager.Instance != null ? ChapterManager.Instance.GetChapterBoard() : initialBoardData);
+        }
+
+        void InitBoard(SBBoardScriptableObject data)
+        {
+            rows = data.rows;
+            cols = data.cols;
+            board_data = data.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
         }
         public void DestroyBoard()
         {

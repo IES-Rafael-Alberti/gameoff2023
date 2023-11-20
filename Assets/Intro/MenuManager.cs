@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
 
     public void NewGame() { 
         Debug.Log("NewGame"); 
-        SceneManager.LoadScene(2); 
+        SceneManager.LoadScene(3); 
     }
 
     public void ExitGame() { Application.Quit(); }
