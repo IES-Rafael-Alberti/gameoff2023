@@ -32,6 +32,12 @@ namespace SB.Runtime
         public GameObject transitionPrefab;
         private List<GameObject> transitions = new List<GameObject>();
 
+        public GameObject arrowPrefab;
+        private List<GameObject> arrows = new List<GameObject>();
+
+        public GameObject coverPrefab;
+        public float coverDepth = -13.3f;
+
         public float swapPeriod;
         public float zOffset = 25;
         public float kiwiOffset = 3.8f;
@@ -61,6 +67,7 @@ namespace SB.Runtime
             controls.BoardControls.Exit.performed += Exit;
             StartCoroutine(TurnOnProcess());
             DestoryDoors();
+            SpawnArrows();
         }
         IEnumerator TurnOnProcess()
         {
@@ -96,6 +103,7 @@ namespace SB.Runtime
                 PlayerMovementPlatforming pmpScript = kiwi.GetComponent<PlayerMovementPlatforming>();
                 pmpScript.DropKiwi();
             }
+            DeleteArrows();
         }
 
         private void OnDestroy()
@@ -110,6 +118,7 @@ namespace SB.Runtime
             cols = initialBoardData.cols;
             board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
             CreateDoors();
+            SpawnCovers();
         }
         public void DestroyBoard()
         {
@@ -160,6 +169,89 @@ namespace SB.Runtime
             moving_elements = 0;
             movement_source = null;
         }
+
+        #region Covers/Masking
+
+        public void SpawnArrows()
+        {
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    GameObject room = board_data.map_objects[row, col];
+                    CubeScript roomCS = room.GetComponent<CubeScript>();
+                    if (roomCS.doorOnRight)
+                    {
+                        GameObject newArrow = Instantiate(
+                            arrowPrefab, 
+                            room.transform.position + new Vector3(23.03f, 0f, coverDepth), 
+                            Quaternion.Euler(0f, 0f, 0f)
+                            );
+                        arrows.Add(newArrow);
+                        newArrow.transform.parent = room.transform;
+                    }
+                    if (roomCS.doorOnLeft)
+                    {
+                        GameObject newArrow = Instantiate(
+                            arrowPrefab,
+                            room.transform.position + new Vector3(-23.03f, 0f, coverDepth),
+                            Quaternion.Euler(0f, 0f, 180f)
+                            );
+                        arrows.Add(newArrow);
+                        newArrow.transform.parent = room.transform;
+                    }
+                    if (roomCS.doorOnTop)
+                    {
+                        GameObject newArrow = Instantiate(
+                            arrowPrefab,
+                            room.transform.position + new Vector3(0f, 23.03f, coverDepth),
+                            Quaternion.Euler(0f, 0f, 90f)
+                            );
+                        arrows.Add(newArrow);
+                        newArrow.transform.parent = room.transform;
+                    }
+                    if (roomCS.doorOnBottom)
+                    {
+                        GameObject newArrow = Instantiate(
+                            arrowPrefab,
+                            room.transform.position + new Vector3(0, -23.03f, coverDepth),
+                            Quaternion.Euler(0f, 0f, -90f)
+                            );
+                        arrows.Add(newArrow);
+                        newArrow.transform.parent = room.transform;
+                    }
+                }
+            }
+        }
+
+        public void DeleteArrows()
+        {
+            foreach (GameObject arrow in arrows)
+            {
+                Destroy(arrow);
+            }
+            arrows = new List<GameObject>();
+        }
+
+        public void SpawnCovers()
+        {
+            for (int row = 0; row < rows; row++)
+            {
+                for (int col = 0; col < cols; col++)
+                {
+                    GameObject room = board_data.map_objects[row, col];
+                    CubeScript roomCS = room.GetComponent<CubeScript>();
+                    if (roomCS.masked)
+                    {
+                        GameObject newCover = Instantiate(coverPrefab, room.transform.position + Vector3.forward * coverDepth, Quaternion.identity);
+                        newCover.transform.parent = room.transform;
+                        roomCS.cover = newCover;
+                    }
+                }
+            }
+        }
+
+        #endregion
 
         #region Shuffling
         private void OnMovementPerformed(InputAction.CallbackContext context)

@@ -17,5 +17,15 @@ public class CubeScript : MonoBehaviour
     public bool doorOnTop;
     public bool doorOnBottom;
 
+    public GameObject cover;
+
     public Vector2Int position;
+
+    public void EnterRoom()
+    {
+        if (cover != null)
+        {
+            Destroy(cover);
+        }
+    }
 }

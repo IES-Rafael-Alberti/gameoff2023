@@ -18,18 +18,27 @@ public class RoomTransitionScript : MonoBehaviour
             CubeScript parentData = transform.parent.GetComponent<CubeScript>();
             Vector2Int currentPosition = parentData.position;
             GameObject[,] map = parentData.source_board.board_data.map_objects;
-            switch(direction){
+            GameObject next_room;
+            switch (direction){
                 case "Up":
-                    CameraTrackingScript.targetRoom = map[currentPosition.x-1, currentPosition.y];
+                    next_room = map[currentPosition.x - 1, currentPosition.y];
+                    CameraTrackingScript.targetRoom = next_room;
+                    next_room.GetComponent<CubeScript>().EnterRoom();
                     break;
                 case "Down":
-                    CameraTrackingScript.targetRoom = map[currentPosition.x+1, currentPosition.y];
+                    next_room = map[currentPosition.x + 1, currentPosition.y];
+                    CameraTrackingScript.targetRoom = next_room;
+                    next_room.GetComponent<CubeScript>().EnterRoom();
                     break;
                 case "Left":
-                    CameraTrackingScript.targetRoom = map[currentPosition.x, currentPosition.y - 1];
+                    next_room = map[currentPosition.x, currentPosition.y - 1];
+                    CameraTrackingScript.targetRoom = next_room;
+                    next_room.GetComponent<CubeScript>().EnterRoom();
                     break;
                 case "Right":
-                    CameraTrackingScript.targetRoom = map[currentPosition.x, currentPosition.y+1];
+                    next_room = map[currentPosition.x, currentPosition.y + 1];
+                    CameraTrackingScript.targetRoom = next_room;
+                    next_room.GetComponent<CubeScript>().EnterRoom();
                     break;
                 case "default":
                     break;

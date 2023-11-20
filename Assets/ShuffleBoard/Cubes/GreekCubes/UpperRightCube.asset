@@ -15,7 +15,7 @@ MonoBehaviour:
   map: {fileID: 8495540264849594309, guid: 76fea750cadfb8a4c995d7e509b8dd49, type: 3}
   start: 0
   rotation: 0
-  masked: 0
+  masked: 1
   locked: 0
   empty: 0
   doorOnLeft: 1
