@@ -92,8 +92,9 @@ public class ChapterManager : MonoBehaviour
 
     public void GameOver()
     {
-        GetCurrentChapter();
         SceneManager.LoadScene(gameOverScene);
+        GetCurrentChapter();
+        Debug.Log("Game Over: " + _currentChapter);
     }
 
 }
