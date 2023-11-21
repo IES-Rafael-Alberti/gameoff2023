@@ -13,6 +13,7 @@ public class ChapterManager : MonoBehaviour
     public static EventManager Events = new EventManager();
 
     private static ChapterManager _Instance;
+
     public static ChapterManager Instance
     {
         get
@@ -59,7 +60,8 @@ public class ChapterManager : MonoBehaviour
         if (chapterList.currentChapter >= chapterList.chapters.Count)
         {
             chapterList.currentChapter = 0;
-            SceneManager.LoadScene(chapterList.menuScene);
+            //SceneManager.LoadScene(chapterList.menuScene);
+            SceneManager.LoadScene(chapterList.endScene);
         }
         else
         {
