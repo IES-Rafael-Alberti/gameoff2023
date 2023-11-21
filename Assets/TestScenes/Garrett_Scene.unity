@@ -428,6 +428,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: doorPrefab
+      value: 
+      objectReference: {fileID: 1080075605029403527, guid: fad8e4659a6873b46a93079b7138f15b,
+        type: 3}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: swapPeriod
       value: 0.5
       objectReference: {fileID: 0}
@@ -441,7 +447,7 @@ PrefabInstance:
         type: 3}
       propertyPath: coverPrefab
       value: 
-      objectReference: {fileID: 919132149155446097, guid: 304a0f4999c1d084c8cbb9d49325d731,
+      objectReference: {fileID: 5571606556780080092, guid: ac1e444bfa06db54683ace583ce63f10,
         type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
