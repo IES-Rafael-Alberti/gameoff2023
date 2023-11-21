@@ -4,8 +4,10 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "ChapterList", menuName = "Chapter List")]
 
-public class CMChapterListSO : ScriptableObject
-{
+public class CMChapterListSO : ScriptableObject {
+    public int currentChapter;
     public List<CMChapterSO> chapters;
     public int menuScene;
+    public int endScene;
+    public int gameoverScene;
 }

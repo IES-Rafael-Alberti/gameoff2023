@@ -8,7 +8,6 @@ public class ChapterManager : MonoBehaviour
 {
     // Chapter managing
     public CMChapterListSO chapterList;
-    private int _currentChapter = 0;
 
     // State manager
     public static EventManager Events = new EventManager();
@@ -22,8 +21,10 @@ public class ChapterManager : MonoBehaviour
             {
                 _Instance = new GameObject().AddComponent<ChapterManager>();
                 _Instance.name = _Instance.GetType().ToString();
+                // chapter manager initialization
                 _Instance.chapterList = Resources.Load<CMChapterListSO>("ChapterManager/ChapterList");
                 Events.AddListener(EventType.NextChapter, _Instance.OnNextChapter);
+                // 
                 DontDestroyOnLoad(_Instance.gameObject);
             }
             return _Instance;
@@ -49,15 +50,15 @@ public class ChapterManager : MonoBehaviour
 
     public SBBoardScriptableObject GetChapterBoard()
     {
-        return chapterList.chapters[_currentChapter].ChapterBoard;
+        return chapterList.chapters[chapterList.currentChapter].ChapterBoard;
     }
 
     public void OnNextChapter()
     {
-        _currentChapter++;
-        if (_currentChapter >= chapterList.chapters.Count)
+        chapterList.currentChapter++;
+        if (chapterList.currentChapter >= chapterList.chapters.Count)
         {
-            _currentChapter = 0;
+            chapterList.currentChapter = 0;
             SceneManager.LoadScene(chapterList.menuScene);
         }
         else
@@ -65,10 +66,5 @@ public class ChapterManager : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-
-
-    public static void InvokeNextChapter()
-    {
-        Events.InvokeNextChapter();
-    }
+    
 }
