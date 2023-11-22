@@ -33,14 +33,14 @@ public class EventManager
         Invoke(EventType.NextChapter);
     }
 
-    public void InvokeGameOver()
+    public void InvokeRetry()
     {
-        Invoke(EventType.NextChapter);
+        Invoke(EventType.Retry);
     }
 
     public void InvokeEndGame()
     {
-        Invoke(EventType.NextChapter);
+        Invoke(EventType.EndGame);
     }
 
 }
@@ -48,5 +48,5 @@ public class EventManager
 public enum EventType
 {
     NextChapter,
-    GameOver, EndGame
+    Retry, EndGame
 }

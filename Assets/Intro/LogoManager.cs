@@ -7,6 +7,7 @@ public class LogoManager : MonoBehaviour
 {
 
     [SerializeField] float delay;
+    [SerializeField] int menuScene;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class LogoManager : MonoBehaviour
     IEnumerator WaitDelay()
     {
         yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(menuScene);
     }
 
 

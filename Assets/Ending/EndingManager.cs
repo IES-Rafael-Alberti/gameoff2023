@@ -3,37 +3,39 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.Video;
 using System.Diagnostics;
 
-public class EndingController : MonoBehaviour
+public class EndingManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject cinematic;
+    [SerializeField] GameObject cinematicED;
     [SerializeField] int menuScene;
     private VideoPlayer _player;
+    public static EndingManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+        _player = cinematicED.GetComponent<VideoPlayer>();
+    }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        _player = cinematic.GetComponent<VideoPlayer>();
-
-        _player.loopPointReached += LoadScene;
-
-
+        ViewCinematic();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void LoadScene(VideoPlayer vp)
+    void OnCinematicFinished(VideoPlayer vp)
     {
         SceneManager.LoadScene(menuScene);
+    }
+
+    public void ViewCinematic()
+    {
+        _player.Play();
+        _player.loopPointReached += OnCinematicFinished;
     }
 
 }
