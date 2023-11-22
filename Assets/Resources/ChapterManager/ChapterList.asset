@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentChapter: 0
   chapters:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 76db8252fdf06ee49bbedf611a019ad4, type: 2}
+  - {fileID: 11400000, guid: 781d664eaa5ec3c4981304b1234adc2b, type: 2}
+  - {fileID: 11400000, guid: 76db8252fdf06ee49bbedf611a019ad4, type: 2}
+  - {fileID: 11400000, guid: 781d664eaa5ec3c4981304b1234adc2b, type: 2}
   menuScene: 1
   endScene: 3
-  gameoverScene: 0
+  firstPlay: 0

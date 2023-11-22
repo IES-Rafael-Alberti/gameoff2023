@@ -10,5 +10,5 @@ public class CMChapterListSO : ScriptableObject
     public List<CMChapterSO> chapters;
     public int menuScene;
     public int endScene;
-    public int gameoverScene;
+    public bool firstPlay;
 }
