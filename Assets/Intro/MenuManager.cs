@@ -9,11 +9,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject cinematic;
     [SerializeField] GameObject mainMenu;
     [SerializeField] int gameScene;
+
+    public static MenuManager Instance;
+
     public GameObject highlightnedPlaceholder;
     private VideoPlayer _player;
 
 
-    public static MenuManager Instance;
+
 
     private void Awake()
     {
@@ -28,6 +31,7 @@ public class MenuManager : MonoBehaviour
         cinematic.SetActive(ChapterManager.Instance == null);
         _player = cinematic.GetComponent<VideoPlayer>();
         _player.loopPointReached += DisableCinematic;
+        highlightnedPlaceholder.SetActive(false);
     }
 
     // Update is called once per frame
