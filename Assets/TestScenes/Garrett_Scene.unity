@@ -430,7 +430,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doorPrefab
       value: 
-      objectReference: {fileID: 1080075605029403527, guid: fad8e4659a6873b46a93079b7138f15b,
+      objectReference: {fileID: 4671259406623487895, guid: 7d74bd23ba594b945a75335c505ece17,
         type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
@@ -447,13 +447,13 @@ PrefabInstance:
         type: 3}
       propertyPath: coverPrefab
       value: 
-      objectReference: {fileID: 5571606556780080092, guid: ac1e444bfa06db54683ace583ce63f10,
+      objectReference: {fileID: 7641073756812802997, guid: 10dd42ca36eadcf4d8ffa902d9575033,
         type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: initialBoardData
       value: 
-      objectReference: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c,
+      objectReference: {fileID: 11400000, guid: 8322035990277d5478f6240e1c67c29f,
         type: 2}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
