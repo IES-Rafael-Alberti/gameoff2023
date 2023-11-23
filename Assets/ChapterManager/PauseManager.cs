@@ -16,20 +16,22 @@ public class PauseManager : MonoBehaviour
     }
 
 
-    public void PauseMenu() { 
-    
+    public void PauseMenu() {
+
+        canvasMenu.SetActive(true);
+
         // inhabilitar el input system
         // activar el canvas del menu
 
     }
 
-    public void Continue()
+    public void OnContinue()
     {
-        //SceneManager.LoadScene(gameScene);
+        SceneManager.LoadScene(gameScene);
     }
 
 
-    public void RetryLevel()
+    public void OnRetryLevel()
     {
         SceneManager.LoadScene(gameScene);
     }

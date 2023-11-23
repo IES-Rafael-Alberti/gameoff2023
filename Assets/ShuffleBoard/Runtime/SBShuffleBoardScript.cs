@@ -20,6 +20,8 @@ namespace SB.Runtime
     {
         private ShuffleControls controls;
 
+        public bool useChapterSystem;
+
         public SBBoardScriptableObject initialBoardData;
         public BoardStruct board_data;
         public float gridSpacing;
@@ -114,12 +116,18 @@ namespace SB.Runtime
         public void CreateBoard()
         {
             DestroyBoard();
-            rows = initialBoardData.rows;
-            cols = initialBoardData.cols;
-            board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
+            InitBoard(useChapterSystem? ChapterManager.Instance.GetChapterBoard() : initialBoardData);
             CreateDoors();
             SpawnCovers();
         }
+
+        private void InitBoard(SBBoardScriptableObject data)
+        {
+            rows = data.rows;
+            cols = data.cols;
+            board_data = data.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
+        }
+
         public void DestroyBoard()
         {
             if (board_data.map_objects == null)

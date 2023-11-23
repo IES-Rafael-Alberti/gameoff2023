@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ChapterManager : MonoBehaviour
 {
     // Chapter managing
+    [HideInInspector]
     public CMChapterListSO chapterList;
 
     // State manager
