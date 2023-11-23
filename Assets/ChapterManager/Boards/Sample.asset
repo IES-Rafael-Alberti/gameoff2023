@@ -15,15 +15,15 @@ MonoBehaviour:
   rows: 3
   cols: 3
   boardGrid:
-  - {fileID: 11400000, guid: b3a32e7ce50104849bafa56bf80df2ce, type: 2}
-  - {fileID: 11400000, guid: c09e38d37e5261049b2d14f4e575174f, type: 2}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: c09e38d37e5261049b2d14f4e575174f, type: 2}
-  - {fileID: 11400000, guid: b3a32e7ce50104849bafa56bf80df2ce, type: 2}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: c09e38d37e5261049b2d14f4e575174f, type: 2}
-  - {fileID: 0}
-  - {fileID: 11400000, guid: b3a32e7ce50104849bafa56bf80df2ce, type: 2}
+  - {fileID: 11400000, guid: 310d0d016845a224fa92ee26024cb110, type: 2}
+  - {fileID: 11400000, guid: a3f1d6732848b604ab834aaa2feaa1b5, type: 2}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
+  - {fileID: 11400000, guid: 310d0d016845a224fa92ee26024cb110, type: 2}
+  - {fileID: 11400000, guid: 13c373307d9888e48a292cf579ddea51, type: 2}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
+  - {fileID: 11400000, guid: 52291891471f177469d1f17b8ad6cb4f, type: 2}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
+  - {fileID: 11400000, guid: d9e9421a7fa66454d9c9dbe99f66e338, type: 2}
   modifierGrid:
   - {fileID: 0}
   - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}

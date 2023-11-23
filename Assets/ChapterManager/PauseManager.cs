@@ -12,7 +12,7 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
-        canvasMenu.SetActive(false);
+        canvasMenu.SetActive(true);
     }
 
 
