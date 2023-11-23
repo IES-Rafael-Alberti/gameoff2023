@@ -8,37 +8,38 @@ public class PauseManager : MonoBehaviour
 {
 
     [SerializeField] int gameScene;
+    [SerializeField] int menuScene;
     [SerializeField] GameObject canvasMenu;
+    [SerializeField] GameObject pauseButton;
 
     void Start()
     {
+       canvasMenu.SetActive(false);
+    }
+
+    public void Pause() 
+    {
+        Time.timeScale = 0f;
+        canvasMenu.SetActive(true);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
         canvasMenu.SetActive(false);
     }
 
 
-    public void PauseMenu() {
-
-        canvasMenu.SetActive(true);
-
-        // inhabilitar el input system
-        // activar el canvas del menu
-
-    }
-
-    public void OnContinue()
+    public void RetryLevel()
     {
-        SceneManager.LoadScene(gameScene);
-    }
-
-
-    public void OnRetryLevel()
-    {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(gameScene);
     }
     
     public void ReturnToMenu()
     {
-        SceneManager.LoadScene(gameScene);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuScene);
     }
 
 }
