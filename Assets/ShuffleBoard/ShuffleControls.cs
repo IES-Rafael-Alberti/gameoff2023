@@ -53,6 +53,24 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e405e45-b407-4781-8b67-84cfd512d70c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f4038ab-3ba5-43c5-96ad-5510c5e148ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1.5)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +183,50 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                     ""action"": ""CounterClockwiseRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb145b86-1843-4cd2-93e0-604454b7ad04"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d93dd375-69cc-4b48-8522-d79d374e4f37"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f596b90-47e0-4da3-a634-9cda88eee47f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc65b207-ba70-4ba3-82b0-18b39888af58"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +238,8 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         m_BoardControls_Move = m_BoardControls.FindAction("Move", throwIfNotFound: true);
         m_BoardControls_ClockwiseRotate = m_BoardControls.FindAction("ClockwiseRotate", throwIfNotFound: true);
         m_BoardControls_CounterClockwiseRotate = m_BoardControls.FindAction("CounterClockwiseRotate", throwIfNotFound: true);
+        m_BoardControls_Exit = m_BoardControls.FindAction("Exit", throwIfNotFound: true);
+        m_BoardControls_Restart = m_BoardControls.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,6 +304,8 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_BoardControls_Move;
     private readonly InputAction m_BoardControls_ClockwiseRotate;
     private readonly InputAction m_BoardControls_CounterClockwiseRotate;
+    private readonly InputAction m_BoardControls_Exit;
+    private readonly InputAction m_BoardControls_Restart;
     public struct BoardControlsActions
     {
         private @ShuffleControls m_Wrapper;
@@ -247,6 +313,8 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_BoardControls_Move;
         public InputAction @ClockwiseRotate => m_Wrapper.m_BoardControls_ClockwiseRotate;
         public InputAction @CounterClockwiseRotate => m_Wrapper.m_BoardControls_CounterClockwiseRotate;
+        public InputAction @Exit => m_Wrapper.m_BoardControls_Exit;
+        public InputAction @Restart => m_Wrapper.m_BoardControls_Restart;
         public InputActionMap Get() { return m_Wrapper.m_BoardControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -265,6 +333,12 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
             @CounterClockwiseRotate.started += instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.performed += instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.canceled += instance.OnCounterClockwiseRotate;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
         }
 
         private void UnregisterCallbacks(IBoardControlsActions instance)
@@ -278,6 +352,12 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
             @CounterClockwiseRotate.started -= instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.performed -= instance.OnCounterClockwiseRotate;
             @CounterClockwiseRotate.canceled -= instance.OnCounterClockwiseRotate;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
         }
 
         public void RemoveCallbacks(IBoardControlsActions instance)
@@ -300,5 +380,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnClockwiseRotate(InputAction.CallbackContext context);
         void OnCounterClockwiseRotate(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }

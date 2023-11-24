@@ -12,9 +12,16 @@ namespace SB.ScriptableObjects
     public class SBCubeScriptableObject : ScriptableObject
     {
         [SerializeField] public GameObject map;
+        [SerializeField] public bool start;
         [SerializeField] public RotationEnum rotation;
         [SerializeField] public bool masked;
         [SerializeField] public bool locked;
         [SerializeField] public bool empty;
+
+
+        [SerializeField] public bool doorOnLeft;
+        [SerializeField] public bool doorOnRight;
+        [SerializeField] public bool doorOnTop;
+        [SerializeField] public bool doorOnBottom;
     }
 }
