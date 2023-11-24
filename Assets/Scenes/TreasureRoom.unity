@@ -1209,7 +1209,7 @@ MonoBehaviour:
   gameScene: 2
   menuScene: 1
   canvasMenu: {fileID: 2084329209}
-  pauseButton: {fileID: 0}
+  pauseButton: {fileID: 385184172}
 --- !u!4 &1501473630
 Transform:
   m_ObjectHideFlags: 0
