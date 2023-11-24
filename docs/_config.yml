@@ -4,7 +4,7 @@ bio:                'by CryptidGrove Studio'
 description:        "Kiwi's Adventure is a 3D puzzle-platformer & dungeon-crawler by Cryptid Grove Studio."
 reading_time:       true
 words_per_minute:   200
-logo:               'assets/img/kiwi_miniature.png'
+logo:               'assets/img/kiwi_logo_web.png'
 background:         'assets/img/Teaser3Bright.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
