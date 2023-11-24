@@ -9,6 +9,7 @@ namespace SB.Runtime
     using Utilities.Enum;
     using SB.ScriptableObjects;
     using Utilities.GridPostions;
+    using System;
 
     enum BoardState
     {
@@ -18,6 +19,7 @@ namespace SB.Runtime
     }
     public class SBShuffleBoardScript : MonoBehaviour
     {
+
         private ShuffleControls controls;
 
         public SBBoardScriptableObject initialBoardData;
@@ -51,17 +53,38 @@ namespace SB.Runtime
 
         private ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
 
+        private GameObject playerObject;
+
         private void Awake()
         {
             controls = new ShuffleControls();
+            controls.Enable();
             CreateBoard();
             boardCamera = gameObject.transform.parent.GetComponent<Camera>();
             TurnOff(false);
+            controls.BoardControls.Restart.performed += ResetBoard;
+            PlayerMovementPlatforming.OnDeath += Die;
         }
-        
+
+        public void ResetBoard(InputAction.CallbackContext context)
+        {
+            ResetBoard();
+        }
+
+        public void ResetBoard()
+        {
+            PlayerMovementPlatforming.Health = 3;
+            TurnOff(false);
+            DestroyBoard();
+            CreateBoard();
+        }
+        private void Die()
+        {
+            ResetBoard();
+        }
+
         public void TurnOn()
         {
-            controls.Enable();
             boardState = BoardState.On;
             boardCamera.enabled = true;
             controls.BoardControls.Move.performed += OnMovementPerformed;
@@ -87,11 +110,11 @@ namespace SB.Runtime
 
         public void TurnOff(bool dropKiwi)
         {
-            controls.Disable();
             boardState = BoardState.Off;
             MovementStarted(null);
             boardCamera.enabled = false;
             controls.BoardControls.Move.performed -= OnMovementPerformed;
+            controls.BoardControls.Exit.performed -= Exit;
             CreateDoors();
             if (dropKiwi)
             {
@@ -132,15 +155,17 @@ namespace SB.Runtime
             {
                 for (int j = 0; j < cols; j++)
                 {
-                    if (board_data.map_objects[i, j] == null)
+                    if (board_data.modifier_objects[i, j] != null)
                     {
-                        continue;
+                        Destroy(board_data.modifier_objects[i, j]);
                     }
                     Destroy(board_data.map_objects[i, j]);
                 }
             }
             board_data.empty_positions = null;
             DestoryDoors();
+            DeleteArrows();
+            Destroy(CameraTrackingScript.targetPlayer);
         }
 
         public bool MovementAllowed(ModifierBase source)

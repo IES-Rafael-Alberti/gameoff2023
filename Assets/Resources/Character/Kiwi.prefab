@@ -348,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24482fb85c27343a2f8e64e9f64a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnerabilityLength: 2
   jumpForce: 75
   groundCheck: {fileID: 3518263697669327225}
   WallScan: {fileID: 2868726172952508057}

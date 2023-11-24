@@ -6,6 +6,25 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class PlayerMovementPlatforming : MonoBehaviour
 {
+    public delegate void DeathCallback();
+    public static event DeathCallback OnDeath;
+
+    private static int health = 3;
+    public static int Health
+    {
+        get { return health; }
+        set
+        {
+            health = value;
+            if (health <= 0)
+            {
+                OnDeath?.Invoke();
+            }
+        }
+    }
+    private bool invulnerable = false;
+    public float invulnerabilityLength = 2f;
+
     private PlatformingControls input = null;
     private Vector3 moveVector = Vector3.zero;
     private Rigidbody rb = null;
@@ -100,8 +119,6 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             _animator.SetBool("isRunning", false);
         }
-
-        Debug.Log(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
     }
 
     private void OnDisable()
@@ -231,5 +248,22 @@ public class PlayerMovementPlatforming : MonoBehaviour
         DisableGlideControls();
         EnableNormalControls();
     }
+
+    public void Damage() {
+        if (!invulnerable)
+        {
+            Health--;
+            StartCoroutine(IFrames());
+        }
+    }
+
+    public IEnumerator IFrames()
+    {
+        invulnerable = true;
+        yield return new WaitForSeconds(invulnerabilityLength);
+        invulnerable = false;
+        yield break;
+    }
+
     #endregion
 }

@@ -62,6 +62,15 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f4038ab-3ba5-43c5-96ad-5510c5e148ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=1.5)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -196,6 +205,28 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f596b90-47e0-4da3-a634-9cda88eee47f"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc65b207-ba70-4ba3-82b0-18b39888af58"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -208,6 +239,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         m_BoardControls_ClockwiseRotate = m_BoardControls.FindAction("ClockwiseRotate", throwIfNotFound: true);
         m_BoardControls_CounterClockwiseRotate = m_BoardControls.FindAction("CounterClockwiseRotate", throwIfNotFound: true);
         m_BoardControls_Exit = m_BoardControls.FindAction("Exit", throwIfNotFound: true);
+        m_BoardControls_Restart = m_BoardControls.FindAction("Restart", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +305,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_BoardControls_ClockwiseRotate;
     private readonly InputAction m_BoardControls_CounterClockwiseRotate;
     private readonly InputAction m_BoardControls_Exit;
+    private readonly InputAction m_BoardControls_Restart;
     public struct BoardControlsActions
     {
         private @ShuffleControls m_Wrapper;
@@ -281,6 +314,7 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         public InputAction @ClockwiseRotate => m_Wrapper.m_BoardControls_ClockwiseRotate;
         public InputAction @CounterClockwiseRotate => m_Wrapper.m_BoardControls_CounterClockwiseRotate;
         public InputAction @Exit => m_Wrapper.m_BoardControls_Exit;
+        public InputAction @Restart => m_Wrapper.m_BoardControls_Restart;
         public InputActionMap Get() { return m_Wrapper.m_BoardControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -302,6 +336,9 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
             @Exit.started += instance.OnExit;
             @Exit.performed += instance.OnExit;
             @Exit.canceled += instance.OnExit;
+            @Restart.started += instance.OnRestart;
+            @Restart.performed += instance.OnRestart;
+            @Restart.canceled += instance.OnRestart;
         }
 
         private void UnregisterCallbacks(IBoardControlsActions instance)
@@ -318,6 +355,9 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
             @Exit.started -= instance.OnExit;
             @Exit.performed -= instance.OnExit;
             @Exit.canceled -= instance.OnExit;
+            @Restart.started -= instance.OnRestart;
+            @Restart.performed -= instance.OnRestart;
+            @Restart.canceled -= instance.OnRestart;
         }
 
         public void RemoveCallbacks(IBoardControlsActions instance)
@@ -341,5 +381,6 @@ public partial class @ShuffleControls: IInputActionCollection2, IDisposable
         void OnClockwiseRotate(InputAction.CallbackContext context);
         void OnCounterClockwiseRotate(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
+        void OnRestart(InputAction.CallbackContext context);
     }
 }
