@@ -447,7 +447,7 @@ PrefabInstance:
         type: 3}
       propertyPath: coverPrefab
       value: 
-      objectReference: {fileID: 5571606556780080092, guid: ac1e444bfa06db54683ace583ce63f10,
+      objectReference: {fileID: 7641073756812802997, guid: 10dd42ca36eadcf4d8ffa902d9575033,
         type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}

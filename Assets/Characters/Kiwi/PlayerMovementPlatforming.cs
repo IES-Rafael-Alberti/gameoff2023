@@ -81,6 +81,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
         rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en metodo.
 
+        //Fixes a niche animation issue.
         if (_animator.GetBool("isFloating") && isGrounded())
         {
             _animator.SetBool("isJumping", false);
@@ -99,6 +100,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             _animator.SetBool("isRunning", false);
         }
+
+        Debug.Log(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name);
     }
 
     private void OnDisable()
