@@ -17,20 +17,20 @@ MonoBehaviour:
   boardGrid:
   - {fileID: 11400000, guid: b3a32e7ce50104849bafa56bf80df2ce, type: 2}
   - {fileID: 11400000, guid: c09e38d37e5261049b2d14f4e575174f, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
   - {fileID: 11400000, guid: c09e38d37e5261049b2d14f4e575174f, type: 2}
   - {fileID: 11400000, guid: b3a32e7ce50104849bafa56bf80df2ce, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
   - {fileID: 11400000, guid: c09e38d37e5261049b2d14f4e575174f, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
   - {fileID: 11400000, guid: b3a32e7ce50104849bafa56bf80df2ce, type: 2}
   modifierGrid:
-  - {fileID: 0}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
   - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
+  - {fileID: 7560075228596791873, guid: 0bb383d00e9cc364b9da51db733a5ed0, type: 3}
