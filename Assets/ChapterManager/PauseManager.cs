@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PauseManager : MonoBehaviour
 {
 
-    [SerializeField] int gameScene;
     [SerializeField] int menuScene;
     [SerializeField] GameObject canvasMenu;
     [SerializeField] GameObject pauseButton;
@@ -19,26 +20,28 @@ public class PauseManager : MonoBehaviour
 
     public void Pause() 
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
+        //TODO Change into event
         canvasMenu.SetActive(true);
     }
 
     public void Resume()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
+        //TODO Change into event
         canvasMenu.SetActive(false);
     }
 
 
     public void RetryLevel()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(gameScene);
+        //Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
     public void ReturnToMenu()
     {
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         SceneManager.LoadScene(menuScene);
     }
 

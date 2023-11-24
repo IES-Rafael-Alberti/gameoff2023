@@ -33,20 +33,11 @@ public class EventManager
         Invoke(EventType.NextChapter);
     }
 
-    public void InvokeRetry()
-    {
-        Invoke(EventType.Retry);
-    }
-
-    public void InvokeEndGame()
-    {
-        Invoke(EventType.EndGame);
-    }
-
 }
 
 public enum EventType
 {
     NextChapter,
-    Retry, EndGame
+    Retry, EndGame,
+    Pause, Resume
 }
