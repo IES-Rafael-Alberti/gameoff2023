@@ -13,7 +13,8 @@ public class RoomTransitionScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GameObject target = other.gameObject;
-            target.transform.position = transform.position + transform.right * 9f;
+            Vector3 warpPosition = transform.position + transform.right * 9f;
+            target.transform.position = new Vector3(warpPosition.x, target.transform.position.y, warpPosition.z);
 
             CubeScript parentData = transform.parent.GetComponent<CubeScript>();
             Vector2Int currentPosition = parentData.position;

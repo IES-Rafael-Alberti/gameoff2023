@@ -3,7 +3,27 @@ guid: 304a0f4999c1d084c8cbb9d49325d731
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CornerStone
+    second: {fileID: 2100000, guid: e66662e24b97ebf40a0ddf8c1b230ff8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CrustStone
+    second: {fileID: 2100000, guid: 9ccc75815bf78664c9e0f678e8f14b39, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RuneFloor
+    second: {fileID: 2100000, guid: 506fdd382f9d68242aad340d6761d8ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TempleWallEgyptian
+    second: {fileID: 2100000, guid: 9db25cfa3a99d604e9213494acfb9398, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

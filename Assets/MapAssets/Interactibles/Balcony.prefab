@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6633163370415739602}
   - component: {fileID: 3000785138350111168}
   - component: {fileID: 813707182028310567}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Balcony
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,9 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc77d0340ad37d742b43ed410bbd4597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBoardData: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c, type: 2}
-  minigameBoardPrefab: {fileID: 309763814837250074, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-    type: 3}
+  parentCube: {fileID: 0}
 --- !u!1 &6998618430332755132
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,7 +79,7 @@ GameObject:
   - component: {fileID: 1124158846186949415}
   - component: {fileID: 6585548097786330998}
   - component: {fileID: 3067346363522227714}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BalconyGraphicPlaceholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

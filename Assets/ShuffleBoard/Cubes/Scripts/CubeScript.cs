@@ -1,6 +1,7 @@
 using SB.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Utilities.Enum;
 
@@ -25,7 +26,26 @@ public class CubeScript : MonoBehaviour
     {
         if (cover != null)
         {
-            Destroy(cover);
+            StartCoroutine(DissolveCover());
         }
+    }
+
+    IEnumerator DissolveCover()
+    {
+        float timePassed = 0;
+        MeshRenderer meshRenderer = cover.GetComponentInChildren<MeshRenderer>();
+        Material[] coverMaterials = meshRenderer.materials;
+
+        while (timePassed < 1) {
+            foreach (Material mat in coverMaterials)
+            {
+                if (mat.HasProperty("_DissolveAmount")) mat.SetFloat("_DissolveAmount", timePassed);
+                yield return null;
+                timePassed += Time.deltaTime;
+            }
+        }
+
+        Destroy(cover);
+        yield break;
     }
 }

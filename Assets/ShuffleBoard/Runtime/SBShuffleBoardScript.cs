@@ -43,6 +43,7 @@ namespace SB.Runtime
         public float kiwiOffset = 3.8f;
 
         public Camera boardCamera;
+        public Camera characterCamera;
 
         private BoardState boardState = BoardState.Off;
         private int moving_elements = 0;

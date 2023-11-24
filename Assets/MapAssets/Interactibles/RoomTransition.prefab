@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5237733077815872935}
   - component: {fileID: 6410504859352331828}
   - component: {fileID: 2547501614764618106}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RoomTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,3 +75,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8155c3aa05439474c99c8fc2774b766b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 

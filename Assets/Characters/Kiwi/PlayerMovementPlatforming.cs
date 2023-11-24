@@ -35,8 +35,6 @@ public class PlayerMovementPlatforming : MonoBehaviour
     [HideInInspector]
     public bool gliding = false;
 
-
-
     private void Awake()
     {
         input = new PlatformingControls();
@@ -74,18 +72,28 @@ public class PlayerMovementPlatforming : MonoBehaviour
         Vector3 movewSweep = new Vector3(moveVector.x * moveSpeed, 2f, moveVector.z * moveSpeed);
         float distanceEstimate = movewSweep.magnitude * Time.fixedDeltaTime;
         RaycastHit hit;
-        if (WallScan.SweepTest(movewSweep, out hit, distanceEstimate)) rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        if (WallScan.SweepTest(movewSweep, out hit, distanceEstimate))
+        {
+            if(hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
 
         Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;
         transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * moveSpeed);
         rb.AddForce(Vector3.down * (_isHolding ? gravity * 0.2f : gravity * 2f) * rb.mass); //TODO Separar en metodo.
 
-        if(_isHolding && !isGrounded())
+        if (_animator.GetBool("isFloating") && isGrounded())
+        {
+            _animator.SetBool("isJumping", false);
+        }
+
+        if (_isHolding && !isGrounded())
         {
             _animator.SetBool("isFloating", true);
         }
         else
-        {_animator.SetBool("isFloating", false);}
+        {
+            _animator.SetBool("isFloating", false);
+        }
 
         if(moveVector == Vector3.zero)
         {
