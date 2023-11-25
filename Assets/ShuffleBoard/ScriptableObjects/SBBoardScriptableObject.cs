@@ -15,6 +15,7 @@ namespace SB.ScriptableObjects
         public GameObject[,] map_objects;
         public GameObject[,] modifier_objects;
         public GameObject spawn_point;
+        public GameObject grid;
 
         public BoardStruct(int rows, int cols)
         {
@@ -22,6 +23,7 @@ namespace SB.ScriptableObjects
             modifier_objects = new GameObject[rows, cols];
             empty_positions = new List<Vector2Int>();
             spawn_point = null;
+            grid = null;
         }
     }
 
@@ -37,6 +39,7 @@ namespace SB.ScriptableObjects
         [SerializeField] public GameObject doorPrefab;
         [SerializeField] public GameObject arrowPrefab;
         [SerializeField] public GameObject coverPrefab;
+        [SerializeField] public GameObject gridBack;
         public BoardStruct Spawn(Vector3 grid_center, float grid_spacing, SBShuffleBoardScript controller = null, float zOffset = 0)
         {
             ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
@@ -44,6 +47,8 @@ namespace SB.ScriptableObjects
             ArrayFlattener<GameObject> gbFlattener = new ArrayFlattener<GameObject>();
             GameObject[,] gbGrid = gbFlattener.Unflatten(modifierGrid, rows, cols);
             BoardStruct board_data = new BoardStruct(rows, cols);
+
+            board_data.grid = Instantiate(gridBack, grid_center + Vector3.forward * 52f, Quaternion.identity);
 
             for (int row = 0; row < rows; row++)
             {

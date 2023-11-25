@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 public class RoomTransitionScript : MonoBehaviour
 {
     public string direction;
-    private static bool enabled = true;
+    public static bool enabled = true;
     GameObject target;
 
     private void Update()
