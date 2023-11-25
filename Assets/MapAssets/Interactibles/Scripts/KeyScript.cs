@@ -38,4 +38,9 @@ public class KeyScript : MonoBehaviour
         transform.parent.position = startingEmpty.transform.position;
         transform.parent.rotation = startingEmpty.transform.rotation;
     }
+
+    private void OnDestroy()
+    {
+        SBShuffleBoardScript.OnReturn -= Reset;
+    }
 }
