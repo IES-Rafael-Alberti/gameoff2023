@@ -348,13 +348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f90a465bcb465b4409cb67b47b5b5f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chosenLevel: 0
+  useDirectBoardData: 0
   initialBoardData: {fileID: 11400000, guid: ee68c2cc8f6866f41bc1270cbfef185c, type: 2}
   gridSpacing: 55
-  doorPrefab: {fileID: 1313281916175577887, guid: 4bf5fe0280579a54e8ca724351698bb5,
-    type: 3}
   transitionPrefab: {fileID: 0}
-  arrowPrefab: {fileID: 0}
-  coverPrefab: {fileID: 0}
   coverDepth: -13.3
   swapPeriod: 0.3
   zOffset: 25
@@ -627,7 +625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7ca7f5026215f5f42be1cc4400782b2c, type: 3}
+  m_Sprite: {fileID: -2014716365, guid: b8326385001689340bb91ee3e8b00d11, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
