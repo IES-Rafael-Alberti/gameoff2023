@@ -445,6 +445,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: chosenLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: coverPrefab
       value: 
       objectReference: {fileID: 7641073756812802997, guid: 10dd42ca36eadcf4d8ffa902d9575033,
@@ -461,6 +466,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7344174784634297418, guid: 7b63042b40c38f54393b7965d2087a6d,
         type: 3}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
+      propertyPath: useDirectBoardData
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5491359308743897710, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
