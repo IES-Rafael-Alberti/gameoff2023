@@ -1,6 +1,7 @@
 using SB.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -71,7 +72,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private void DestroySelf()
     {
         SBShuffleBoardScript.OnReturn -= DestroySelf;
-        Destroy(gameObject);
+        if(!gameObject.IsDestroyed())Destroy(gameObject);
     }
     private void OnEnable()
     {
