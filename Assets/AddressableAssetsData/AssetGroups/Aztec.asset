@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Aztec
+  m_EditorClassIdentifier: 
+  m_GroupName: Aztec
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7ac0fc94b5a3b4e4fa4a13662930a4be
+  m_SerializeEntries:
+  - m_GUID: 22cc6df0d902ec4418063418cb8508c5
+    m_Address: Assets/ShuffleBoard/Boards/Example/AztecBoard.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0b81297173e21224d8cbe63d28cb4f2d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e5a3a34bd84ddbd4b9973464a2d3050b, type: 2}
+    - {fileID: 11400000, guid: a3916c869cc4c7c41b930900c74fbcfb, type: 2}

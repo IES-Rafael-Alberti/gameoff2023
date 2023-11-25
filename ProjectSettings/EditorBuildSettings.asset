@@ -23,4 +23,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/TestScenes/Garrett_Scene.unity
     guid: 2516d07ad49c87b4d9b99af1ef061157
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 55875c4b69a09f44c830050323af29d8,
+      type: 2}

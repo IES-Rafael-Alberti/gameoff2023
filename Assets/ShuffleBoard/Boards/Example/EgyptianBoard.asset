@@ -28,3 +28,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 3154418113265419973, guid: 4e771718889707b4b93791ce23a75bf2, type: 3}
   - {fileID: 0}
+  doorPrefab: {fileID: 1080075605029403527, guid: fad8e4659a6873b46a93079b7138f15b,
+    type: 3}
+  arrowPrefab: {fileID: 5932194427533229397, guid: f684bbe59217da2479496ad24c5bfc98,
+    type: 3}
+  coverPrefab: {fileID: 5571606556780080092, guid: ac1e444bfa06db54683ace583ce63f10,
+    type: 3}

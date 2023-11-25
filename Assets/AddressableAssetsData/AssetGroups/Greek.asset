@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Greek
+  m_EditorClassIdentifier: 
+  m_GroupName: Greek
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f279155f2449acb4486a48a382aff031
+  m_SerializeEntries:
+  - m_GUID: 8322035990277d5478f6240e1c67c29f
+    m_Address: Assets/ShuffleBoard/Boards/Example/Greco-RomanBoard.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 0b81297173e21224d8cbe63d28cb4f2d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cadb6830be9eab249b15e554c13c16ca, type: 2}
+    - {fileID: 11400000, guid: 888e66e22337d224796e8d4663c56180, type: 2}

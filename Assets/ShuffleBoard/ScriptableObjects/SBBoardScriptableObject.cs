@@ -34,6 +34,9 @@ namespace SB.ScriptableObjects
         [HideInInspector]
         [SerializeField] public SBCubeScriptableObject[] boardGrid;
         [SerializeField] public GameObject[] modifierGrid;
+        [SerializeField] public GameObject doorPrefab;
+        [SerializeField] public GameObject arrowPrefab;
+        [SerializeField] public GameObject coverPrefab;
         public BoardStruct Spawn(Vector3 grid_center, float grid_spacing, SBShuffleBoardScript controller = null, float zOffset = 0)
         {
             ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();

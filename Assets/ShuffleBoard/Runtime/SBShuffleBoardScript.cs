@@ -9,8 +9,8 @@ namespace SB.Runtime
     using Utilities.Enum;
     using SB.ScriptableObjects;
     using Utilities.GridPostions;
-    using System;
-    using static UnityEngine.Rendering.DebugUI.Table;
+    using UnityEngine.AddressableAssets;
+    using UnityEngine.ResourceManagement.AsyncOperations;
 
     enum BoardState
     {
@@ -18,6 +18,13 @@ namespace SB.Runtime
         Drop,
         On
     }
+    public enum Level
+    {
+        Egyptian,
+        Greek,
+        Aztec
+    }
+
     public class SBShuffleBoardScript : MonoBehaviour
     {
         public delegate void KiwiReturn();
@@ -25,22 +32,26 @@ namespace SB.Runtime
 
         private ShuffleControls controls;
 
+        public Level chosenLevel = Level.Egyptian;
+        private AsyncOperationHandle<SBBoardScriptableObject> handle;
+
+        public bool useDirectBoardData = false;
         public SBBoardScriptableObject initialBoardData;
         public BoardStruct board_data;
         public float gridSpacing;
         private int rows;
         private int cols;
 
-        public GameObject doorPrefab;
+        private GameObject doorPrefab;
         private List<GameObject> doors = new List<GameObject>();
 
         public GameObject transitionPrefab;
         private List<GameObject> transitions = new List<GameObject>();
 
-        public GameObject arrowPrefab;
+        private GameObject arrowPrefab;
         private List<GameObject> arrows = new List<GameObject>();
 
-        public GameObject coverPrefab;
+        private GameObject coverPrefab;
         public float coverDepth = -13.3f;
 
         public float swapPeriod;
@@ -62,12 +73,68 @@ namespace SB.Runtime
         {
             controls = new ShuffleControls();
             controls.Enable();
+            PlayerMovementPlatforming.OnDeath += Die;
+            LockScript.OnLevelComplete += NextLevel;
+
+            if (useDirectBoardData) InstantiateAfterLoad();
+            else LoadLevel(chosenLevel);
+        }
+
+        private void NextLevel()
+        {
+            switch (chosenLevel)
+            {
+                case Level.Aztec:
+                    chosenLevel = Level.Egyptian;
+                    break;
+                case Level.Egyptian:
+                    chosenLevel = Level.Greek;
+                    break;
+                case Level.Greek:
+                    chosenLevel = Level.Egyptian;
+                    break;
+            }
+            LoadLevel(chosenLevel);
+        }
+
+        #region Loading
+        private void LoadLevel(Level chosenLevel)
+        {
+            switch (chosenLevel)
+            {
+                case Level.Aztec:
+                    handle = Addressables.LoadAssetAsync<SBBoardScriptableObject>("Assets/ShuffleBoard/Boards/Example/AztecBoard.asset");
+                    break;
+                case Level.Egyptian:
+                    handle = Addressables.LoadAssetAsync<SBBoardScriptableObject>("Assets/ShuffleBoard/Boards/Example/EgyptianBoard.asset");
+                    break;
+                case Level.Greek:
+                    handle = Addressables.LoadAssetAsync<SBBoardScriptableObject>("Assets/ShuffleBoard/Boards/Example/Greco-RomanBoard.asset");
+                    break;
+            }
+            handle.Completed += LoadComplete;
+        }
+
+        private void LoadComplete(AsyncOperationHandle<SBBoardScriptableObject> handle)
+        {
+            initialBoardData = handle.Result;
+            Addressables.Release(handle);
+            InstantiateAfterLoad();
+        }
+
+        private void InstantiateAfterLoad()
+        {
+            DestroyBoard();
+            doorPrefab = initialBoardData.doorPrefab;
+            arrowPrefab = initialBoardData.arrowPrefab;
+            coverPrefab = initialBoardData.coverPrefab;
             CreateBoard();
             boardCamera = gameObject.transform.parent.GetComponent<Camera>();
             TurnOff(false);
             controls.BoardControls.Restart.performed += ResetBoard;
-            PlayerMovementPlatforming.OnDeath += Die;
         }
+
+        #endregion
 
         public void ResetBoard(InputAction.CallbackContext context)
         {
