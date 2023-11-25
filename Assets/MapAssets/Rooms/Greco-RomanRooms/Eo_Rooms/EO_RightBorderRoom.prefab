@@ -96,7 +96,8 @@ PrefabInstance:
       value: RightBorderRoom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4244079118833725281, guid: 383316a48bfdc91438b78b51ee2b9ef4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 383316a48bfdc91438b78b51ee2b9ef4, type: 3}

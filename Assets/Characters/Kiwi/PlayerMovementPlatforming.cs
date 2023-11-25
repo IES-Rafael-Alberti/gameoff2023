@@ -9,6 +9,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
 {
     public delegate void DeathCallback();
     public static event DeathCallback OnDeath;
+    public delegate void HealthCallback(int newHealth);
+    public static event HealthCallback OnHealthChange;
 
     private static int health = 3;
     public static int Health
@@ -17,6 +19,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         set
         {
             health = value;
+            OnHealthChange?.Invoke(value);
             if (health <= 0)
             {
                 OnDeath?.Invoke();
