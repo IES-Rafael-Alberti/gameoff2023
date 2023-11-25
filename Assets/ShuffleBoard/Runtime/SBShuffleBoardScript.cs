@@ -138,11 +138,13 @@ namespace SB.Runtime
 
         public void ResetBoard(InputAction.CallbackContext context)
         {
-            if (RoomTransitionScript.enabled) ResetBoard();
+            //This was disabled in place of the menu.
+            //if (RoomTransitionScript.enabled) ResetBoard();
         }
 
         public void ResetBoard()
         {
+            OnReturn?.Invoke();
             PlayerMovementPlatforming.Health = 3;
             TurnOff(false);
             DestroyBoard();
@@ -155,7 +157,6 @@ namespace SB.Runtime
 
         public void TurnOn()
         {
-            OnReturn?.Invoke();
             boardState = BoardState.On;
             boardCamera.enabled = true;
             controls.BoardControls.Move.performed += OnMovementPerformed;
@@ -181,6 +182,7 @@ namespace SB.Runtime
 
         private void Return(InputAction.CallbackContext context)
         {
+            OnReturn?.Invoke();
             TurnOn();
         }
 
@@ -244,7 +246,6 @@ namespace SB.Runtime
             board_data.empty_positions = null;
             DestoryDoors();
             DeleteArrows();
-            Destroy(CameraTrackingScript.targetPlayer);
         }
 
         public bool MovementAllowed(ModifierBase source)

@@ -471,6 +471,12 @@ PrefabInstance:
       propertyPath: useDirectBoardData
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2443198432257250607, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2014716365, guid: b8326385001689340bb91ee3e8b00d11,
+        type: 3}
     - target: {fileID: 5491359308743897710, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: m_LocalPosition.x

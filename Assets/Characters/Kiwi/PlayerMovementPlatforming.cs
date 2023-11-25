@@ -72,7 +72,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private void DestroySelf()
     {
         SBShuffleBoardScript.OnReturn -= DestroySelf;
-        if(!gameObject.IsDestroyed())Destroy(gameObject);
+        Debug.Log(gameObject);
+        if(gameObject != null)Destroy(gameObject);
     }
     private void OnEnable()
     {
