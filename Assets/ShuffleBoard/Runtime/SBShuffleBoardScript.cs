@@ -138,7 +138,7 @@ namespace SB.Runtime
 
         public void ResetBoard(InputAction.CallbackContext context)
         {
-            ResetBoard();
+            if (RoomTransitionScript.enabled) ResetBoard();
         }
 
         public void ResetBoard()

@@ -46,3 +46,5 @@ MonoBehaviour:
     type: 3}
   coverPrefab: {fileID: 7641073756812802997, guid: 10dd42ca36eadcf4d8ffa902d9575033,
     type: 3}
+  gridBack: {fileID: 4223878731321639085, guid: 5464188611898f44591b61a676271e95,
+    type: 3}
