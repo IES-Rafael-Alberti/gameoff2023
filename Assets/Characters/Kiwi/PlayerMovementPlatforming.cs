@@ -1,3 +1,4 @@
+using SB.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,6 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public float jumpForce = 5f;
     public GroundChecking groundCheck;
     public Rigidbody WallScan;
-    private Vector3 kiwiDirection;
     public float groundSpeed = 15f;
 
     private bool doubleJump;
@@ -48,9 +48,6 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public bool freeFall = true;
     public float glideDropSpeed = 5;
     public float releaseDropSpeed = 25;
-    private float dropSpeedGoal = -5;
-    private float dropSpeed = -5;
-    private float glideVelocityX;
     [HideInInspector]
     public bool gliding = false;
 
@@ -60,8 +57,18 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         moveSpeed = groundSpeed;
         _animator = gameObject.GetComponent<Animator>();
+        SBShuffleBoardScript.OnReturn += DestroySelf;
     }
 
+    private void Start()
+    {
+        GroundKiwi();
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
     private void OnEnable()
     {
         input.Enable();
@@ -73,13 +80,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y, 0);
 
-        if (gliding)
-        {
-            GlideUpdate();
-        } else
-        {
-            NormalUpdate(); //Where your old code went.
-        }
+        NormalUpdate(); //Where your old code went.
     }
 
     //This is your old update function Rubus.
@@ -118,6 +119,23 @@ public class PlayerMovementPlatforming : MonoBehaviour
         if(moveVector == Vector3.zero)
         {
             _animator.SetBool("isRunning", false);
+        }
+    }
+
+    private void GroundKiwi()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        RaycastHit hit;
+
+        // Check if the ray hits something
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Calculate the distance from the player to the ground
+            float distanceToGround = hit.distance;
+
+            // Teleport the player to the ground position
+            Vector3 teleportPosition = transform.position - new Vector3(0f, distanceToGround - 1f, 0f);
+            transform.position = teleportPosition;
         }
     }
 
@@ -186,70 +204,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Jump.canceled -= OnJumpCancelled;
     }
 
-    #region Glide
-    private void GlideUpdate()
+    public void Damage()
     {
-        dropSpeed = dropSpeed * 0.9f  + dropSpeedGoal * 0.1f;
-        if (moveVector.x > 0.1) glideVelocityX = glideSpeed;
-        if (moveVector.x < -0.1) glideVelocityX = -glideSpeed;
-        if (freeFall) glideVelocityX *= 0.1f;
-        rb.velocity = new Vector3(glideVelocityX, dropSpeed, 0);
-        //Ends gliding when you land.
-        if (isGrounded())
-        {
-            StopDrop();
-        }
-    }
-    private void EnableGlideControls()
-    {
-        input.Player.Movement.performed += OnMovementPerformed;
-        input.Player.Movement.canceled += OnMovementCancelled;
-        input.Player.Jump.performed += SlowFall;
-        input.Player.Jump.canceled += NormalFall;
-    }
-    private void DisableGlideControls()
-    {
-        input.Player.Movement.performed -= OnMovementPerformed;
-        input.Player.Movement.canceled -= OnMovementCancelled;
-        input.Player.Jump.performed -= SlowFall;
-        input.Player.Jump.canceled -= NormalFall;
-    }
-
-    private void SlowFall(InputAction.CallbackContext context)
-    {
-        dropSpeedGoal = -glideDropSpeed;
-        freeFall = false;
-    }
-
-    private void NormalFall(InputAction.CallbackContext context)
-    {
-        dropSpeedGoal = -releaseDropSpeed;
-        freeFall = true;
-    }
-
-    public void DropKiwi()
-    {
-        glideVelocityX = glideSpeed;
-        dropSpeed = -glideDropSpeed;
-        dropSpeedGoal = -releaseDropSpeed;
-        gliding = true;
-        freeFall = true;
-        moveSpeed = glideSpeed;
-        rb.constraints = RigidbodyConstraints.FreezePositionZ | rb.constraints;
-        DisableNormalControls();
-        EnableGlideControls();
-    }
-
-    public void StopDrop()
-    {
-        gliding = false;
-        moveSpeed = groundSpeed;
-        rb.constraints = ~RigidbodyConstraints.FreezePositionZ & rb.constraints;
-        DisableGlideControls();
-        EnableNormalControls();
-    }
-
-    public void Damage() {
         if (!invulnerable)
         {
             Health--;
@@ -264,6 +220,4 @@ public class PlayerMovementPlatforming : MonoBehaviour
         invulnerable = false;
         yield break;
     }
-
-    #endregion
 }

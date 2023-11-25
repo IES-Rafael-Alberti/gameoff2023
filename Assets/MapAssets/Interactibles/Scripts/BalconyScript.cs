@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(BoxCollider))]
 public class BalconyScript : MonoBehaviour
 {
+    //The balcony mechanic has been disabled.
+    /*
     public GameObject parentCube;
 
     private PlatformingControls controls;
@@ -55,4 +57,5 @@ public class BalconyScript : MonoBehaviour
         controller.TurnOn();
         controls.Player.Use.performed -= Activate;
     }
+    */
 }

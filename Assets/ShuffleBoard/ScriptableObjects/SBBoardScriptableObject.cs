@@ -14,12 +14,14 @@ namespace SB.ScriptableObjects
         public List<Vector2Int> empty_positions;
         public GameObject[,] map_objects;
         public GameObject[,] modifier_objects;
+        public GameObject spawn_point;
 
         public BoardStruct(int rows, int cols)
         {
             map_objects = new GameObject[rows, cols];
             modifier_objects = new GameObject[rows, cols];
             empty_positions = new List<Vector2Int>();
+            spawn_point = null;
         }
     }
 
@@ -69,10 +71,7 @@ namespace SB.ScriptableObjects
                         cScript.source_board = controller;
                         if (source.start)
                         {
-                            GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
-                            GameObject player = Instantiate(kiwi, new Vector3(x, y, grid_center.z + zOffset), Quaternion.identity);
-                            CameraTrackingScript.targetPlayer = player;
-                            CameraTrackingScript.targetRoom = board_data.map_objects[row, col];
+                            board_data.spawn_point = board_data.map_objects[row, col];
                         }
                     }
 

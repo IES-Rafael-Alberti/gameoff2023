@@ -10,6 +10,7 @@ namespace SB.Runtime
     using SB.ScriptableObjects;
     using Utilities.GridPostions;
     using System;
+    using static UnityEngine.Rendering.DebugUI.Table;
 
     enum BoardState
     {
@@ -19,6 +20,8 @@ namespace SB.Runtime
     }
     public class SBShuffleBoardScript : MonoBehaviour
     {
+        public delegate void KiwiReturn();
+        public static event KiwiReturn OnReturn;
 
         private ShuffleControls controls;
 
@@ -85,6 +88,7 @@ namespace SB.Runtime
 
         public void TurnOn()
         {
+            OnReturn?.Invoke();
             boardState = BoardState.On;
             boardCamera.enabled = true;
             controls.BoardControls.Move.performed += OnMovementPerformed;
@@ -108,6 +112,11 @@ namespace SB.Runtime
             }
         }
 
+        private void Return(InputAction.CallbackContext context)
+        {
+            TurnOn();
+        }
+
         public void TurnOff(bool dropKiwi)
         {
             boardState = BoardState.Off;
@@ -115,17 +124,11 @@ namespace SB.Runtime
             boardCamera.enabled = false;
             controls.BoardControls.Move.performed -= OnMovementPerformed;
             controls.BoardControls.Exit.performed -= Exit;
+            controls.BoardControls.Return.performed += Return;
             CreateDoors();
             if (dropKiwi)
             {
-                boardState = BoardState.Drop;
-                GameObject kiwi = Instantiate(
-                    Resources.Load<GameObject>("Character/kiwi"), 
-                    transform.position + Vector3.forward*kiwiOffset + Vector3.up * gridSpacing * (cols+1)/2f, 
-                    Quaternion.identity);
-                CameraTrackingScript.targetPlayer = kiwi;
-                PlayerMovementPlatforming pmpScript = kiwi.GetComponent<PlayerMovementPlatforming>();
-                pmpScript.DropKiwi();
+                SpawnKiwi();
             }
             DeleteArrows();
         }
@@ -133,6 +136,14 @@ namespace SB.Runtime
         private void OnDestroy()
         {
             DestroyBoard();
+        }
+
+        private void SpawnKiwi()
+        {
+            GameObject kiwi = Resources.Load<GameObject>("Character/kiwi");
+            GameObject player = Instantiate(kiwi, board_data.spawn_point.transform.position, Quaternion.identity);
+            CameraTrackingScript.targetPlayer = player;
+            CameraTrackingScript.targetRoom = board_data.spawn_point;
         }
 
         public void CreateBoard()
@@ -143,6 +154,7 @@ namespace SB.Runtime
             board_data = initialBoardData.Spawn(gameObject.transform.position, gridSpacing, this, zOffset);
             CreateDoors();
             SpawnCovers();
+            SpawnKiwi();
         }
         public void DestroyBoard()
         {
