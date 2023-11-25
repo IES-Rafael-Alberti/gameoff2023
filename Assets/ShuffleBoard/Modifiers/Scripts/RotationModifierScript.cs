@@ -86,6 +86,7 @@ public class RotationModifierScript : ModifierBase
             progress = time_passed / rotation_period;
             if (progress > 1) progress = 1;
             block.transform.rotation = Quaternion.Euler(0, 0, starting_rotation + progress * rotation_amount);
+            transform.rotation = Quaternion.Euler(0, 0, starting_rotation + progress * rotation_amount);
             yield return null;
             time_passed += Time.deltaTime;
         }

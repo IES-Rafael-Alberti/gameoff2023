@@ -72,7 +72,6 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private void DestroySelf()
     {
         SBShuffleBoardScript.OnReturn -= DestroySelf;
-        Debug.Log(gameObject);
         if(gameObject != null)Destroy(gameObject);
     }
     private void OnEnable()
@@ -217,6 +216,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
             Health--;
             StartCoroutine(IFrames());
         }
+    }
+
+    public void Heal()
+    {
+        Health++;
     }
 
     public IEnumerator IFrames()
