@@ -67,6 +67,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     private void DestroySelf()
     {
+        SBShuffleBoardScript.OnReturn -= DestroySelf;
         Destroy(gameObject);
     }
     private void OnEnable()
