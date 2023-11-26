@@ -332,6 +332,213 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""BoardControls"",
+            ""id"": ""37979dbf-ab13-40b7-a6b4-41e8802ac02d"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""a00a6539-dd12-4283-99f8-38816acfb049"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ClockwiseRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""f11a646f-1b3c-43e3-a66d-45df99f963c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CounterClockwiseRotate"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc26ecaf-405a-4c0e-8d48-0ff248de1486"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c76657d-5cff-4f99-9bf8-f26205e3b0a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Return"",
+                    ""type"": ""Button"",
+                    ""id"": ""e50a3655-860b-41e3-8d47-7e927da28d7b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9a3e94ce-05bc-447d-a9ce-31a1060b8798"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""beed9da4-3ba0-4a8e-a2a6-abfa711f397d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c30f2f89-40de-4acb-9ba3-e51cfdd0cf47"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3cebd17c-2eb6-404d-94d7-6f3be3e7cdf9"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""58c997c8-3939-45e0-a39c-933da717e8e4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""93c033d1-0a76-4c59-801a-39be80ffed1d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ae47bf79-b9fc-4bd0-8acf-dda16803ce9d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClockwiseRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b531e3d-7982-462d-aebb-d4a6c27b67d4"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ClockwiseRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd5596fb-e000-4eaa-81da-df4df372fbf0"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CounterClockwiseRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""47440609-454c-4240-bbfc-b4b42e737797"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CounterClockwiseRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f353003c-1f71-463a-8715-4fb2d8cfb4d5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49f745fc-1e60-43ea-9c4e-58915dcef14e"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4946fc34-d5f0-4502-b934-ab256a541396"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e88eec4-f0dd-448b-b554-c8691b16f71d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Return"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -341,6 +548,13 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
+        // BoardControls
+        m_BoardControls = asset.FindActionMap("BoardControls", throwIfNotFound: true);
+        m_BoardControls_Move = m_BoardControls.FindAction("Move", throwIfNotFound: true);
+        m_BoardControls_ClockwiseRotate = m_BoardControls.FindAction("ClockwiseRotate", throwIfNotFound: true);
+        m_BoardControls_CounterClockwiseRotate = m_BoardControls.FindAction("CounterClockwiseRotate", throwIfNotFound: true);
+        m_BoardControls_Exit = m_BoardControls.FindAction("Exit", throwIfNotFound: true);
+        m_BoardControls_Return = m_BoardControls.FindAction("Return", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -460,10 +674,96 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // BoardControls
+    private readonly InputActionMap m_BoardControls;
+    private List<IBoardControlsActions> m_BoardControlsActionsCallbackInterfaces = new List<IBoardControlsActions>();
+    private readonly InputAction m_BoardControls_Move;
+    private readonly InputAction m_BoardControls_ClockwiseRotate;
+    private readonly InputAction m_BoardControls_CounterClockwiseRotate;
+    private readonly InputAction m_BoardControls_Exit;
+    private readonly InputAction m_BoardControls_Return;
+    public struct BoardControlsActions
+    {
+        private @PlatformingControls m_Wrapper;
+        public BoardControlsActions(@PlatformingControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_BoardControls_Move;
+        public InputAction @ClockwiseRotate => m_Wrapper.m_BoardControls_ClockwiseRotate;
+        public InputAction @CounterClockwiseRotate => m_Wrapper.m_BoardControls_CounterClockwiseRotate;
+        public InputAction @Exit => m_Wrapper.m_BoardControls_Exit;
+        public InputAction @Return => m_Wrapper.m_BoardControls_Return;
+        public InputActionMap Get() { return m_Wrapper.m_BoardControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BoardControlsActions set) { return set.Get(); }
+        public void AddCallbacks(IBoardControlsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BoardControlsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BoardControlsActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+            @ClockwiseRotate.started += instance.OnClockwiseRotate;
+            @ClockwiseRotate.performed += instance.OnClockwiseRotate;
+            @ClockwiseRotate.canceled += instance.OnClockwiseRotate;
+            @CounterClockwiseRotate.started += instance.OnCounterClockwiseRotate;
+            @CounterClockwiseRotate.performed += instance.OnCounterClockwiseRotate;
+            @CounterClockwiseRotate.canceled += instance.OnCounterClockwiseRotate;
+            @Exit.started += instance.OnExit;
+            @Exit.performed += instance.OnExit;
+            @Exit.canceled += instance.OnExit;
+            @Return.started += instance.OnReturn;
+            @Return.performed += instance.OnReturn;
+            @Return.canceled += instance.OnReturn;
+        }
+
+        private void UnregisterCallbacks(IBoardControlsActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+            @ClockwiseRotate.started -= instance.OnClockwiseRotate;
+            @ClockwiseRotate.performed -= instance.OnClockwiseRotate;
+            @ClockwiseRotate.canceled -= instance.OnClockwiseRotate;
+            @CounterClockwiseRotate.started -= instance.OnCounterClockwiseRotate;
+            @CounterClockwiseRotate.performed -= instance.OnCounterClockwiseRotate;
+            @CounterClockwiseRotate.canceled -= instance.OnCounterClockwiseRotate;
+            @Exit.started -= instance.OnExit;
+            @Exit.performed -= instance.OnExit;
+            @Exit.canceled -= instance.OnExit;
+            @Return.started -= instance.OnReturn;
+            @Return.performed -= instance.OnReturn;
+            @Return.canceled -= instance.OnReturn;
+        }
+
+        public void RemoveCallbacks(IBoardControlsActions instance)
+        {
+            if (m_Wrapper.m_BoardControlsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBoardControlsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BoardControlsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BoardControlsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BoardControlsActions @BoardControls => new BoardControlsActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
+    }
+    public interface IBoardControlsActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnClockwiseRotate(InputAction.CallbackContext context);
+        void OnCounterClockwiseRotate(InputAction.CallbackContext context);
+        void OnExit(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
     }
 }

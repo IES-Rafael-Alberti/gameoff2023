@@ -9,13 +9,13 @@ using Utilities.Enum;
 
 public class RotationModifierScript : ModifierBase
 {
-    private ShuffleControls controls;
+    private PlatformingControls controls;
     public float sink_period;
     public float rotation_period;
 
     private void Awake()
     {
-        controls = new ShuffleControls();
+        controls = new PlatformingControls();
     }
 
     private void OnEnable()

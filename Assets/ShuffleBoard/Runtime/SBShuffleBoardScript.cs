@@ -30,7 +30,7 @@ namespace SB.Runtime
         public delegate void KiwiReturn();
         public static event KiwiReturn OnReturn;
 
-        private ShuffleControls controls;
+        private PlatformingControls controls;
 
         public Level chosenLevel = Level.Egyptian;
         private AsyncOperationHandle<SBBoardScriptableObject> handle;
@@ -73,7 +73,7 @@ namespace SB.Runtime
 
         private void Awake()
         {
-            controls = new ShuffleControls();
+            controls = new PlatformingControls();
             controls.Enable();
             PlayerMovementPlatforming.OnDeath += Die;
             LockScript.OnLevelComplete += NextLevel;
