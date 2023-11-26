@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using SB.Runtime;
 
 public class PauseManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] int menuScene;
     [SerializeField] GameObject canvasMenu;
     [SerializeField] GameObject pauseButton;
+    public SBShuffleBoardScript sbController;
 
     void Start()
     {
@@ -36,7 +38,8 @@ public class PauseManager : MonoBehaviour
     public void RetryLevel()
     {
         //Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sbController.ResetBoard();
+        Resume();
     }
     
     public void ReturnToMenu()
