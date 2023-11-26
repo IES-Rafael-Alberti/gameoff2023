@@ -362,6 +362,7 @@ MonoBehaviour:
   step: {fileID: 8300000, guid: f7468be99a96b3045a8ab3b96c49440d, type: 3}
   jump: {fileID: 8300000, guid: 497fe272b0c779f45a4fed8285206806, type: 3}
   dJump: {fileID: 8300000, guid: 0c2172ebd3bf3e944b44dfdf189954ca, type: 3}
+  hurt: {fileID: 8300000, guid: 7cdc7085bb3cef74ea4441fb00a72b00, type: 3}
   audioSource: {fileID: 5888711681219603805}
   glideSpeed: 60
   freeFall: 0

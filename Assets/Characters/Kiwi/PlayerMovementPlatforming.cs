@@ -49,6 +49,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public AudioClip step;
     public AudioClip jump;
     public AudioClip dJump;
+    public AudioClip hurt;
     public AudioSource audioSource;
 
     //SliderDropVariables (DON'T TOUCH THESE PLZ RUBUS)
@@ -260,6 +261,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     {
         if (!invulnerable)
         {
+            audioSource.PlayOneShot(hurt);
             Health--;
             StartCoroutine(IFrames());
         }
