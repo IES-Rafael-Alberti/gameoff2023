@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2776172105979851792}
   - component: {fileID: 5405791089373901380}
   - component: {fileID: 8093543844135017648}
+  - component: {fileID: 1203292342128581855}
   m_Layer: 7
   m_Name: Dart
   m_TagString: Untagged
@@ -44,7 +45,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 128
@@ -53,7 +54,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.66, y: 1, z: 1}
+  m_Size: {x: 1.66, y: 1.51, z: 1.54}
   m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!114 &8093543844135017648
 MonoBehaviour:
@@ -67,7 +68,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4399a80d5ed3a28429a0bd7e08852eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 75
+  speed: 55
+--- !u!54 &1203292342128581855
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3356480935934724277}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &7129206424644888397
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class DartProjectileScript : MonoBehaviour
     }
     void Update()
     {
-        transform.position += transform.right * speed * Time.deltaTime;
+        GetComponent<Rigidbody>().velocity = transform.right * speed;
     }
 
     private void OnDestroy()
@@ -31,11 +31,12 @@ public class DartProjectileScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        Debug.Log("A");
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerMovementPlatforming>().Damage();
-            DestroyThis();
         }
+        DestroyThis();
     }
 
     IEnumerator Lifespan()
