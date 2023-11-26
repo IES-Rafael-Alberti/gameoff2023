@@ -46,6 +46,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     private Animator _animator;
 
+    public AudioClip step;
+    public AudioClip jump;
+    public AudioClip dJump;
+    public AudioSource audioSource;
+
     //SliderDropVariables (DON'T TOUCH THESE PLZ RUBUS)
     [Header("Glider Variables")]
     public float glideSpeed = 80f;
@@ -62,6 +67,14 @@ public class PlayerMovementPlatforming : MonoBehaviour
         moveSpeed = groundSpeed;
         _animator = gameObject.GetComponent<Animator>();
         SBShuffleBoardScript.OnReturn += DestroySelf;
+    }
+
+    public void StepTaken()
+    {
+        if (isGrounded())
+        {
+            audioSource.PlayOneShot(step);
+        }
     }
 
     private void Start()
@@ -206,6 +219,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         // Checks if we are on the ground or we have doubleJump.
         if (isGrounded() || doubleJump)
         {
+            if (doubleJump) audioSource.PlayOneShot(dJump);
+            else audioSource.PlayOneShot(jump);
             _animator.SetBool("isJumping", true);
             rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
