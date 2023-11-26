@@ -21,3 +21,4 @@ MonoBehaviour:
   coverPrefab: {fileID: 0}
   gridBack: {fileID: 3122553728679645279, guid: 3354c19f539da8c49878b2ccae3673f8,
     type: 3}
+  backgroundMusic: {fileID: 8300000, guid: db2c6641d26fb9f418a7cb6038ca4b9e, type: 3}

@@ -42,21 +42,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Restart",
-                    "type": "Button",
-                    "id": "8f4038ab-3ba5-43c5-96ad-5510c5e148ab",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Hold(duration=1.5)",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Return",
                     "type": "Button",
                     "id": "57f09d66-83f6-430a-92f3-dba269c129e3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -190,28 +181,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Exit",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7f596b90-47e0-4da3-a634-9cda88eee47f",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Restart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dc65b207-ba70-4ba3-82b0-18b39888af58",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

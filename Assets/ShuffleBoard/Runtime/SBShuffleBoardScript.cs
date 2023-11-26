@@ -65,9 +65,7 @@ namespace SB.Runtime
         private int moving_elements = 0;
         private ModifierBase movement_source;
 
-        private ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
-
-        private GameObject playerObject;
+        public AudioSource bgMusicPlayer;
 
         private void Awake()
         {
@@ -128,10 +126,11 @@ namespace SB.Runtime
             doorPrefab = initialBoardData.doorPrefab;
             arrowPrefab = initialBoardData.arrowPrefab;
             coverPrefab = initialBoardData.coverPrefab;
+            bgMusicPlayer.clip = initialBoardData.backgroundMusic;
+            bgMusicPlayer.Play();
             CreateBoard();
             boardCamera = gameObject.transform.parent.GetComponent<Camera>();
             TurnOff(false);
-            controls.BoardControls.Restart.performed += ResetBoard;
         }
 
         #endregion
@@ -144,7 +143,6 @@ namespace SB.Runtime
 
         public void ResetBoard()
         {
-            OnReturn?.Invoke();
             PlayerMovementPlatforming.Health = 3;
             TurnOff(false);
             DestroyBoard();
@@ -227,6 +225,7 @@ namespace SB.Runtime
         }
         public void DestroyBoard()
         {
+            OnReturn?.Invoke();
             if (board_data.map_objects == null)
             {
                 return;

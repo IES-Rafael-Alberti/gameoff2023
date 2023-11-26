@@ -69,6 +69,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
         GroundKiwi();
     }
 
+    private void OnDestroy()
+    {
+        SBShuffleBoardScript.OnReturn -= DestroySelf;
+    }
+
     private void DestroySelf()
     {
         SBShuffleBoardScript.OnReturn -= DestroySelf;
@@ -94,12 +99,39 @@ public class PlayerMovementPlatforming : MonoBehaviour
         Vector3 move = new Vector3(moveVector.x * moveSpeed, rb.velocity.y, moveVector.z * moveSpeed);
         rb.velocity = move;
 
-        Vector3 movewSweep = new Vector3(moveVector.x * moveSpeed, 2f, moveVector.z * moveSpeed);
-        float distanceEstimate = movewSweep.magnitude * Time.fixedDeltaTime;
         RaycastHit hit;
-        if (WallScan.SweepTest(movewSweep, out hit, distanceEstimate))
+        if (WallScan.SweepTest(
+            new Vector3(Mathf.Sign(move.x), 0, 0), 
+            out hit, 
+            0.5f))
         {
-            if(hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))rb.velocity = new Vector3(0, rb.velocity.y, 0);
+            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
+            {
+                if (hit.distance < 0.4f){
+                    rb.velocity = new Vector3(-rb.velocity.x * 0.1f, rb.velocity.y, rb.velocity.z);
+                } else
+                {
+                    rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
+                }
+            }
+        }
+
+        if (WallScan.SweepTest(
+            new Vector3(0, 0, Mathf.Sign(move.z)),
+            out hit,
+            0.5f))
+        {
+            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
+            {
+                if (hit.distance < 0.4f)
+                {
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * 0.1f);
+                }
+                else
+                {
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
+                }
+            }
         }
 
         Vector3 moveDirection = new Vector3(moveVector.x * Time.deltaTime, 0.0f, moveVector.z * Time.deltaTime) * -1f;

@@ -371,11 +371,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShuffleBoardCamera
       objectReference: {fileID: 0}
-    - target: {fileID: 454060056517951579, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: m_RenderShadows
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1716024065494358990, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -425,61 +420,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: doorPrefab
-      value: 
-      objectReference: {fileID: 4671259406623487895, guid: 7d74bd23ba594b945a75335c505ece17,
-        type: 3}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: swapPeriod
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: arrowPrefab
-      value: 
-      objectReference: {fileID: 5932194427533229397, guid: f684bbe59217da2479496ad24c5bfc98,
-        type: 3}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: chosenLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: coverPrefab
-      value: 
-      objectReference: {fileID: 7641073756812802997, guid: 10dd42ca36eadcf4d8ffa902d9575033,
-        type: 3}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: initialBoardData
-      value: 
-      objectReference: {fileID: 11400000, guid: 8322035990277d5478f6240e1c67c29f,
-        type: 2}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: transitionPrefab
-      value: 
-      objectReference: {fileID: 7344174784634297418, guid: 7b63042b40c38f54393b7965d2087a6d,
-        type: 3}
-    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: useDirectBoardData
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5491359308743897710, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8781227551599412546, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

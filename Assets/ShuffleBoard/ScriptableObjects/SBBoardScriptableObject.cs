@@ -40,6 +40,7 @@ namespace SB.ScriptableObjects
         [SerializeField] public GameObject arrowPrefab;
         [SerializeField] public GameObject coverPrefab;
         [SerializeField] public GameObject gridBack;
+        [SerializeField] public AudioClip backgroundMusic;
         public BoardStruct Spawn(Vector3 grid_center, float grid_spacing, SBShuffleBoardScript controller = null, float zOffset = 0)
         {
             ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
