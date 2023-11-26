@@ -36,6 +36,9 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public float jumpForce = 5f;
     public GroundChecking groundCheck;
     public Rigidbody WallScan;
+    public float bounceSpeed = 0.1f;
+    public float wallDistance = 0.5f;
+    public float wallThreshold = 0.4f;
     public float groundSpeed = 15f;
 
     private bool doubleJump;
@@ -116,12 +119,13 @@ public class PlayerMovementPlatforming : MonoBehaviour
         if (WallScan.SweepTest(
             new Vector3(Mathf.Sign(move.x), 0, 0), 
             out hit, 
-            0.5f))
+            wallDistance))
         {
             if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
             {
-                if (hit.distance < 0.4f){
-                    rb.velocity = new Vector3(-rb.velocity.x * 0.1f, rb.velocity.y, rb.velocity.z);
+                if (hit.distance < wallThreshold)
+                {
+                    rb.velocity = new Vector3(-rb.velocity.x * bounceSpeed, rb.velocity.y, rb.velocity.z);
                 } else
                 {
                     rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
@@ -132,13 +136,13 @@ public class PlayerMovementPlatforming : MonoBehaviour
         if (WallScan.SweepTest(
             new Vector3(0, 0, Mathf.Sign(move.z)),
             out hit,
-            0.5f))
+            wallDistance))
         {
             if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
             {
-                if (hit.distance < 0.4f)
+                if (hit.distance < wallThreshold)
                 {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * 0.1f);
+                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * bounceSpeed);
                 }
                 else
                 {
@@ -166,7 +170,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
             _animator.SetBool("isFloating", false);
         }
 
-        if(moveVector == Vector3.zero)
+        if(moveVector == Vector3.zero || !isGrounded())
         {
             _animator.SetBool("isRunning", false);
         }
@@ -198,7 +202,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     //XZ Axis movement.
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
-        _animator.SetBool("isRunning", true);
+        _animator.SetBool("isRunning", isGrounded());
         moveVector = value.ReadValue<Vector3>();
     }
 

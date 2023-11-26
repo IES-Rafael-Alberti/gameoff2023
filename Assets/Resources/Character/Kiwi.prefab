@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 432348778491532240}
   - component: {fileID: 2868726172952508057}
   - component: {fileID: 4096141443777735419}
+  - component: {fileID: 2104430627751130944}
   m_Layer: 0
   m_Name: WallScan
   m_TagString: Untagged
@@ -143,10 +144,33 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 3.11, y: 3.66, z: 3.36}
   m_Center: {x: 0, y: 2.15, z: 0}
+--- !u!136 &2104430627751130944
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5878568690151533641}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.6562871
+  m_Height: 4.4629483
+  m_Direction: 1
+  m_Center: {x: -0.01226902, y: 2.0626047, z: -0.11342323}
 --- !u!1001 &4472359552986786844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,10 +360,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.236793
+  m_Radius: 1.3867583
   m_Height: 4.514446
   m_Direction: 1
-  m_Center: {x: 0, y: 1.3085701, z: 0.5248921}
+  m_Center: {x: 0, y: 1.3085701, z: 0.3749268}
 --- !u!114 &882428379333606146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +380,9 @@ MonoBehaviour:
   jumpForce: 75
   groundCheck: {fileID: 3518263697669327225}
   WallScan: {fileID: 2868726172952508057}
+  bounceSpeed: 0.4
+  wallDistance: 0.8
+  wallThreshold: 0.7
   groundSpeed: 12
   gravity: 20
   _isHolding: 0
