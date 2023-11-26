@@ -65,6 +65,8 @@ public class RotationModifierScript : ModifierBase
     {
         board_controller.MovementStarted(this);
 
+        board_controller.PlayRoomRotate();
+
         float starting_rotation = block.transform.rotation.eulerAngles.z;
         Vector3 starting_position = block.transform.position;
         float time_passed = 0;

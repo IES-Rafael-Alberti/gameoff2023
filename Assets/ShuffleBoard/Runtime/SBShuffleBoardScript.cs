@@ -66,6 +66,10 @@ namespace SB.Runtime
         private ModifierBase movement_source;
 
         public AudioSource bgMusicPlayer;
+        public AudioSource roomSoundEffects;
+        public AudioClip roomMove;
+        public AudioClip roomRotate;
+        public AudioClip error;
 
         private void Awake()
         {
@@ -77,6 +81,22 @@ namespace SB.Runtime
             if (useDirectBoardData) InstantiateAfterLoad();
             else LoadLevel(chosenLevel);
         }
+
+        #region Audio
+        public void PlayRoomMove()
+        {
+            roomSoundEffects.PlayOneShot(roomMove);
+        }
+        public void PlayRoomRotate()
+        {
+            roomSoundEffects.PlayOneShot(roomRotate);
+        }
+        public void PlayError()
+        {
+            roomSoundEffects.PlayOneShot(error);
+        }
+
+        #endregion
 
         private void NextLevel()
         {
@@ -172,6 +192,11 @@ namespace SB.Runtime
 
         public void Exit(InputAction.CallbackContext context)
         {
+            if(board_data.spawn_point.transform.rotation.eulerAngles.z > 10f)
+            {
+                PlayError();
+                return;
+            }
             if (MovementAllowed(null))
             {
                 TurnOff(true);
@@ -447,9 +472,12 @@ namespace SB.Runtime
 
             if (targetMovements.Count == 0)
             {
+                PlayError();
                 MovementStopped();
                 yield break;
             }
+
+            PlayRoomMove();
 
             bool movementFinished = false;
             while (!movementFinished)
