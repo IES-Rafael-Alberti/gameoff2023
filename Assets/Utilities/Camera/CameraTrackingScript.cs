@@ -19,7 +19,7 @@ public class CameraTrackingScript : MonoBehaviour
     void LateUpdate()
     {
         if (targetPlayer != null) {
-            transform.position = targetRoom.transform.position + Vector3.back * 35f + Vector3.up * 5;
+            transform.position = targetRoom.transform.position + Vector3.back * 35f + Vector3.up * 15f;
             transform.LookAt(targetPlayer.transform.position);
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, 0);
         }
