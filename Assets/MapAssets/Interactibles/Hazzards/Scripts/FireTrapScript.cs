@@ -14,10 +14,17 @@ public class FireTrapScript : MonoBehaviour
     public float WiggleTimeFront = 0.3f;
     public float WiggleTimeBack = 0.1f;
 
+    public AudioClip fireSound;
+    private AudioSource fireSource;
+
     private void Start()
     {
-        StartCoroutine(FlameLoop());
         DamageTrigger.SetActive(false);
+
+        fireSource = GetComponent<AudioSource>();
+        fireSource.clip = fireSound;
+
+        StartCoroutine(FlameLoop());
     }
 
     private void ToggleParticleSystemsTo(bool state)
@@ -39,9 +46,11 @@ public class FireTrapScript : MonoBehaviour
         while (true)
         {
             ToggleParticleSystemsTo(true);
+            fireSource.Play();
             yield return new WaitForSeconds(WiggleTimeFront);
             DamageTrigger.SetActive(true);
             yield return new WaitForSeconds(FireTime - WiggleTimeFront - WiggleTimeBack);
+            fireSource.Stop();
             DamageTrigger.SetActive(false);
             yield return new WaitForSeconds(WiggleTimeBack);
             ToggleParticleSystemsTo(false);

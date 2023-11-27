@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Rendering;
 
 public class PlayerMovementPlatforming : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public GroundChecking groundCheck;
     public Rigidbody WallScan;
     public float groundSpeed = 15f;
+    public float previousFallSpeed = 0f;
+    public ParticleSystem jumpPuff;
+    public ParticleSystem landPuff;
 
     private bool doubleJump;
     public float gravity;
@@ -74,7 +78,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     {
         if (isGrounded())
         {
-            audioSource.PlayOneShot(step);
+            PlayAudio(step, 1);
         }
     }
 
@@ -117,34 +121,30 @@ public class PlayerMovementPlatforming : MonoBehaviour
         if (WallScan.SweepTest(
             new Vector3(Mathf.Sign(move.x), 0, 0), 
             out hit, 
-            0.5f))
+            0.3f,
+            QueryTriggerInteraction.Ignore))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
+            if (hit.distance < 0.2f){
+                rb.velocity = new Vector3(-rb.velocity.x * 0.1f, rb.velocity.y, rb.velocity.z);
+            } else
             {
-                if (hit.distance < 0.4f){
-                    rb.velocity = new Vector3(-rb.velocity.x * 0.1f, rb.velocity.y, rb.velocity.z);
-                } else
-                {
-                    rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
-                }
+                rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
             }
         }
 
         if (WallScan.SweepTest(
             new Vector3(0, 0, Mathf.Sign(move.z)),
             out hit,
-            0.5f))
+            0.3f,
+            QueryTriggerInteraction.Ignore))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
+            if (hit.distance < 0.2f)
             {
-                if (hit.distance < 0.4f)
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * 0.1f);
-                }
-                else
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
-                }
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * 0.1f);
+            }
+            else
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
             }
         }
 
@@ -171,6 +171,13 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             _animator.SetBool("isRunning", false);
         }
+
+        if (rb.velocity.y > previousFallSpeed + 2f && isGrounded())
+        {
+            landPuff.Play();
+            Invoke("StopPuff", 0.5f);
+        }
+        previousFallSpeed = rb.velocity.y;
     }
 
     private void GroundKiwi()
@@ -220,8 +227,10 @@ public class PlayerMovementPlatforming : MonoBehaviour
         // Checks if we are on the ground or we have doubleJump.
         if (isGrounded() || doubleJump)
         {
-            if (doubleJump) audioSource.PlayOneShot(dJump);
-            else audioSource.PlayOneShot(jump);
+            jumpPuff.Play();
+            Invoke("StopPuff", 0.5f);
+            if (doubleJump) PlayAudio(dJump, 0.2f);
+            else PlayAudio(jump, 0.1f);
             _animator.SetBool("isJumping", true);
             rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -229,6 +238,24 @@ public class PlayerMovementPlatforming : MonoBehaviour
             // We disable doubleJump.
             doubleJump = !doubleJump;
         }
+    }
+
+    public void WingFlap()
+    {
+        PlayAudio(dJump, 0.15f);
+    }
+
+    private void PlayAudio(AudioClip clip, float volume)
+    {
+        audioSource.volume = volume;
+        audioSource.PlayOneShot(clip);
+    }
+
+
+    private void StopPuff()
+    {
+        landPuff.Stop();
+        jumpPuff.Stop();
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
@@ -261,7 +288,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     {
         if (!invulnerable)
         {
-            audioSource.PlayOneShot(hurt);
+            PlayAudio(hurt, 1.0f);
             Health--;
             StartCoroutine(IFrames());
         }

@@ -10,6 +10,7 @@ public class KeyScript : MonoBehaviour
     public delegate void KeyCallback();
     public static event KeyCallback OnCollected;
 
+    public AudioClip pickupSound;
 
     // Start is called before the first frame update
     private GameObject startingEmpty;
@@ -28,6 +29,7 @@ public class KeyScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnCollected?.Invoke();
+            CentralSoundEffect.PlaySound(pickupSound);
             transform.parent.gameObject.SetActive(false);
         }
     }
