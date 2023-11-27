@@ -940,7 +940,7 @@ PrefabInstance:
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: chosenLevel
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
@@ -958,6 +958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: useChapterSystem
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313903231895014520, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.161
       objectReference: {fileID: 0}
     - target: {fileID: 5906652986055615365, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
@@ -977,7 +982,7 @@ PrefabInstance:
     - target: {fileID: 6117236288509839658, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: m_Volume
-      value: 0.156
+      value: 0.094
       objectReference: {fileID: 0}
     - target: {fileID: 8781227551599412546, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}

@@ -16,6 +16,7 @@ namespace SB.ScriptableObjects
         public GameObject[,] modifier_objects;
         public GameObject spawn_point;
         public GameObject grid;
+        public SBBoardScriptableObject raw_data;
 
         public BoardStruct(int rows, int cols)
         {
@@ -24,6 +25,7 @@ namespace SB.ScriptableObjects
             empty_positions = new List<Vector2Int>();
             spawn_point = null;
             grid = null;
+            raw_data = null;
         }
     }
 
@@ -36,11 +38,17 @@ namespace SB.ScriptableObjects
         [HideInInspector]
         [SerializeField] public SBCubeScriptableObject[] boardGrid;
         [SerializeField] public GameObject[] modifierGrid;
+        [Header("Door Info")]
+        [SerializeField] public float doorDepth = 0f;
+        [SerializeField] public float doorGapHorizontal = 17.73f;
+        [SerializeField] public float doorGapVertical = 17.73f;
+        [Header("Prefabs")]
         [SerializeField] public GameObject doorPrefab;
         [SerializeField] public GameObject arrowPrefab;
         [SerializeField] public GameObject coverPrefab;
         [SerializeField] public GameObject gridBack;
         [SerializeField] public AudioClip backgroundMusic;
+        [SerializeField] public float cameraProjectionSize = 125;
         public BoardStruct Spawn(Vector3 grid_center, float grid_spacing, SBShuffleBoardScript controller = null, float zOffset = 0)
         {
             ArrayFlattener<SBCubeScriptableObject> flattener = new ArrayFlattener<SBCubeScriptableObject>();
@@ -49,6 +57,7 @@ namespace SB.ScriptableObjects
             GameObject[,] gbGrid = gbFlattener.Unflatten(modifierGrid, rows, cols);
             BoardStruct board_data = new BoardStruct(rows, cols);
 
+            board_data.raw_data = this;
             board_data.grid = Instantiate(gridBack, grid_center + Vector3.forward * 52f, Quaternion.identity);
 
             for (int row = 0; row < rows; row++)

@@ -34,6 +34,9 @@ MonoBehaviour:
   - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
   - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
   - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
+  doorDepth: 0
+  doorGapHorizontal: 17.73
+  doorGapVertical: 17.73
   doorPrefab: {fileID: 1080075605029403527, guid: fad8e4659a6873b46a93079b7138f15b,
     type: 3}
   arrowPrefab: {fileID: 5932194427533229397, guid: f684bbe59217da2479496ad24c5bfc98,
@@ -43,3 +46,4 @@ MonoBehaviour:
   gridBack: {fileID: 4185795852793224063, guid: 8c31e4b928dc3c44c9ec1f383e582c57,
     type: 3}
   backgroundMusic: {fileID: 8300000, guid: 732b5686f5d855e429a8cb9513716ca0, type: 3}
+  cameraProjectionSize: 100

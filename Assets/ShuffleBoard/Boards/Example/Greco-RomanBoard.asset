@@ -40,7 +40,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  doorPrefab: {fileID: 4671259406623487895, guid: 7d74bd23ba594b945a75335c505ece17,
+  doorDepth: 0
+  doorGapHorizontal: 17.73
+  doorGapVertical: 17.73
+  doorPrefab: {fileID: 4671259406623487895, guid: b8d2b22c047405c49ac73cd656206046,
     type: 3}
   arrowPrefab: {fileID: 5932194427533229397, guid: d3a8a3b6174f7944389cf582d713195a,
     type: 3}

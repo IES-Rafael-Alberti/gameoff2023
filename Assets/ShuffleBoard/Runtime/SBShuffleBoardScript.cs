@@ -149,7 +149,7 @@ namespace SB.Runtime
             bgMusicPlayer.clip = initialBoardData.backgroundMusic;
             bgMusicPlayer.Play();
             CreateBoard();
-            boardCamera = gameObject.transform.parent.GetComponent<Camera>();
+            boardCamera.orthographicSize = board_data.raw_data.cameraProjectionSize;
             TurnOff(false);
         }
 
@@ -638,37 +638,61 @@ namespace SB.Runtime
 
         private void CreateDoorTop(GameObject targetBlock)
         {
+            float gap_value = 0;
+            float parent_rotation = targetBlock.transform.rotation.eulerAngles.z;
+            if ((parent_rotation > 45 && parent_rotation < 135) || (parent_rotation < 315 && parent_rotation > 225))
+                gap_value = board_data.raw_data.doorGapHorizontal;
+            else
+                gap_value = board_data.raw_data.doorGapVertical;
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
                 doorPrefab,
-                targetBlock.transform.position + Vector3.up * 17.73f,
+                targetBlock.transform.position + Vector3.up * gap_value + Vector3.forward * board_data.raw_data.doorDepth,
                 Quaternion.Euler(0, 0, 90)
                 ));
         }
         private void CreateDoorBottom(GameObject targetBlock)
         {
+            float gap_value = 0;
+            float parent_rotation = targetBlock.transform.rotation.eulerAngles.z;
+            if ((parent_rotation > 45 && parent_rotation < 135) || (parent_rotation < 315 && parent_rotation > 225))
+                gap_value = board_data.raw_data.doorGapHorizontal;
+            else
+                gap_value = board_data.raw_data.doorGapVertical;
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
                 doorPrefab,
-                targetBlock.transform.position + Vector3.down * 17.73f,
+                targetBlock.transform.position + Vector3.down * gap_value + Vector3.forward * board_data.raw_data.doorDepth,
                 Quaternion.Euler(0, 0, -90)
                 ));
         }
         private void CreateDoorRight(GameObject targetBlock)
         {
+            float gap_value = 0;
+            float parent_rotation = targetBlock.transform.rotation.eulerAngles.z;
+            if ((parent_rotation > 45 && parent_rotation < 135) || (parent_rotation < 315 && parent_rotation > 225))
+                gap_value = board_data.raw_data.doorGapVertical;
+            else
+                gap_value = board_data.raw_data.doorGapHorizontal;
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
                 doorPrefab,
-                targetBlock.transform.position + Vector3.right * 17.73f,
+                targetBlock.transform.position + Vector3.right * gap_value + Vector3.forward * board_data.raw_data.doorDepth,
                 Quaternion.Euler(0, 0, 0)
                 ));
         }
         private void CreateDoorLeft(GameObject targetBlock)
         {
+            float gap_value = 0;
+            float parent_rotation = targetBlock.transform.rotation.eulerAngles.z;
+            if ((parent_rotation > 45 && parent_rotation < 135) || (parent_rotation < 315 && parent_rotation > 225))
+                gap_value = board_data.raw_data.doorGapVertical;
+            else
+                gap_value = board_data.raw_data.doorGapHorizontal;
             if (targetBlock.GetComponent<CubeScript>().empty) return;
             doors.Add(Instantiate(
                 doorPrefab,
-                targetBlock.transform.position + Vector3.left * 17.73f,
+                targetBlock.transform.position + Vector3.left * gap_value + Vector3.forward * board_data.raw_data.doorDepth,
                 Quaternion.Euler(0, 0, -180)
                 ));
         }
