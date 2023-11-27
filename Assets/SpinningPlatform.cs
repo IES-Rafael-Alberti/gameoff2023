@@ -5,6 +5,13 @@ using UnityEngine;
 public class SpinningPlatform : MonoBehaviour
 {
     private float y;
+    private float x;
+
+    void Start()
+    {
+        x = transform.localRotation.eulerAngles.x;
+        y = transform.localRotation.eulerAngles.y;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -15,6 +22,6 @@ public class SpinningPlatform : MonoBehaviour
         {
             y = 0f;
         }
-    transform.localRotation = Quaternion.Euler(-90, y, 0);
+    transform.localRotation = Quaternion.Euler(x, y, 0);
     }
 }

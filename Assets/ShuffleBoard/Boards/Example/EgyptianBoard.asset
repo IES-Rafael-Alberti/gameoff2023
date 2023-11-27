@@ -12,22 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62d1f54dc052e44dba83db53438578d, type: 3}
   m_Name: EgyptianBoard
   m_EditorClassIdentifier: 
-  rows: 2
+  rows: 3
   cols: 3
   boardGrid:
+  - {fileID: 11400000, guid: 310d0d016845a224fa92ee26024cb110, type: 2}
+  - {fileID: 11400000, guid: c987bf01f16682749a4734b6bdf6a342, type: 2}
+  - {fileID: 11400000, guid: c1bb789ae5b93994fa5fc446e23bd045, type: 2}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
   - {fileID: 11400000, guid: d9e9421a7fa66454d9c9dbe99f66e338, type: 2}
   - {fileID: 11400000, guid: 52291891471f177469d1f17b8ad6cb4f, type: 2}
   - {fileID: 11400000, guid: c1bb789ae5b93994fa5fc446e23bd045, type: 2}
-  - {fileID: 11400000, guid: 310d0d016845a224fa92ee26024cb110, type: 2}
+  - {fileID: 11400000, guid: c987bf01f16682749a4734b6bdf6a342, type: 2}
   - {fileID: 11400000, guid: c1bb789ae5b93994fa5fc446e23bd045, type: 2}
-  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
   modifierGrid:
-  - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
   - {fileID: 0}
   - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
-  - {fileID: 0}
+  - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
+  - {fileID: 45933607860109476, guid: 3273938237d3d784584bc90353b696cd, type: 3}
   doorPrefab: {fileID: 1080075605029403527, guid: fad8e4659a6873b46a93079b7138f15b,
     type: 3}
   arrowPrefab: {fileID: 5932194427533229397, guid: f684bbe59217da2479496ad24c5bfc98,
