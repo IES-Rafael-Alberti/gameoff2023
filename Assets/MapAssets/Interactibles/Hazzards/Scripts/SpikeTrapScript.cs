@@ -10,6 +10,8 @@ public class SpikeTrapScript : MonoBehaviour
     public float upPeriod = 1f;
     public float downPeriod = 3f;
 
+    public AudioClip slice;
+
     private void Start()
     {
         StartCoroutine(StabLoop());
@@ -20,6 +22,7 @@ public class SpikeTrapScript : MonoBehaviour
         float timePassed = 0;
         while (true)
         {
+            GetComponent<AudioSource>().PlayOneShot(slice);
             while (timePassed < upPeriod) {
                 damageTrigger.SetActive(true);
                 spike.transform.localPosition = Vector3.MoveTowards(spike.transform.localPosition, Vector3.zero, Time.deltaTime*75f);

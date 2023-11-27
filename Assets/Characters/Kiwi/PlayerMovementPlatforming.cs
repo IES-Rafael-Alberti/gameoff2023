@@ -37,6 +37,9 @@ public class PlayerMovementPlatforming : MonoBehaviour
     public GroundChecking groundCheck;
     public Rigidbody WallScan;
     public float groundSpeed = 15f;
+    public float previousFallSpeed = 0f;
+    public ParticleSystem jumpPuff;
+    public ParticleSystem landPuff;
 
     private bool doubleJump;
     public float gravity;
@@ -167,6 +170,13 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             _animator.SetBool("isRunning", false);
         }
+
+        if (rb.velocity.y > previousFallSpeed + 2f && isGrounded())
+        {
+            landPuff.Play();
+            Invoke("StopPuff", 0.5f);
+        }
+        previousFallSpeed = rb.velocity.y;
     }
 
     private void GroundKiwi()
@@ -216,6 +226,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         // Checks if we are on the ground or we have doubleJump.
         if (isGrounded() || doubleJump)
         {
+            jumpPuff.Play();
+            Invoke("StopPuff", 0.5f);
             if (doubleJump) audioSource.PlayOneShot(dJump);
             else audioSource.PlayOneShot(jump);
             _animator.SetBool("isJumping", true);
@@ -225,6 +237,12 @@ public class PlayerMovementPlatforming : MonoBehaviour
             // We disable doubleJump.
             doubleJump = !doubleJump;
         }
+    }
+
+    private void StopPuff()
+    {
+        landPuff.Stop();
+        jumpPuff.Stop();
     }
 
     private void OnJumpCancelled(InputAction.CallbackContext value)
