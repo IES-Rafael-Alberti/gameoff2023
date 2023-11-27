@@ -939,6 +939,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: chosenLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: coverPrefab
       value: 
       objectReference: {fileID: 1461764134944218774, guid: 37f44d7c56b53b643b2183329b6f47f2,

@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Rendering;
 
 public class PlayerMovementPlatforming : MonoBehaviour
 {
@@ -77,7 +78,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     {
         if (isGrounded())
         {
-            audioSource.PlayOneShot(step);
+            PlayAudio(step, 1);
         }
     }
 
@@ -228,8 +229,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             jumpPuff.Play();
             Invoke("StopPuff", 0.5f);
-            if (doubleJump) audioSource.PlayOneShot(dJump);
-            else audioSource.PlayOneShot(jump);
+            if (doubleJump) PlayAudio(dJump, 0.2f);
+            else PlayAudio(jump, 0.1f);
             _animator.SetBool("isJumping", true);
             rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -238,6 +239,18 @@ public class PlayerMovementPlatforming : MonoBehaviour
             doubleJump = !doubleJump;
         }
     }
+
+    public void WingFlap()
+    {
+        PlayAudio(dJump, 0.15f);
+    }
+
+    private void PlayAudio(AudioClip clip, float volume)
+    {
+        audioSource.volume = volume;
+        audioSource.PlayOneShot(clip);
+    }
+
 
     private void StopPuff()
     {
@@ -275,7 +288,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     {
         if (!invulnerable)
         {
-            audioSource.PlayOneShot(hurt);
+            PlayAudio(hurt, 1.0f);
             Health--;
             StartCoroutine(IFrames());
         }
