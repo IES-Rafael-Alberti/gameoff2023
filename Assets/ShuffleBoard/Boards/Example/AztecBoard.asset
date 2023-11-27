@@ -12,12 +12,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b62d1f54dc052e44dba83db53438578d, type: 3}
   m_Name: AztecBoard
   m_EditorClassIdentifier: 
-  rows: 0
-  cols: 0
-  boardGrid: []
-  modifierGrid: []
-  doorPrefab: {fileID: 0}
-  arrowPrefab: {fileID: 0}
+  rows: 5
+  cols: 5
+  boardGrid:
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  - {fileID: 11400000, guid: e8a16f610bf86fe4282bb1a726f2221f, type: 2}
+  - {fileID: 11400000, guid: 3f5626db0ed1958419ac5f1d8d92c7d0, type: 2}
+  - {fileID: 11400000, guid: d3d848d47db608243be6dd46bebc618b, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  - {fileID: 11400000, guid: d15e538143687e74195eb007f48b17ce, type: 2}
+  - {fileID: 11400000, guid: fd02d62cc05008441ab230901edd33e3, type: 2}
+  - {fileID: 11400000, guid: e11361bcff5dc61429970ae551725f85, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  - {fileID: 11400000, guid: 797b9c6d421f3b341a573e2644cbf938, type: 2}
+  - {fileID: 11400000, guid: 0bef1f76fee90e94e88bbfb316efb515, type: 2}
+  - {fileID: 11400000, guid: 4acaee9c5a221de4da019f68bac7592b, type: 2}
+  - {fileID: 11400000, guid: 4acaee9c5a221de4da019f68bac7592b, type: 2}
+  - {fileID: 11400000, guid: 797b9c6d421f3b341a573e2644cbf938, type: 2}
+  - {fileID: 11400000, guid: bac45642556901b47bce180a06466327, type: 2}
+  - {fileID: 11400000, guid: e11361bcff5dc61429970ae551725f85, type: 2}
+  - {fileID: 11400000, guid: 797b9c6d421f3b341a573e2644cbf938, type: 2}
+  - {fileID: 11400000, guid: cef0ade5c6bcab64dae9181850657e35, type: 2}
+  - {fileID: 11400000, guid: c88b9f2daab9a894f997e020e7307ab2, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  - {fileID: 11400000, guid: 91a4caa0bbed08148890bedba64271f1, type: 2}
+  - {fileID: 11400000, guid: 5270b7c0ae8c5e14cbb453c1fb902b33, type: 2}
+  - {fileID: 11400000, guid: 9dc35b86f8dfa4f4c996e4c845a7091a, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  modifierGrid:
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 45933607860109476, guid: 7ab79046a6cb41f4795d4dbcad56dbb4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 45933607860109476, guid: 7ab79046a6cb41f4795d4dbcad56dbb4, type: 3}
+  - {fileID: 0}
+  - {fileID: 45933607860109476, guid: 7ab79046a6cb41f4795d4dbcad56dbb4, type: 3}
+  - {fileID: 0}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  doorPrefab: {fileID: 4671259406623487895, guid: b8d2b22c047405c49ac73cd656206046,
+    type: 3}
+  arrowPrefab: {fileID: 5932194427533229397, guid: b221ea2de6bd2cb48bf38d641d37b4c2,
+    type: 3}
   coverPrefab: {fileID: 0}
   gridBack: {fileID: 3122553728679645279, guid: 3354c19f539da8c49878b2ccae3673f8,
     type: 3}
