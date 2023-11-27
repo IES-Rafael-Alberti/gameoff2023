@@ -117,34 +117,30 @@ public class PlayerMovementPlatforming : MonoBehaviour
         if (WallScan.SweepTest(
             new Vector3(Mathf.Sign(move.x), 0, 0), 
             out hit, 
-            0.5f))
+            0.3f,
+            QueryTriggerInteraction.Ignore))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
+            if (hit.distance < 0.2f){
+                rb.velocity = new Vector3(-rb.velocity.x * 0.1f, rb.velocity.y, rb.velocity.z);
+            } else
             {
-                if (hit.distance < 0.4f){
-                    rb.velocity = new Vector3(-rb.velocity.x * 0.1f, rb.velocity.y, rb.velocity.z);
-                } else
-                {
-                    rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
-                }
+                rb.velocity = new Vector3(0, rb.velocity.y, rb.velocity.z);
             }
         }
 
         if (WallScan.SweepTest(
             new Vector3(0, 0, Mathf.Sign(move.z)),
             out hit,
-            0.5f))
+            0.3f,
+            QueryTriggerInteraction.Ignore))
         {
-            if (hit.collider.gameObject.layer != LayerMask.NameToLayer("TriggerLayer"))
+            if (hit.distance < 0.2f)
             {
-                if (hit.distance < 0.4f)
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * 0.1f);
-                }
-                else
-                {
-                    rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
-                }
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, -rb.velocity.z * 0.1f);
+            }
+            else
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
             }
         }
 
