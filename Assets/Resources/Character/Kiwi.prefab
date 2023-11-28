@@ -139,7 +139,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -1237,6 +1237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e24482fb85c27343a2f8e64e9f64a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasBrain: 1
   invulnerabilityLength: 2
   jumpForce: 85
   groundCheck: {fileID: 3518263697669327225}

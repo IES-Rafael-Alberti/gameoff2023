@@ -32,7 +32,6 @@ namespace SB.Runtime
 
         private PlatformingControls controls;
 
-        public Level chosenLevel = Level.Egyptian;
         private AsyncOperationHandle<SBBoardScriptableObject> handle;
 
         public bool useDirectBoardData = false;
@@ -75,11 +74,8 @@ namespace SB.Runtime
         {
             controls = new PlatformingControls();
             controls.Enable();
+            boardCamera.enabled = false;
             PlayerMovementPlatforming.OnDeath += Die;
-            LockScript.OnLevelComplete += NextLevel;
-
-            if (useDirectBoardData) InstantiateAfterLoad();
-            else LoadLevel(chosenLevel);
         }
 
         #region Audio
@@ -98,25 +94,8 @@ namespace SB.Runtime
 
         #endregion
 
-        private void NextLevel()
-        {
-            switch (chosenLevel)
-            {
-                case Level.Aztec:
-                    chosenLevel = Level.Egyptian;
-                    break;
-                case Level.Egyptian:
-                    chosenLevel = Level.Greek;
-                    break;
-                case Level.Greek:
-                    chosenLevel = Level.Egyptian;
-                    break;
-            }
-            LoadLevel(chosenLevel);
-        }
-
         #region Loading
-        private void LoadLevel(Level chosenLevel)
+        public void LoadLevel(Level chosenLevel)
         {
             switch (chosenLevel)
             {
@@ -205,8 +184,11 @@ namespace SB.Runtime
 
         private void Return(InputAction.CallbackContext context)
         {
-            OnReturn?.Invoke();
-            TurnOn();
+            if (RoomTransitionScript.enabled)
+            {
+                OnReturn?.Invoke();
+                TurnOn();
+            }
         }
 
         public void TurnOff(bool dropKiwi)

@@ -13,6 +13,8 @@ public class RotationModifierScript : ModifierBase
     public float sink_period;
     public float rotation_period;
 
+    private bool rotating = false;
+
     private void Awake()
     {
         controls = new PlatformingControls();
@@ -42,6 +44,7 @@ public class RotationModifierScript : ModifierBase
     }
     public void RotateBlock(bool clockwise)
     {
+        if (rotating) return;
         GameObject target = targets[0];
         if (target == null) return;
         CubeScript target_data = target.GetComponent<CubeScript>();
@@ -63,6 +66,7 @@ public class RotationModifierScript : ModifierBase
 
     IEnumerator RotateBlock(GameObject block, float rotation_amount)
     {
+        rotating = true;
         board_controller.MovementStarted(this);
 
         board_controller.PlayRoomRotate();
@@ -106,6 +110,7 @@ public class RotationModifierScript : ModifierBase
 
 
         board_controller.MovementStopped();
+        rotating = false;
         yield break;
     }
 

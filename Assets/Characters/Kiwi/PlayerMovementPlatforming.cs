@@ -2,6 +2,7 @@ using SB.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
@@ -9,6 +10,7 @@ using UnityEngine.Rendering;
 
 public class PlayerMovementPlatforming : MonoBehaviour
 {
+    public bool hasBrain = true;
     public delegate void DeathCallback();
     public static event DeathCallback OnDeath;
     public delegate void HealthCallback(int newHealth);
@@ -69,14 +71,21 @@ public class PlayerMovementPlatforming : MonoBehaviour
     {
         input = new PlatformingControls();
         rb = GetComponent<Rigidbody>();
-        moveSpeed = groundSpeed;
-        _animator = gameObject.GetComponent<Animator>();
-        SBShuffleBoardScript.OnReturn += DestroySelf;
+        if (hasBrain)
+        {
+            moveSpeed = groundSpeed;
+            _animator = gameObject.GetComponent<Animator>();
+            SBShuffleBoardScript.OnReturn += DestroySelf;
+        }
+        else
+        {
+            rb.isKinematic = true;
+        }
     }
 
     public void StepTaken()
     {
-        if (isGrounded())
+        if (isGrounded() || !hasBrain)
         {
             PlayAudio(step, 1);
         }
@@ -84,7 +93,10 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     private void Start()
     {
-        GroundKiwi();
+        if (hasBrain)
+        {
+            GroundKiwi();
+        }
     }
 
     private void OnDestroy()
@@ -99,16 +111,21 @@ public class PlayerMovementPlatforming : MonoBehaviour
     }
     private void OnEnable()
     {
-        input.Enable();
-        EnableNormalControls();
+        if (hasBrain)
+        {
+            input.Enable();
+            EnableNormalControls();
+        }
     }
 
     private void FixedUpdate()
     {
-        rb.angularVelocity = Vector3.zero;
-        rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y, 0);
+        if (hasBrain) {
+            rb.angularVelocity = Vector3.zero;
+            rb.rotation = Quaternion.Euler(0, rb.rotation.eulerAngles.y, 0);
 
-        NormalUpdate(); //Where your old code went.
+            NormalUpdate(); //Where your old code went.
+        }
     }
 
     //This is your old update function Rubus.
