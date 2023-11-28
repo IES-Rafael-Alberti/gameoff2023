@@ -93,7 +93,6 @@ public class BoxScript : MonoBehaviour
         kiwiAnimations.SetBool("isRunning", false);
         while (Quaternion.Angle(mainBox.transform.localRotation, Quaternion.Euler(new Vector3(0, 0, neededRotation))) > 0.1f)
         {
-            Debug.Log(Mathf.Abs(mainBox.transform.localRotation.eulerAngles.z - neededRotation));
             mainBox.transform.localRotation = Quaternion.Lerp(mainBox.transform.localRotation, Quaternion.Euler(new Vector3(0, 0, neededRotation)), 5f*Time.deltaTime);
             yield return null;
         }
