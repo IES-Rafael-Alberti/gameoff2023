@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class BoxScript : MonoBehaviour
 {
@@ -26,6 +27,10 @@ public class BoxScript : MonoBehaviour
 
     private Vector3 resetCameraPosition;
     private Quaternion resetCameraRotation;
+
+    public GameObject victoryReference;
+
+    public GameObject credits;
 
     private void Start()
     {
@@ -62,18 +67,18 @@ public class BoxScript : MonoBehaviour
     {
         switch (currentLevel)
         {
-            case Level.Aztec:
-                currentLevel = Level.Egyptian;
-                break;
             case Level.Egyptian:
                 currentLevel = Level.Greek;
                 break;
             case Level.Greek:
                 currentLevel = Level.Aztec;
                 break;
+            case Level.Aztec:
+                currentLevel = Level.Egyptian;
+                StartCoroutine(CloseBoard(true));
+                return;
         }
         StartCoroutine(CloseBoard());
-
     }
 
     public void LoadLevel()
@@ -87,6 +92,13 @@ public class BoxScript : MonoBehaviour
         levelController.DestroyBoard();
         cutsceneCamera.gameObject.GetComponent<AudioListener>().enabled = true;
     }
+
+    public void OpenBox()
+    {
+
+    }
+
+
 
     IEnumerator RAndOHelper()
     {
@@ -120,7 +132,7 @@ public class BoxScript : MonoBehaviour
         cutsceneCamera.enabled = false;
     }
 
-    IEnumerator CloseBoard()
+    IEnumerator CloseBoard(bool endGame = false)
     {
         cutsceneCamera.transform.position = levelController.characterCamera.gameObject.transform.position;
         cutsceneCamera.transform.rotation = levelController.characterCamera.gameObject.transform.rotation;
@@ -145,6 +157,39 @@ public class BoxScript : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        RotateAndOpen();
+        if (!endGame)
+        {
+            RotateAndOpen();
+            yield break;
+        }
+        animator.Play("OpenBox", 0, 0f);
+        animator.SetBool("Loop", false);
+
+        Vector3 ccCameraPos = cutsceneCamera.transform.position;
+        Vector3 goalPosition = new Vector3(ccCameraPos.x, victoryReference.transform.position.y + 200f, ccCameraPos.z);
+        distance = Vector3.Distance(goalPosition, cutsceneCamera.transform.position);
+        while(distance > 1f)
+        {
+            cutsceneCamera.transform.position = Vector3.MoveTowards(cutsceneCamera.transform.position, goalPosition, 400f * Time.deltaTime);
+
+            Vector3 direction = victoryReference.transform.position - cutsceneCamera.transform.position;
+
+            // Calculate the rotation to look at the target
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            // Use Quaternion.RotateTowards to smoothly rotate towards the target
+            cutsceneCamera.transform.rotation = Quaternion.RotateTowards(cutsceneCamera.transform.rotation, targetRotation, 25f * Time.deltaTime);
+
+            yield return null;
+            distance = Vector3.Distance(goalPosition, cutsceneCamera.transform.position);
+        }
+
+        credits.SetActive(true);
+        cutsceneCamera.transform.parent = victoryReference.transform;
+        while (true)
+        {
+            victoryReference.transform.Rotate(-Vector3.forward * 5f * Time.deltaTime);
+            yield return null;
+        }
     }
 }

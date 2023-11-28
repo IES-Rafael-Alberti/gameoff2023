@@ -2,6 +2,7 @@ using SB.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ButtonScript;
 using static UnityEngine.GraphicsBuffer;
 
 public class DartProjectileScript : MonoBehaviour
@@ -31,7 +32,11 @@ public class DartProjectileScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("A");
+        ButtonScript bScript = other.gameObject.GetComponent<ButtonScript>();
+        if (bScript != null)
+        {
+            bScript.ButtonPressed();
+        }
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerMovementPlatforming>().Damage();

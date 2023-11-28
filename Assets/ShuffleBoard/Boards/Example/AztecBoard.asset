@@ -36,14 +36,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cef0ade5c6bcab64dae9181850657e35, type: 2}
   - {fileID: 11400000, guid: c88b9f2daab9a894f997e020e7307ab2, type: 2}
   - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
-  - {fileID: 11400000, guid: 91a4caa0bbed08148890bedba64271f1, type: 2}
-  - {fileID: 11400000, guid: 5270b7c0ae8c5e14cbb453c1fb902b33, type: 2}
-  - {fileID: 11400000, guid: 9dc35b86f8dfa4f4c996e4c845a7091a, type: 2}
+  - {fileID: 11400000, guid: 48408d26131a21b46b2ef9de29d36b68, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
+  - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
   - {fileID: 11400000, guid: 17454c7fd4a489c4eaf23f19dee829d4, type: 2}
   modifierGrid:
   - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
   - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
-  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 0}
   - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
   - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
   - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
@@ -56,15 +56,15 @@ MonoBehaviour:
   - {fileID: 45933607860109476, guid: 7ab79046a6cb41f4795d4dbcad56dbb4, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
   - {fileID: 45933607860109476, guid: 7ab79046a6cb41f4795d4dbcad56dbb4, type: 3}
   - {fileID: 0}
   - {fileID: 45933607860109476, guid: 7ab79046a6cb41f4795d4dbcad56dbb4, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
   - {fileID: 0}
-  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
-  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
-  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
-  - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11695941794523190, guid: bfb9203b868ef294f927235daee9c2ec, type: 3}
   doorDepth: -1.16
   doorGapHorizontal: 14.41

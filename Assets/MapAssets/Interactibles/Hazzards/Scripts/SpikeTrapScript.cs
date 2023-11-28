@@ -32,7 +32,7 @@ public class SpikeTrapScript : MonoBehaviour
             timePassed = 0;
             while (timePassed < downPeriod) {
                 damageTrigger.SetActive(false);
-                spike.transform.localPosition = Vector3.MoveTowards(spike.transform.localPosition, -transform.up * 19f, Time.deltaTime * 50f);
+                spike.transform.localPosition = Vector3.MoveTowards(spike.transform.localPosition, -Vector3.up * 19f, Time.deltaTime * 50f);
                 yield return null;
                 timePassed += Time.deltaTime;
             }

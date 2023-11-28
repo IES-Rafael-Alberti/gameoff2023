@@ -18,6 +18,12 @@ public class ButtonScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Ground")) return;
+        ButtonPressed();
+    }
+
+    public void ButtonPressed()
+    {
         if (!aSource.isPlaying)
         {
             aSource.PlayOneShot(press);

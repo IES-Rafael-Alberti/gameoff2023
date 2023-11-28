@@ -184,7 +184,7 @@ namespace SB.Runtime
 
         private void Return(InputAction.CallbackContext context)
         {
-            if (RoomTransitionScript.enabled)
+            if (RoomTransitionScript.warpEnabled)
             {
                 OnReturn?.Invoke();
                 TurnOn();

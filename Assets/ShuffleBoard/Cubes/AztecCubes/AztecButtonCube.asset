@@ -16,9 +16,9 @@ MonoBehaviour:
   start: 0
   rotation: 0
   masked: 1
-  locked: 1
+  locked: 0
   empty: 0
   doorOnLeft: 1
-  doorOnRight: 1
+  doorOnRight: 0
   doorOnTop: 0
   doorOnBottom: 0
