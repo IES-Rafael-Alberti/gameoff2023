@@ -160,6 +160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MayanTrapPiston
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0bfec05ccaca75045b21586d6a2d66dd,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -348,6 +353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MayanGear (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8106830737573565464, guid: ee30ae54ebaa6d24ea1b7266aeac84db,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -441,6 +451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MayanGear
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106830737573565464, guid: ee30ae54ebaa6d24ea1b7266aeac84db,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -536,6 +551,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MayanVase (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4698ed1220a86543a3db5e7e08a7609,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -609,6 +629,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MayanTrapPedestalBase
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 39aeb168d8bb9c046bff7a998d4a6260,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -741,6 +766,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 4578889082696995248, guid: 8465c3550ee2185408fd3dbf7bc401e0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -819,6 +849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MayanCrystalSkull
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a9a941bd2bf8f1049b4dd830e96cfa1f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1039,6 +1074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MayanVase
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4698ed1220a86543a3db5e7e08a7609,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1415,6 +1455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MayanRoomDeadEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2753c42cfde5b2d4f82f7af5a383c5fe,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
