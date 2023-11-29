@@ -24,4 +24,16 @@ public class SpinningPlatform : MonoBehaviour
         }
     transform.localRotation = Quaternion.Euler(x, y, 0);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.gameObject.transform.parent = transform;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player")){
+            collision.gameObject.transform.parent = null;
+        }
+    }
 }
