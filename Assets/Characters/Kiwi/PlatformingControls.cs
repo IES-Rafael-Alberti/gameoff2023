@@ -77,28 +77,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""7d475467-7ffc-4bc7-8582-f7b78cae7cc5"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""f10c193f-fcfe-4fdb-b899-4cd61e0142c9"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""Left"",
                     ""id"": ""ec60eb5c-7fa3-4953-b27c-6b35291af7dc"",
                     ""path"": ""<Keyboard>/a"",
@@ -143,31 +121,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Controller Left Analog"",
-                    ""id"": ""41799cd5-5b5e-4196-955a-969e5094f649"",
-                    ""path"": ""3DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Up"",
-                    ""id"": ""b3b345d0-0719-4000-8ab8-6b4e7ad3df6a"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Down"",
-                    ""id"": ""21bd4b52-5e46-4add-a325-6036e032c9d0"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""name"": ""Right"",
+                    ""id"": ""aa6991a9-88cd-4e3a-87ce-ccd705342f2b"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -187,9 +143,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Right"",
-                    ""id"": ""aa6991a9-88cd-4e3a-87ce-ccd705342f2b"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""name"": ""Backward"",
+                    ""id"": ""d4fdd81f-9a52-4cde-b139-27d00af4eb89"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -200,62 +156,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Forward"",
                     ""id"": ""6c8eacf2-0761-4ce6-9e72-d4a582703e5d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Backward"",
-                    ""id"": ""d4fdd81f-9a52-4cde-b139-27d00af4eb89"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""ArrowKeys"",
-                    ""id"": ""1a2a562f-f9ba-4de9-be64-044a6185800a"",
-                    ""path"": ""3DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Up"",
-                    ""id"": ""253abe1a-1a03-4120-bdf3-eeeaadcfcfec"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Down"",
-                    ""id"": ""958e86cd-6a3b-4455-ba9e-ae51e32e77ce"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Left"",
-                    ""id"": ""a35044bf-2dc4-4e9d-9bf1-28ef37d4821d"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -275,9 +176,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Forward"",
-                    ""id"": ""38bed63d-5200-4101-8e4d-2af31fc79564"",
-                    ""path"": """",
+                    ""name"": ""Left"",
+                    ""id"": ""a35044bf-2dc4-4e9d-9bf1-28ef37d4821d"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -288,7 +189,18 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Backward"",
                     ""id"": ""0b0fbc26-b014-45fd-8255-5e79bc1dd81e"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Forward"",
+                    ""id"": ""38bed63d-5200-4101-8e4d-2af31fc79564"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
