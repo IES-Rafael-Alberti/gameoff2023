@@ -1,5 +1,8 @@
+using SB.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,94 +12,26 @@ using UnityEngine.Video;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject cinematic;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] int gameScene;
-    [SerializeField] GameObject viewer;
-    [SerializeField] GameObject continueButton;
+    public Button ContinueButton;
 
-    public static MenuManager Instance;
-
-    public GameObject highlightnedPlaceholder;
-    private VideoPlayer _player;
-
-
-
-
-    private void Awake()
+    public void Start()
     {
-        Instance = this;
-        PrepareContinueButton();
+        if (GameData.DoesFileExist()) return;
+        ContinueButton.interactable = false;
     }
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void NewGame()
     {
-        
-        enableMenu(true);
-        _player = cinematic.GetComponent<VideoPlayer>();
-
+        SceneManager.LoadScene("TreasureRoom");
     }
 
-    void PrepareContinueButton()
+    public void Continue()
     {
-        var button = continueButton.GetComponent<Button>();
-        var isFirstChapter = ChapterManager.Instance.chapterList.currentChapter == 0;
-        button.interactable = !isFirstChapter;
-        var colors = button.colors;
-        colors.normalColor = isFirstChapter ? Color.gray : Color.white;
-        button.colors = colors;
+        GameData.LoadLevel();
+        SceneManager.LoadScene("TreasureRoom");
     }
 
-
-    void OnCinematicFinished(VideoPlayer vp)
+    public void Quit()
     {
-        if (ChapterManager.Instance.chapterList.firstPlay)
-        {
-            ChapterManager.Instance.chapterList.firstPlay = false;
-            SceneManager.LoadScene(gameScene);
-        }
-        else
-        {
-            enableMenu(true);
-        }
-
+        Application.Quit();
     }
-
-    public void NewGame() {
-        if (ChapterManager.Instance.chapterList.firstPlay)
-        {
-            ViewCinematic();
-            ChapterManager.Instance.chapterList.currentChapter = 0;
-        }
-        else SceneManager.LoadScene(gameScene);
-     }
-
-    public void ContinueGame()
-    {
-        SceneManager.LoadScene(gameScene);
-    }
-
-    public void ExitGame() 
-    { 
-        Application.Quit(); 
-    }
-
-    void enableMenu(bool enable)
-    {
-        mainMenu.SetActive(enable);
-        cinematic.SetActive(!enable);
-        viewer.SetActive(!ChapterManager.Instance.chapterList.firstPlay);
-        highlightnedPlaceholder.SetActive(false);
-        //continueButton.SetActive(false);
-    }
-
-    public void ViewCinematic()
-    {
-        enableMenu(false);
-        _player.Play();
-        _player.loopPointReached += OnCinematicFinished;
-    }
-
 }

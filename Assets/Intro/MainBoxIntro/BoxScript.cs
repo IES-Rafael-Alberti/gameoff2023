@@ -38,6 +38,8 @@ public class BoxScript : MonoBehaviour
         LockScript.OnLevelComplete += NextLevel;
         resetCameraPosition = cutsceneCamera.transform.position;
         resetCameraRotation = cutsceneCamera.transform.rotation;
+
+        currentLevel = GameData.currentLevel;
     }
 
     public void RotateAndOpen()
@@ -68,9 +70,13 @@ public class BoxScript : MonoBehaviour
         switch (currentLevel)
         {
             case Level.Egyptian:
+                GameData.currentLevelIdx = 2;
+                GameData.SaveLevel();
                 currentLevel = Level.Greek;
                 break;
             case Level.Greek:
+                GameData.currentLevelIdx = 3;
+                GameData.SaveLevel();
                 currentLevel = Level.Aztec;
                 break;
             case Level.Aztec:
