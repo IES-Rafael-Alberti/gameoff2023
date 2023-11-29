@@ -37,6 +37,7 @@ public class PauseManager : MonoBehaviour
 
     public void RetryLevel()
     {
+        Time.timeScale = 1f;
         //Time.timeScale = 1f;
         sbController.ResetBoard();
         Resume();
@@ -44,8 +45,15 @@ public class PauseManager : MonoBehaviour
     
     public void ReturnToMenu()
     {
+        sbController.DestroyBoard();
+        Time.timeScale = 1f;
         //Time.timeScale = 1f;
         SceneManager.LoadScene(menuScene);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
 }
