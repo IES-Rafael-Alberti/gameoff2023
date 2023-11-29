@@ -22,14 +22,14 @@ public class PauseManager : MonoBehaviour
 
     public void Pause() 
     {
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         //TODO Change into event
         canvasMenu.SetActive(true);
     }
 
     public void Resume()
     {
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         //TODO Change into event
         canvasMenu.SetActive(false);
     }
