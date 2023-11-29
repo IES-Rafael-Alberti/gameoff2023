@@ -76,14 +76,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1802362156576283682}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: e18f27f39e4e35244bce372aa721264c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8587168308590737108}
     - targetCorrespondingSourceObject: {fileID: 5233112405309087440, guid: e18f27f39e4e35244bce372aa721264c,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 524147466677160214}
-    - targetCorrespondingSourceObject: {fileID: -2741166517998353707, guid: e18f27f39e4e35244bce372aa721264c,
+    - targetCorrespondingSourceObject: {fileID: -7029948723529949830, guid: e18f27f39e4e35244bce372aa721264c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 667799142310764946}
+      addedObject: {fileID: 6100018713780958923}
   m_SourcePrefab: {fileID: 100100000, guid: e18f27f39e4e35244bce372aa721264c, type: 3}
 --- !u!4 &10146469025617131 stripped
 Transform:
@@ -91,6 +95,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 553579183427711744}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &824119718260461137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e18f27f39e4e35244bce372aa721264c,
+    type: 3}
+  m_PrefabInstance: {fileID: 553579183427711744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8587168308590737108
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824119718260461137}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44c9ee87dfe2eea4d836dfb247878e7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1863979747253104250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7029948723529949830, guid: e18f27f39e4e35244bce372aa721264c,
+    type: 3}
+  m_PrefabInstance: {fileID: 553579183427711744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6100018713780958923
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863979747253104250}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 44c9ee87dfe2eea4d836dfb247878e7b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5706471207354838480 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5233112405309087440, guid: e18f27f39e4e35244bce372aa721264c,
@@ -119,33 +177,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2124705421725058983, guid: e18f27f39e4e35244bce372aa721264c, type: 3}
---- !u!1 &6799273008050598357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -2741166517998353707, guid: e18f27f39e4e35244bce372aa721264c,
-    type: 3}
-  m_PrefabInstance: {fileID: 553579183427711744}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &667799142310764946
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6799273008050598357}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 44c9ee87dfe2eea4d836dfb247878e7b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &5311388267802812415
 PrefabInstance:
   m_ObjectHideFlags: 0
