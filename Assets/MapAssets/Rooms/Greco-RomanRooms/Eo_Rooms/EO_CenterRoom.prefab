@@ -222,6 +222,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5472915490880369759}
   - component: {fileID: 4158449954301870662}
+  - component: {fileID: 2296332319517713375}
+  - component: {fileID: 8554801823059401605}
   m_Layer: 0
   m_Name: DoorWallLeft (1)
   m_TagString: Ground
@@ -263,8 +265,50 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8, y: 15.676959, z: 23.93}
-  m_Center: {x: -21.8, y: -11.506522, z: -0.8199997}
+  m_Size: {x: 18.692352, y: 37.17872, z: 13.012165}
+  m_Center: {x: -13.880014, y: -0.755641, z: -19.770254}
+--- !u!65 &2296332319517713375
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305188758363166851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.624525, y: 37.316566, z: 13.1656}
+  m_Center: {x: 15.596923, y: -0.6360092, z: -19.808088}
+--- !u!65 &8554801823059401605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3305188758363166851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 22.659138, y: 37.34083, z: 13.103149}
+  m_Center: {x: 0.93581545, y: -0.6238766, z: -28.667107}
 --- !u!1 &5166469771570381442
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6252940911664409863}
   - component: {fileID: 1150866619593660796}
+  - component: {fileID: 7622422736811639380}
   m_Layer: 0
   m_Name: DoorWallLeft
   m_TagString: Ground
@@ -598,6 +643,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8, y: 16.018986, z: 28.03434}
   m_Center: {x: -21.8, y: 11.665506, z: -0.6489854}
+--- !u!65 &7622422736811639380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893943564588743720}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.7846603, y: 15.583122, z: 28.29461}
+  m_Center: {x: -21.874683, y: -11.502731, z: -0.7798462}
 --- !u!1 &7186210656370611651
 GameObject:
   m_ObjectHideFlags: 0
