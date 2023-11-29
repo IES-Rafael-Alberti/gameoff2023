@@ -22,6 +22,12 @@ public class CageScript : MonoBehaviour
     {
         ButtonScript.OnButtonPress += RaiseCage;
     }
+    private void OnDestroy()
+    {
+        ButtonScript.OnButtonPress -= RaiseCage;
+
+    }
+
     private void RaiseCage()
     {
         if (!raise)
