@@ -241,8 +241,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             jumpPuff.Play();
             Invoke("StopPuff", 0.5f);
-            if (doubleJump) PlayAudio(dJump, 0.2f);
-            else PlayAudio(jump, 0.1f);
+            if (doubleJump) PlayAudio(dJump, 1f);
+            else PlayAudio(jump, 0.5f);
             _animator.SetBool("isJumping", true);
             rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -254,7 +254,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     public void WingFlap()
     {
-        PlayAudio(dJump, 0.15f);
+        PlayAudio(dJump, 0.8f);
     }
 
     private void PlayAudio(AudioClip clip, float volume)
