@@ -596,7 +596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7922660592492664819}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0.61237246, y: 0.3535534, z: 0.3535534, w: -0.61237246}
   m_LocalPosition: {x: 0, y: -808, z: 138.99997}
   m_LocalScale: {x: 5000.002, y: 5000.001, z: 5000.001}
   m_ConstrainProportionsScale: 0
@@ -604,7 +604,7 @@ Transform:
   - {fileID: 4797899936737453145}
   - {fileID: 5690526134751021409}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 300}
 --- !u!114 &7189506462754684109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +626,7 @@ MonoBehaviour:
   levelController: {fileID: 0}
   cutsceneCamera: {fileID: 0}
   victoryReference: {fileID: 0}
+  credits: {fileID: 0}
 --- !u!114 &4560276231537554375
 MonoBehaviour:
   m_ObjectHideFlags: 0

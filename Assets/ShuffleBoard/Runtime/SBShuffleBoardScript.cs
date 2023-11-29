@@ -220,6 +220,7 @@ namespace SB.Runtime
         public void DestroyBoard()
         {
             OnReturn?.Invoke();
+            if (board_data.grid != null) Destroy(board_data.grid);
             if (board_data.map_objects == null)
             {
                 return;

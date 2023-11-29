@@ -21,6 +21,16 @@ public class DamageTrigger : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        target = null;
+    }
+
+    private void OnEnable()
+    {
+        target = null;
+    }
+
     private void Update()
     {
         if (target == null) return;
