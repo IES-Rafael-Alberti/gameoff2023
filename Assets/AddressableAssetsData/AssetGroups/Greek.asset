@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: f279155f2449acb4486a48a382aff031
-  m_SerializeEntries:
-  - m_GUID: 8322035990277d5478f6240e1c67c29f
-    m_Address: Assets/ShuffleBoard/Boards/Example/Greco-RomanBoard.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0b81297173e21224d8cbe63d28cb4f2d, type: 2}
   m_SchemaSet:

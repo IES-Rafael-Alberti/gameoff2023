@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: ce5d6fd3587afef4a91181cb090dfc4c
-  m_SerializeEntries:
-  - m_GUID: ee68c2cc8f6866f41bc1270cbfef185c
-    m_Address: Assets/ShuffleBoard/Boards/Example/EgyptianBoard.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0b81297173e21224d8cbe63d28cb4f2d, type: 2}
   m_SchemaSet:

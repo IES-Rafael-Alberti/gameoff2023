@@ -9,8 +9,6 @@ namespace SB.Runtime
     using Utilities.Enum;
     using SB.ScriptableObjects;
     using Utilities.GridPostions;
-    using UnityEngine.AddressableAssets;
-    using UnityEngine.ResourceManagement.AsyncOperations;
 
     enum BoardState
     {
@@ -31,8 +29,6 @@ namespace SB.Runtime
         public static event KiwiReturn OnReturn;
 
         private PlatformingControls controls;
-
-        private AsyncOperationHandle<SBBoardScriptableObject> handle;
 
         public bool useDirectBoardData = false;
         public SBBoardScriptableObject initialBoardData;
@@ -60,7 +56,6 @@ namespace SB.Runtime
         public Camera boardCamera;
         public Camera characterCamera;
 
-        private BoardState boardState = BoardState.Off;
         private int moving_elements = 0;
         private ModifierBase movement_source;
 
@@ -99,26 +94,19 @@ namespace SB.Runtime
         {
             switch (chosenLevel)
             {
-                case Level.Aztec:
-                    handle = Addressables.LoadAssetAsync<SBBoardScriptableObject>("Assets/ShuffleBoard/Boards/Example/AztecBoard.asset");
-                    break;
                 case Level.Egyptian:
-                    handle = Addressables.LoadAssetAsync<SBBoardScriptableObject>("Assets/ShuffleBoard/Boards/Example/EgyptianBoard.asset");
+                    initialBoardData = Resources.Load<SBBoardScriptableObject>("Levels/EgyptianBoard");
+                    Debug.Log(initialBoardData);
                     break;
                 case Level.Greek:
-                    handle = Addressables.LoadAssetAsync<SBBoardScriptableObject>("Assets/ShuffleBoard/Boards/Example/Greco-RomanBoard.asset");
+                    initialBoardData = Resources.Load<SBBoardScriptableObject>("Levels/Greco-RomanBoard");
+                    break;
+                case Level.Aztec:
+                    initialBoardData = Resources.Load<SBBoardScriptableObject>("Levels/AztecBoard");
                     break;
             }
-            handle.Completed += LoadComplete;
-        }
-
-        private void LoadComplete(AsyncOperationHandle<SBBoardScriptableObject> handle)
-        {
-            initialBoardData = handle.Result;
-            Addressables.Release(handle);
             InstantiateAfterLoad();
         }
-
         private void InstantiateAfterLoad()
         {
             DestroyBoard();
@@ -154,7 +142,6 @@ namespace SB.Runtime
 
         public void TurnOn()
         {
-            boardState = BoardState.On;
             boardCamera.enabled = true;
             controls.BoardControls.Move.performed += OnMovementPerformed;
             controls.BoardControls.Exit.performed += Exit;
@@ -193,7 +180,6 @@ namespace SB.Runtime
 
         public void TurnOff(bool dropKiwi)
         {
-            boardState = BoardState.Off;
             MovementStarted(null);
             boardCamera.enabled = false;
             controls.BoardControls.Move.performed -= OnMovementPerformed;

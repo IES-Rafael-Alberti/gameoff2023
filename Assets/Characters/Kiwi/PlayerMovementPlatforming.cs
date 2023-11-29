@@ -1,12 +1,7 @@
 using SB.Runtime;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.Rendering;
 
 public class PlayerMovementPlatforming : MonoBehaviour
 {
@@ -292,6 +287,12 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Movement.canceled += OnMovementCancelled;
         input.Player.Jump.performed += OnJumpPerformed;
         input.Player.Jump.canceled += OnJumpCancelled;
+        input.Player.Pause.performed += PauseGame;
+    }
+
+    private void PauseGame(InputAction.CallbackContext value)
+    {
+        PauseManager.pauseManager.Pause();
     }
     private void DisableNormalControls()
     {

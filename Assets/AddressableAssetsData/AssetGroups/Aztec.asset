@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 7ac0fc94b5a3b4e4fa4a13662930a4be
-  m_SerializeEntries:
-  - m_GUID: 22cc6df0d902ec4418063418cb8508c5
-    m_Address: Assets/ShuffleBoard/Boards/Example/AztecBoard.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0b81297173e21224d8cbe63d28cb4f2d, type: 2}
   m_SchemaSet:

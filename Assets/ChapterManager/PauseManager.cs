@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.Events;
 using SB.Runtime;
 
 public class PauseManager : MonoBehaviour
@@ -15,9 +10,12 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject pauseButton;
     public SBShuffleBoardScript sbController;
 
+    public static PauseManager pauseManager;
+
     void Start()
     {
-       canvasMenu.SetActive(false);
+        pauseManager = this;
+        canvasMenu.SetActive(false);
     }
 
     public void Pause() 

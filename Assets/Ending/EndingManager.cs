@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
-using System.Diagnostics;
 
 public class EndingManager : MonoBehaviour
 {
