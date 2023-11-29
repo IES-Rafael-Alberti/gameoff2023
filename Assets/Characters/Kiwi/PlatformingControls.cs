@@ -145,7 +145,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Backward"",
                     ""id"": ""d4fdd81f-9a52-4cde-b139-27d00af4eb89"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -407,7 +407,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1e88eec4-f0dd-448b-b554-c8691b16f71d"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -539,7 +539,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""3b7530b0-d3a3-4a31-92e6-4f085b5f597a"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -550,7 +550,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""368b5310-1406-428a-90d6-273bf3ca5d12"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
