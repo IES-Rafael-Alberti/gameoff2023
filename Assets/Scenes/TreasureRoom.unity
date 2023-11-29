@@ -7692,6 +7692,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 2e225c42970e01344ac80180e2667b15, type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: swapPeriod
+      value: 0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: arrowPrefab
       value: 
       objectReference: {fileID: 5932194427533229397, guid: f684bbe59217da2479496ad24c5bfc98,
@@ -7741,7 +7746,7 @@ PrefabInstance:
     - target: {fileID: 6117236288509839658, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: m_Volume
-      value: 0.094
+      value: 0.166
       objectReference: {fileID: 0}
     - target: {fileID: 8781227551599412546, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
