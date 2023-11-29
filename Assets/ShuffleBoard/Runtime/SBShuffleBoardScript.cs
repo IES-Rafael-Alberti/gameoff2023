@@ -208,6 +208,7 @@ namespace SB.Runtime
 
         public void CreateBoard()
         {
+            RoomTransitionScript.warpEnabled = true;
             DestroyBoard();
             rows = initialBoardData.rows;
             cols = initialBoardData.cols;

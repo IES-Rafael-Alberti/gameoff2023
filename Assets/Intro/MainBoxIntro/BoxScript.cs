@@ -108,6 +108,9 @@ public class BoxScript : MonoBehaviour
 
     IEnumerator RAndOHelper()
     {
+        resetCameraPosition = cutsceneCamera.transform.position;
+        resetCameraRotation = cutsceneCamera.transform.rotation;
+
         kiwiAnimations.SetBool("isRunning", false);
         while (Quaternion.Angle(mainBox.transform.localRotation, Quaternion.Euler(new Vector3(0, 0, neededRotation))) > 0.1f)
         {
