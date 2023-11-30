@@ -62,6 +62,15 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Peak"",
+                    ""type"": ""Button"",
+                    ""id"": ""d60eef50-84f4-41d3-9bb9-eafb5299c0a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +280,28 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab9cbdd3-4b22-4f0d-ae72-67219e691c94"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Peak"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e0aaa0b-6e73-4e2a-b2ef-b1a626cbbe09"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Peak"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -569,6 +600,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Peak = m_Player.FindAction("Peak", throwIfNotFound: true);
         // BoardControls
         m_BoardControls = asset.FindActionMap("BoardControls", throwIfNotFound: true);
         m_BoardControls_Move = m_BoardControls.FindAction("Move", throwIfNotFound: true);
@@ -641,6 +673,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Use;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Peak;
     public struct PlayerActions
     {
         private @PlatformingControls m_Wrapper;
@@ -649,6 +682,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Use => m_Wrapper.m_Player_Use;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Peak => m_Wrapper.m_Player_Peak;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -670,6 +704,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Peak.started += instance.OnPeak;
+            @Peak.performed += instance.OnPeak;
+            @Peak.canceled += instance.OnPeak;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -686,6 +723,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Peak.started -= instance.OnPeak;
+            @Peak.performed -= instance.OnPeak;
+            @Peak.canceled -= instance.OnPeak;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -787,6 +827,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnPeak(InputAction.CallbackContext context);
     }
     public interface IBoardControlsActions
     {
