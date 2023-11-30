@@ -96,7 +96,6 @@ namespace SB.Runtime
             {
                 case Level.Egyptian:
                     initialBoardData = Resources.Load<SBBoardScriptableObject>("Levels/EgyptianBoard");
-                    Debug.Log(initialBoardData);
                     break;
                 case Level.Greek:
                     initialBoardData = Resources.Load<SBBoardScriptableObject>("Levels/Greco-RomanBoard");
