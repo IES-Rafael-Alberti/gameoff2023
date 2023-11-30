@@ -144,7 +144,8 @@ namespace SB.Runtime
         {
             boardCamera.enabled = true;
             controls.BoardControls.Move.performed += OnMovementPerformed;
-            controls.BoardControls.Exit.performed += Exit;
+            controls.BoardControls.Return.performed -= Return;
+            controls.BoardControls.Return.performed += Exit;
             StartCoroutine(TurnOnProcess());
             DestoryDoors();
             SpawnArrows();

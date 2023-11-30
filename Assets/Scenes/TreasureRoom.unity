@@ -7748,6 +7748,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 661980029409304194, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
+      propertyPath: m_text
+      value: 'WASD: Move
+
+        E/Q: Rotate
+
+        R: Return'
+      objectReference: {fileID: 0}
     - target: {fileID: 847319293459133084, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
       propertyPath: m_SortingOrder
