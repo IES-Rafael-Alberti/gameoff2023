@@ -292,12 +292,6 @@ public class PlayerMovementPlatforming : MonoBehaviour
         input.Player.Movement.canceled += OnMovementCancelled;
         input.Player.Jump.performed += OnJumpPerformed;
         input.Player.Jump.canceled += OnJumpCancelled;
-        input.Player.Pause.performed += PauseGame;
-    }
-
-    private void PauseGame(InputAction.CallbackContext value)
-    {
-        PauseManager.pauseManager.Pause();
     }
     private void DisableNormalControls()
     {

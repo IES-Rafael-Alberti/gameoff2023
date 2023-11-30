@@ -9,6 +9,7 @@ namespace SB.Runtime
     using Utilities.Enum;
     using SB.ScriptableObjects;
     using Utilities.GridPostions;
+    using UnityEngine.Windows;
 
     enum BoardState
     {
@@ -71,6 +72,16 @@ namespace SB.Runtime
             controls.Enable();
             boardCamera.enabled = false;
             PlayerMovementPlatforming.OnDeath += Die;
+        }
+
+        private void Start()
+        {
+            controls.BoardControls.Pause.performed += PauseGame;
+        }
+
+        private void PauseGame(InputAction.CallbackContext value)
+        {
+            PauseManager.pauseManager.Pause();
         }
 
         #region Audio

@@ -55,15 +55,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""38dccbb2-c9e3-44d9-8d14-12d021dae1dd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Peak"",
                     ""type"": ""Button"",
                     ""id"": ""d60eef50-84f4-41d3-9bb9-eafb5299c0a6"",
@@ -263,28 +254,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ed0a09d7-d30d-44bf-a30d-c2375078878f"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ae05b3be-8ee0-4a15-8e3e-650f83dfe169"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ab9cbdd3-4b22-4f0d-ae72-67219e691c94"",
                     ""path"": ""<Keyboard>/shift"",
                     ""interactions"": """",
@@ -319,6 +288,15 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""4905b357-41c9-42fe-a85a-ccefcae02222"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""ClockwiseRotate"",
@@ -588,6 +566,28 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""117e7051-2f19-46f0-b7e2-3f3177888ed5"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1923382c-2142-4db3-be06-cb23a6428280"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -599,11 +599,11 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
-        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_Peak = m_Player.FindAction("Peak", throwIfNotFound: true);
         // BoardControls
         m_BoardControls = asset.FindActionMap("BoardControls", throwIfNotFound: true);
         m_BoardControls_Move = m_BoardControls.FindAction("Move", throwIfNotFound: true);
+        m_BoardControls_Pause = m_BoardControls.FindAction("Pause", throwIfNotFound: true);
         m_BoardControls_ClockwiseRotate = m_BoardControls.FindAction("ClockwiseRotate", throwIfNotFound: true);
         m_BoardControls_CounterClockwiseRotate = m_BoardControls.FindAction("CounterClockwiseRotate", throwIfNotFound: true);
         m_BoardControls_Exit = m_BoardControls.FindAction("Exit", throwIfNotFound: true);
@@ -672,7 +672,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Use;
-    private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_Peak;
     public struct PlayerActions
     {
@@ -681,7 +680,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Use => m_Wrapper.m_Player_Use;
-        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @Peak => m_Wrapper.m_Player_Peak;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -701,9 +699,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
             @Use.started += instance.OnUse;
             @Use.performed += instance.OnUse;
             @Use.canceled += instance.OnUse;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
             @Peak.started += instance.OnPeak;
             @Peak.performed += instance.OnPeak;
             @Peak.canceled += instance.OnPeak;
@@ -720,9 +715,6 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
             @Use.started -= instance.OnUse;
             @Use.performed -= instance.OnUse;
             @Use.canceled -= instance.OnUse;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
             @Peak.started -= instance.OnPeak;
             @Peak.performed -= instance.OnPeak;
             @Peak.canceled -= instance.OnPeak;
@@ -748,6 +740,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_BoardControls;
     private List<IBoardControlsActions> m_BoardControlsActionsCallbackInterfaces = new List<IBoardControlsActions>();
     private readonly InputAction m_BoardControls_Move;
+    private readonly InputAction m_BoardControls_Pause;
     private readonly InputAction m_BoardControls_ClockwiseRotate;
     private readonly InputAction m_BoardControls_CounterClockwiseRotate;
     private readonly InputAction m_BoardControls_Exit;
@@ -757,6 +750,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         private @PlatformingControls m_Wrapper;
         public BoardControlsActions(@PlatformingControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_BoardControls_Move;
+        public InputAction @Pause => m_Wrapper.m_BoardControls_Pause;
         public InputAction @ClockwiseRotate => m_Wrapper.m_BoardControls_ClockwiseRotate;
         public InputAction @CounterClockwiseRotate => m_Wrapper.m_BoardControls_CounterClockwiseRotate;
         public InputAction @Exit => m_Wrapper.m_BoardControls_Exit;
@@ -773,6 +767,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
             @ClockwiseRotate.started += instance.OnClockwiseRotate;
             @ClockwiseRotate.performed += instance.OnClockwiseRotate;
             @ClockwiseRotate.canceled += instance.OnClockwiseRotate;
@@ -792,6 +789,9 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
             @ClockwiseRotate.started -= instance.OnClockwiseRotate;
             @ClockwiseRotate.performed -= instance.OnClockwiseRotate;
             @ClockwiseRotate.canceled -= instance.OnClockwiseRotate;
@@ -826,12 +826,12 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
         void OnPeak(InputAction.CallbackContext context);
     }
     public interface IBoardControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
         void OnClockwiseRotate(InputAction.CallbackContext context);
         void OnCounterClockwiseRotate(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
