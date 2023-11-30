@@ -29,7 +29,7 @@ public class KeyScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             OnCollected?.Invoke();
-            CentralSoundEffect.PlaySound(pickupSound);
+            CentralSoundEffect.PlaySound2(pickupSound);
             transform.parent.gameObject.SetActive(false);
         }
     }

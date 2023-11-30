@@ -241,8 +241,8 @@ public class PlayerMovementPlatforming : MonoBehaviour
         {
             jumpPuff.Play();
             Invoke("StopPuff", 0.5f);
-            if (doubleJump) PlayAudio(dJump, 1f);
-            else PlayAudio(jump, 0.5f);
+            if (doubleJump) PlayAudio(dJump, 0.9f);
+            else PlayAudio(jump, 0.25f);
             _animator.SetBool("isJumping", true);
             rb.velocity = new Vector3(moveVector.x * moveSpeed, 0f, moveVector.z * moveSpeed);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
