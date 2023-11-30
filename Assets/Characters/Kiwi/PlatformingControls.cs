@@ -154,7 +154,7 @@ public partial class @PlatformingControls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Backward"",
                     ""id"": ""d4fdd81f-9a52-4cde-b139-27d00af4eb89"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
