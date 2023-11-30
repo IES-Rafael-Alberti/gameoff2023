@@ -8,7 +8,7 @@ public class GroundChecking : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Statue"))
         {
             collisionCount++;
         }
@@ -16,7 +16,7 @@ public class GroundChecking : MonoBehaviour
 
     void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Statue"))
         {
             collisionCount--;
         }
