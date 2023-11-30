@@ -1,5 +1,6 @@
 using SB.Runtime;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -62,8 +63,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
     [HideInInspector]
     public bool gliding = false;
 
+    public Material damageMaterial;
+
     private void Awake()
     {
+        damageMaterial.SetFloat("_Active", 0);
         input = new PlatformingControls();
         rb = GetComponent<Rigidbody>();
         if (hasBrain)
@@ -97,6 +101,7 @@ public class PlayerMovementPlatforming : MonoBehaviour
     private void OnDestroy()
     {
         SBShuffleBoardScript.OnReturn -= DestroySelf;
+        damageMaterial.SetFloat("_Active", 0);
     }
 
     private void DestroySelf()
@@ -319,9 +324,11 @@ public class PlayerMovementPlatforming : MonoBehaviour
 
     public IEnumerator IFrames()
     {
+        damageMaterial.SetFloat("_Active", 1);
         invulnerable = true;
         yield return new WaitForSeconds(invulnerabilityLength);
         invulnerable = false;
+        damageMaterial.SetFloat("_Active", 0);
         yield break;
     }
 }

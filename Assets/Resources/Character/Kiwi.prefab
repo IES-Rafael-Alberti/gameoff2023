@@ -611,12 +611,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b79f47140c0788044923c976a3b1ab4f, type: 2}
+      objectReference: {fileID: 2100000, guid: 612ace40a5b3d5646a48b8e48e85934c, type: 2}
     - target: {fileID: -1578373571446707184, guid: 0b42c5dcbe12a174a8652fee6faab6f1,
         type: 3}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: b79f47140c0788044923c976a3b1ab4f, type: 2}
+      objectReference: {fileID: 2100000, guid: 612ace40a5b3d5646a48b8e48e85934c, type: 2}
     - target: {fileID: -1405912171086547859, guid: 0b42c5dcbe12a174a8652fee6faab6f1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1258,6 +1258,7 @@ MonoBehaviour:
   glideDropSpeed: 5
   releaseDropSpeed: 25
   gliding: 0
+  damageMaterial: {fileID: 2100000, guid: 612ace40a5b3d5646a48b8e48e85934c, type: 2}
 --- !u!82 &5888711681219603805
 AudioSource:
   m_ObjectHideFlags: 0
