@@ -171,6 +171,7 @@ public class BoxScript : MonoBehaviour
             RotateAndOpen();
             yield break;
         }
+        levelController.PlayEndingSong();
         animator.Play("OpenBox", 0, 0f);
         animator.SetBool("Loop", false);
 

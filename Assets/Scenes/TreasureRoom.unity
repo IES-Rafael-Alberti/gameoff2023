@@ -7905,6 +7905,11 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 091dfec24c1c68443825352584d7c47b, type: 3}
     - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
         type: 3}
+      propertyPath: finalSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 46dca0ace597f1546ab7a7df682fb202, type: 3}
+    - target: {fileID: 2065283258010823468, guid: 7ce72c07f3de5534aa7bbf0354b23c9a,
+        type: 3}
       propertyPath: coverDepth
       value: -18.3
       objectReference: {fileID: 0}

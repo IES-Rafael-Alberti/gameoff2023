@@ -65,6 +65,7 @@ namespace SB.Runtime
         public AudioClip roomMove;
         public AudioClip roomRotate;
         public AudioClip error;
+        public AudioClip finalSong;
 
         private void Awake()
         {
@@ -85,6 +86,11 @@ namespace SB.Runtime
         }
 
         #region Audio
+        public void PlayEndingSong()
+        {
+            bgMusicPlayer.clip = finalSong;
+            bgMusicPlayer.Play();
+        }
         public void PlayRoomMove()
         {
             roomSoundEffects.PlayOneShot(roomMove);
